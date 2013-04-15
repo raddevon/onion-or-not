@@ -1,0 +1,68 @@
+# Editor temp files:
+*.swp
+*~
+
+# Sphinx docs:
+build
+
+# SQLite3 database files:
+*.db
+
+### Python ###
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+### IntelliJ ###
+*.iml
+*.ipr
+*.iws
+.idea/
+
+### Django ###
+*.log
+*.pot
+*.pyc
+local_settings.py
+
+# Vagrant VM
+.vagrant
+
+# Temporary files
+tmp
+
+# Local Secrets
+secrets.txt
