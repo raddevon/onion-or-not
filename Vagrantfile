@@ -71,5 +71,6 @@ Vagrant::Config.run do |config|
   end
 
   config.vm.provision :shell, :inline => "sudo cp /vagrant/configs/nginx/sites-enabled/default /etc/nginx/sites-enabled/default"
+  config.vm.provision :shell, :inline => "sudo pip install -r /vagrant/requirements/local.txt"
 
 end
