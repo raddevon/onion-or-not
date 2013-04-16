@@ -9,6 +9,8 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.ssh.forward_agent = true
 
+  config.vm.forward_port 8000, 8888
+
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks"]
     chef.add_recipe :apt
@@ -63,9 +65,14 @@ Vagrant::Config.run do |config|
         :worker_connections => "1024"
       },
       :supervisor => {
+        :service_name       => "Gunicorn",
         :command            => "/vagrant/gunicorn.sh",
         :user               => "vagrant",
-        :directory          => "/vagrant/"
+        :directory          => "/vagrant/",
+        :stdout_logfile     => "/var/log/supervisor/onionornot.log",
+        :sterr_logfile     => "/var/log/supervisor/onionornot-error.log",
+        :autostart          => true,
+        :autorestart        => true
       }
     }
   end
