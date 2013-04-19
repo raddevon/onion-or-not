@@ -8,3 +8,4 @@ cookbook "postgresql", {}
 cookbook "python", {}
 cookbook "nginx", {}
 cookbook "supervisor", {}
+cookbook "onionornot", {}
