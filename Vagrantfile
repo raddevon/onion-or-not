@@ -9,7 +9,7 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.ssh.forward_agent = true
 
-  config.vm.forward_port 8000, 8888
+  config.vm.forward_port 80, 8888
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = ["cookbooks"]
@@ -19,6 +19,7 @@ Vagrant::Config.run do |config|
     chef.add_recipe 'python'
     chef.add_recipe 'nginx'
     chef.add_recipe 'supervisor'
+    chef.add_recipe 'onionornot'
     chef.json = {
       :git        => {
         :prefix => "/usr/local"
@@ -78,6 +79,6 @@ Vagrant::Config.run do |config|
   end
 
   config.vm.provision :shell, :inline => "sudo cp /vagrant/configs/nginx/sites-enabled/default /etc/nginx/sites-enabled/default"
-  config.vm.provision :shell, :inline => "sudo pip install -r /vagrant/requirements/local.txt"
+  config.vm.provision :shell, :inline => "sudo /etc/init.d/nginx reload"
 
 end
