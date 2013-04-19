@@ -11,4 +11,4 @@ ADDRESS=localhost:8000
 test -d $LOGDIR || mkdir -p $LOGDIR
 exec gunicorn_django -w $NUM_WORKERS --bind=$ADDRESS \
   --user=$USER --group=$GROUP --log-level=debug \
-  --log-file=$LOGFILE 2>>$LOGFILE DJANGO_SETTINGS
+  --log-file=$LOGFILE 2>>$LOGFILE $DJANGO_SETTINGS
