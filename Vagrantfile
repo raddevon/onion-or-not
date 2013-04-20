@@ -71,7 +71,7 @@ Vagrant::Config.run do |config|
         :user               => "vagrant",
         :directory          => "/vagrant/",
         :stdout_logfile     => "/var/log/supervisor/onionornot.log",
-        :sterr_logfile     => "/var/log/supervisor/onionornot-error.log",
+        :sterr_logfile      => "/var/log/supervisor/onionornot-error.log",
         :autostart          => true,
         :autorestart        => true
       }

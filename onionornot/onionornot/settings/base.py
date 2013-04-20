@@ -201,7 +201,6 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     # Database migration helpers:
     'south',
-
     'gunicorn',
 )
 
