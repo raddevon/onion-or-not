@@ -1,6 +1,10 @@
 include_recipe "python"
 include_recipe "supervisor"
 
+package "python-psycopg2" do
+  action :install
+end
+
 execute "install_requirements" do
   cwd "/vagrant/"
   user "root"
