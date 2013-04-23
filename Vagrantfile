@@ -15,6 +15,7 @@ Vagrant::Config.run do |config|
     chef.cookbooks_path = ["cookbooks"]
     chef.add_recipe :apt
     chef.add_recipe 'git'
+    chef.add_recipe 'postgresql::client'
     chef.add_recipe 'postgresql::server'
     chef.add_recipe 'python'
     chef.add_recipe 'nginx'
