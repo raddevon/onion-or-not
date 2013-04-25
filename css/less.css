@@ -84,7 +84,6 @@ time,
 mark,
 audio,
 video {
-  min-height: 100%;
   margin: 0;
   padding: 0;
   border: 0;
@@ -150,6 +149,9 @@ table {
 .cf {
   *zoom: 1;
 }
+html {
+  height: 100%;
+}
 body {
   text-align: center;
   position: relative;
@@ -159,7 +161,7 @@ body {
   background: url("../imgs/halfGreen.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 0 -100px;
+  background-position: center center;
 }
 body:before {
   background-color: green;
@@ -218,7 +220,6 @@ nav ul a:hover {
   margin: 3% auto 10% auto;
   position: relative;
   display: inline-block;
-  max-width: 80%;
 }
 #wrapper button {
   background-color: rgba(61, 110, 90, 0.8);
@@ -234,7 +235,7 @@ nav ul a:hover {
 #wrapper button:hover {
   background-color: rgba(61, 110, 90, 0.95);
 }
-#wrapper #quote {
+#wrapper #headline {
   background-color: rgba(61, 110, 90, 0.95);
   border: 3px outset rgba(70, 126, 103, 0.4);
   border-radius: 4px;
@@ -243,54 +244,60 @@ nav ul a:hover {
   color: #e0e9ee;
   display: inline-block;
 }
+#wrapper #white {
+  background-color: rgba(224, 233, 238, 0.75);
+  border-radius: 0 0 4px 4px;
+  width: 95%;
+  margin: 0 auto;
+  overflow: hidden;
+}
 #wrapper #question {
-  margin: 0 auto;
-  width: 95%;
-  background-color: rgba(224, 233, 238, 0.75);
-  border-radius: 0 0 4px 4px;
+  width: 100%;
+  position: relative;
 }
-#wrapper #Not {
-  display: none;
+#wrapper #response {
+  position: relative;
+  width: inherit;
   padding: 1em;
-  margin: 0 auto;
-  width: 95%;
-  background-color: rgba(224, 233, 238, 0.75);
-  border-radius: 0 0 4px 4px;
+  top: -500px;
 }
-#wrapper #Not .message {
+#wrapper #response .message {
   color: rgba(61, 110, 90, 0.9);
   padding: .25em;
+  display: inline-block;
 }
-#wrapper #Not .options li {
+#wrapper #response .options li {
+  display: inline-table;
   background-color: rgba(61, 110, 90, 0.6);
   color: #e0e9ee;
   line-height: 1.1em;
   padding: 1em;
   min-width: 35%;
-  width: 45%;
-  display: inline-table;
+  width: 40%;
   border-radius: 4px;
-  float: left;
   margin: 1%;
   height: 150px;
 }
-#wrapper #Not .options li h3 {
+#wrapper #response .options li h3 {
   padding-bottom: .4em;
   margin-bottom: .25em;
   border-bottom: 1px dashed rgba(224, 233, 238, 0.7);
 }
-#wrapper #Not #source {
+#wrapper #response #source {
   color: #e0e9ee;
+  padding: 10%;
+  font-size: 1.5em;
+  font-family: 'Roboto Condensed', sans-serif;
   overflow: hidden;
   display: inline-block;
   cursor: pointer;
   border-radius: 4px;
   text-decoration: none;
 }
-#wrapper #Not #source:hover {
+#wrapper #response #source:hover {
   background-color: rgba(61, 110, 90, 0.7);
 }
-#wrapper #Not #source img {
+#wrapper #response #source img {
   border: 2px solid;
   border-radius: 4px;
   color: rgba(61, 110, 90, 0.4);
@@ -298,21 +305,21 @@ nav ul a:hover {
   max-height: 200px;
   float: left;
 }
-#wrapper #Not #source p {
+#wrapper #response #source p {
   padding: 0 1em;
   overflow: hidden;
   text-align: left;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1em;
 }
-#wrapper #Not #source p span {
+#wrapper #response #source p span {
   display: block;
   text-align: left;
   font-size: 1.2em;
   font-weight: bold;
   font-style: italic;
 }
-#wrapper #Not button {
+#wrapper #response button {
   display: inline-block;
   bottom: 0;
   margin: .5em;
