@@ -81,7 +81,7 @@ table {
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 @back1: "../imgs/Huge_onions.jpg";
 @back2: "../imgs/onion_peel.jpg";
-@back3: "../imgs/halfGreen.jpg";
+@back3: "../imgs/fullGreen.jpg";
 @back4:  "../imgs/onions.55.jpg";
 
 @Bcolor: rgba(224,233,238, 1.0);
@@ -283,15 +283,25 @@ body {
 		#question {
 			width: 100%;
 			position: relative;
+			transition: 500ms linear;
 			// display: none;
 
 		}
+
+			#question.active {
+				
+				// display: none;
+				bottom: -500px;
+				color: red;
+			}
+
+
 		#response {
 			// display: none;
 			position: relative;
 			width: inherit;
 			padding: 1em;
-			top: -500px;
+			// top: -500px;
 			
 		
 			.message {

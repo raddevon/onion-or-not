@@ -158,7 +158,7 @@ body {
   display: inline-block;
   width: 100%;
   margin: 0 auto;
-  background: url("../imgs/halfGreen.jpg");
+  background: url("../imgs/fullGreen.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -254,12 +254,16 @@ nav ul a:hover {
 #wrapper #question {
   width: 100%;
   position: relative;
+  transition: 500ms linear;
+}
+#wrapper #question.active {
+  bottom: -500px;
+  color: red;
 }
 #wrapper #response {
   position: relative;
   width: inherit;
   padding: 1em;
-  top: -500px;
 }
 #wrapper #response .message {
   color: rgba(61, 110, 90, 0.9);
