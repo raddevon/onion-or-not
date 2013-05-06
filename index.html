@@ -12,12 +12,24 @@
         <!--[if lt IE 9]> HTML5Shiv
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
- 	<link rel="stylesheet" type="text/css" href="css/less.css">
+    <link rel="stylesheet/less" type="text/css" href="css/less.less" />
+ 	<!-- <link rel="stylesheet" type="text/css" href="css/less.css"> -->
     
 
 
     </head>
     <body>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=195090780514458";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
         <!-- <div id = "pic"></div> -->
     	<nav class = "cf">
     		<ul class = "cf">
@@ -29,7 +41,7 @@
 		
 	<div id = "wrapper">	
 		<div id = "window"> 
-            <h1 id = "headline">"Clogged toilet leads to shooting"</h1>
+            <h1 id = "headline">"clogged toilet leads to blah"</h1>
 
             <div id = "white">
                 <div id = "question">
@@ -42,18 +54,17 @@
                         
                     <ul class = "options cf">  
                         <li> <h3>Read The Source:</h3>
-                            <a target="_blank" id="source" class ="" href = "http://www.thenewstribune.com/2012/11/17/2371283/clogged-toilet-led-to-shooting.html"> 
-
+                            <a target="_blank" id="source" class ="" href = "http://www.thenewstribune.com/2012/11/17/2371283/clogged-toilet-led-to-shooting.html">
                             www.thenewstribune.com
-
-                                <!-- <img src="http://media.thenewstribune.com/smedia/2012/06/02/18/54/6y7x1.St.38.jpeg?height=289&width=480"> -->
-                                <!-- <p>An argument over a clogged toilet escalated into a shooting Saturday morning, according to the Thurston County Sheriff’s Office. Deputies were called to Providence St. Peter Hospital in Olympia about 5 a.m. by a man in his mid- to late 20s who had been shot in the chest. </p> -->
                             </a>
                         </li>
                         <li class ="social">
                             <h3>
                                 Challenge a friend:
                             </h3>
+                            <div class="fb-like" data-send="true" data-layout="box_count" data-width="150" data-show-faces="true" data-font="verdana"></div>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                         </li>
                     </ul>
                     <button id = "next">Next Headline</button>
@@ -67,6 +78,10 @@
         
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
+
+    <script type="text/javascript" src="js/less.js" ></script>
     
     <script type="text/javascript" src="js/js.js"></script>
+
+    <script type="text/javascript" src ="//cdnjs.cloudflare.com/ajax/libs/ICanHaz.js/0.10/ICanHaz.min.js"></script>
 </html>

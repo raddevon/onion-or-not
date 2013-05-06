@@ -158,18 +158,16 @@ body {
   display: inline-block;
   width: 100%;
   margin: 0 auto;
-  background: url("../imgs/fullGreen.jpg");
+  background: url("../onion-or-not/imgs/halfGreen.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
-body:before {
-  background-color: green;
-}
 h1 {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 3.5em;
-  font-weight: 600;
+  font-weight: 400;
+  min-width: 750px;
 }
 h2 {
   font-size: 3em;
@@ -217,7 +215,7 @@ nav ul a:hover {
   text-align: center;
 }
 #wrapper #window {
-  margin: 3% auto 10% auto;
+  margin: 3% 20% 10% 20%;
   position: relative;
   display: inline-block;
 }
@@ -226,7 +224,7 @@ nav ul a:hover {
   color: #e0e9ee;
   font-size: 1.5em;
   width: 25%;
-  padding: .25em 0;
+  padding: .25em;
   cursor: pointer;
   border: 2px outset #e0e9ee;
   border-radius: 4px;
@@ -243,6 +241,8 @@ nav ul a:hover {
   max-height: 250px;
   color: #e0e9ee;
   display: inline-block;
+  transition: 400ms linear;
+  content: test;
 }
 #wrapper #white {
   background-color: rgba(224, 233, 238, 0.75);
@@ -250,24 +250,40 @@ nav ul a:hover {
   width: 95%;
   margin: 0 auto;
   overflow: hidden;
+  height: "";
+  transition: 400ms linear;
+}
+#wrapper #white.answer {
+  height: "";
 }
 #wrapper #question {
   width: 100%;
   position: relative;
-  transition: 500ms linear;
+  transition: 400ms linear;
+  bottom: 0;
+  opacity: 1.0;
 }
-#wrapper #question.active {
-  bottom: -500px;
+#wrapper #question.answer {
+  opacity: 0;
+  top: "";
   color: red;
 }
 #wrapper #response {
+  bottom: "";
   position: relative;
   width: inherit;
   padding: 1em;
+  transition: 400ms linear;
+  opacity: 0;
+}
+#wrapper #response.answer {
+  opacity: 1.0;
+  transition: 400ms linear;
+  bottom: "";
 }
 #wrapper #response .message {
   color: rgba(61, 110, 90, 0.9);
-  padding: .25em;
+  padding: 0 0 .25em 0;
   display: inline-block;
 }
 #wrapper #response .options li {
@@ -324,6 +340,7 @@ nav ul a:hover {
   font-style: italic;
 }
 #wrapper #response button {
+  width: 30%;
   display: inline-block;
   bottom: 0;
   margin: .5em;
