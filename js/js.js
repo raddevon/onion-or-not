@@ -10,7 +10,11 @@ $next = $("#next");
 SetA = [];
 var item;
 
-
+function domain(data) {
+	var a = document.createElement('a');
+	a.href = data;
+	return a.hostname;
+	}
 
 
 $(document).ready(function() {
@@ -21,23 +25,35 @@ $default = function() {
 	'@Qheight': $Qheight,
 	'@Theight': $Theight
 	});
+	console.log($Rheight);
 };
+
+
 // $.getScript('js/less.js');
 
 // $full = "imgs/Fullgreen.jpg";
 
-$default();
 
-// 	$.getJSON('js/links.json', function(data) {
+	$.getJSON('js/links.json', function(data) {
+		SetA = data.Headlines.slice(0);
+				item = SetA[Math.floor(Math.random()*SetA.length)];
+				console.log(item.onion);
 
+				SetA.splice(item,1);
+				$('#headline').replaceWith('<h1 id = "headline">' + '"' + item.headline+ '"' + '</h1>');
+				$('#source').replaceWith("<a target='_blank' id='source' href = " + item.url  + "></a>");
+
+				
+				$('#source').text(domain(item.url));
 // 		SetA = data.Headlines.slice(0);
 // 		item = SetA[Math.floor(Math.random()*SetA.length)];
 
+$default();
 
 // 	$back =	$( "<h1/>", {
 //   		"id": "headline",
 //   		"text": item.headline
-// });
+});
 	// alert($back.height);
 
 });
@@ -63,28 +79,21 @@ $next.on("click", function() {
 
 	$.getJSON('js/links.json', function(data) {
 		// SetA = data.Headlines.slice(0);
-		if (SetA.length !== 0) {
-			var item = SetA[Math.floor(Math.random()*SetA.length)];
-			SetA.splice(item,1);
-				console.log(item.url);
-				// $url = 
-				$('#headline').replaceWith('<h1 id = "headline">' + item.headline + '</h1>');
-				// $('#headline').animate;
-
-				$('#source').replaceWith("<a target='_blank' id='source' href = " + item.url + ">link</a>");
-			}
-
-		else {
-		SetA = data.Headlines.slice(0);
-				var item = SetA[Math.floor(Math.random()*SetA.length)];
-				$('#headline').replaceWith('<h1 id = "headline">' + item.headline + '</h1>');
-				$('#source').replaceWith("<a target='_blank' id='source' href = " + item.url + "></a>");
-		console.log(SetA);
-	}
-
 		$("#response").removeClass("answer");
 		$("#question").removeClass("answer");
 		$("#white").removeClass("answer");
+
+		item = SetA[Math.floor(Math.random()*SetA.length)];
+		console.log(item);
+		$('#headline').replaceWith('<h1 id = "headline">' + '"' + item.headline+ '"' + '</h1>');
+		$('#source').replaceWith("<a target='_blank' id='source' href = " + item.url + "></a>");
+		$('#source').text(domain(item.url));
+		SetA.splice(item,1);	
+
+		if (SetA.length === 0) {
+			SetA = data.Headlines.slice(0);
+		}
+
 
 
 
