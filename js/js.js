@@ -4,14 +4,14 @@ function HeadlineList(url) {
     this.url = url;
 
     this.checkEmpty = function() {
-        if (this.headlines === 0) {
+        if (this.quantity === 0) {
             this.refreshContent();
         }
     };
 
     this.getRandom = function(remove) {
         var headlineNumber = Math.floor(Math.random()*this.quantity);
-        var headline = this.headlines[headlineNumber];
+        var headline = this.list[headlineNumber];
         if (remove) {
             this.deleteHeadline(headlineNumber);
         }
@@ -19,7 +19,7 @@ function HeadlineList(url) {
     };
 
     this.getHeadline = function(number, remove) {
-        var headline = this.headlines[number]
+        var headline = this.list[number]
         if (remove) {
             this.deleteHeadline(number);
         }
@@ -27,17 +27,17 @@ function HeadlineList(url) {
     };
 
     this.deleteHeadline = function(number) {
-        this.headlines.splice(number, 1);
-        this. quantity -= 1;
+        this.list.splice(number, 1);
+        this.quantity -= 1;
     };
 
     this.fillFromJSON = function(data) {
-        this.headlines = data.headlines;
-        this.quantity = this.headlines.length;
+        this.list = data.headlines;
+        this.quantity = this.list.length;
     };
 
     this.refreshContent = function() {
-        response = $.when($.getJSON(this.url, this.fillFromJSON));
+        response = $.when($.getJSON(this.url, this.fillFromJSON.bind(this)));
     };
 
     this.refreshContent();
@@ -58,22 +58,8 @@ function quoted(text) {
     return '&#8220;' + text + '&#8221;';
 }
 
-function loadHeadlines() {
-
-    // Fetch the headline JSON
-    $.getJSON('js/headlines.json', function(data){
-     console.log(data);
-     headlines = data.headlines;
-
-     numOfHeadlines = headlines.length;
-     // Pick a random headline number using the total number of headlines
-     headlineNumber = Math.floor(Math.random()*numOfHeadlines);
-     // Grab the randomly selected headline JSON object
-     headline = headlines[headlineNumber];
-     // Grab the text and place it on the page
-     headlineText = headline.title;
-     $("#headline").html(quoted(headlineText));
-    });
+function setupPage() {
+    $("#headline").html(quoted(headline.title))
 }
 
 function answerResponse() {
@@ -128,7 +114,7 @@ $('#next').on("click", function() {
 
 
 	$.getJSON('js/links.json', function(data) {
-		// SetA = data.Headlines.slice(0);
+		// SetA = data.list.slice(0);
 		$("#response").removeClass("answer");
 		$("#question").removeClass("answer");
 		$("#white").removeClass("answer");
@@ -141,13 +127,13 @@ $('#next').on("click", function() {
 		SetA.splice(item,1);
 
 		if (SetA.length === 0) {
-			SetA = data.Headlines.slice(0);
+			SetA = data.list.slice(0);
 		}
 
 
 
 
-		// Headlines[0].headline
+		// list[0].headline
   });
 
 	});
@@ -157,6 +143,7 @@ $('#next').on("click", function() {
 headlines = new HeadlineList('js/headlines.json');
 response.done(function() {
     headline = new Headline(headlines.getRandom(true));
+    setupPage();
 });
 
 // Initial sizing of the #white div
