@@ -40,11 +40,9 @@ $default = function() {
 				console.log(item.onion);
 
 				SetA.splice(item,1);
-				$('#headline').replaceWith('<h1 id = "headline">' + '"' + item.headline+ '"' + '</h1>');
-				$('#source').replaceWith("<a target='_blank' id='source' href = " + item.url  + "></a>");
-
-				
-				$('#source').text(domain(item.url));
+				$('#headline').html("&#8220;" + item.headline+ "&#8221;");
+				$('#source').attr('href', item.url).text(domain(item.url));
+                
 // 		SetA = data.Headlines.slice(0);
 // 		item = SetA[Math.floor(Math.random()*SetA.length)];
 
