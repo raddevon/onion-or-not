@@ -79,10 +79,10 @@ table {
 
 
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
-@back1: "imgs/Huge_onions.jpg";
-@back2: "imgs/onion_peel.jpg";
-@back3: "imgs/halfGreen.jpg";
-@back4: "imgs/onions.55.jpg";
+@back1: "../imgs/Huge_onions.jpg";
+@back2: "../imgs/onion_peel.jpg";
+@back3: "../imgs/halfGreen.jpg";
+@back4: "../imgs/onions.55.jpg";
 
 @Bcolor: rgba(224,233,238, 1.0);
 @Fcolor: #e1d0ac;
@@ -92,14 +92,6 @@ table {
 
 //#a8635a
 @font: 'Roboto Condensed', sans-serif;
-
-
-@Wheight: "";
-@Qheight: "";
-@Rheight: "";
-@Theight: "";
-
-
 
 html {
 	height: 100%;
@@ -122,7 +114,7 @@ body {
 	background-position: center center;
 
 
-		
+
 	}
 
 
@@ -134,7 +126,7 @@ body {
 		min-width: 750px;
 		line-height: 1.1em;
 
-	} 
+	}
 
 	h2{
 		font-size: 3em;
@@ -156,13 +148,12 @@ body {
 		height: inherit;
 
 		clear: both;
-		
+
 		ul {
 		// padding: 0 5%;
 		clear: both;
 
-		width: 100%;		
-		
+		width: 100%;
 			li {
 
 				float: left;
@@ -243,13 +234,8 @@ body {
 			width: 95%;
 			margin: 0 auto;
 			overflow: hidden;
-			height: @Qheight;
 			transition: 400ms linear;
 
-
-			&.answer {
-				height: @Rheight;
-			}
 		}
 
 		#question {
@@ -258,33 +244,16 @@ body {
 			transition: 400ms linear;
 			bottom: 0;
 			opacity: 1.0;
-			// display: none;
-
-
-			&.answer {
-				opacity: 0;
-				top: @Rheight;
-				color: red;
-			}
 		}
 
 		#response {
-			bottom: @Theight;
+			top: -500px;
 			position: relative;
 			// width: inherit;
 			padding: 1em;
 			transition: 250ms linear;
 			opacity: 0;
 
-
-			&.answer {
-			// display: inline-block;
-			opacity: 1.0;
-			transition: 400ms linear;
-			bottom: @Qheight;
-			}
-			
-		
 			.message {
 				color: fadeout(@Mcolor, 10%);
 				padding: 0 0 .25em 0;
@@ -332,7 +301,7 @@ body {
 				&:hover{
 					background-color: fadeout(@Mcolor, 30%);
 
-				}	
+				}
 
 				img{
 					// margin: 0 1em;
@@ -384,22 +353,6 @@ body {
 				margin: .5em;
 			}
 
-			
 		}
-	
-
-
-
 
 }
-
-
-
-
-
-
-
-
-
-
-
