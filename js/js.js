@@ -3,27 +3,55 @@ var headline, headlines, response;
 function HeadlineList(url) {
     this.url = url;
 
-    this.checkEmpty = function() {
-        if (this.quantity === 0) {
-            this.refreshContent();
-        }
-    };
+    this.isEmpty = function() {
+        return (this.quantity === 0 || this.quantity === undefined);
+    }
 
-    this.getRandom = function(remove) {
+    this.waitGetRandom = function(remove) {
+        response.done(function() {
+            return this.nowGetRandom(remove);
+        }.bind(this));
+    }
+
+    this.nowGetRandom = function(remove) {
         var headlineNumber = Math.floor(Math.random()*this.quantity);
         var headline = this.list[headlineNumber];
         if (remove) {
             this.deleteHeadline(headlineNumber);
         }
         return headline;
+    }
+
+    this.getRandom = function(remove) {
+        if (this.isEmpty()) {
+            this.refreshContent();
+            return this.waitGetRandom(remove);
+        } else {
+            return this.nowGetRandom(remove);
+        }
     };
 
-    this.getHeadline = function(number, remove) {
+    this.waitGetHeadline = function(number, remove) {
+        response.done(function() {
+            return this.nowGetHeadline(number, remove);
+        }.bind(this));
+    }
+
+    this.nowGetHeadline = function(number, remove) {
         var headline = this.list[number]
         if (remove) {
             this.deleteHeadline(number);
         }
         return headline;
+    };
+
+    this.getHeadline = function(number, remove) {
+        if (this.isEmpty()) {
+            this.refreshContent();
+            return this.waitGetHeadline(number, remove);
+        } else {
+            return this.nowGetHeadline(number, remove);
+        }
     };
 
     this.deleteHeadline = function(number) {
@@ -51,6 +79,11 @@ function Headline(object) {
     this.isOnion = function(){
         return this.onion;
     }
+}
+
+function newHeadline() {
+    headline = new Headline(headlines.getRandom(true));
+    setupPage();
 }
 
 function quoted(text) {
@@ -88,7 +121,8 @@ function answerResponse() {
     // Animate the response
     $("#question").css({
         'transition': '400ms ease-out',
-        'bottom': '-500px'
+        'bottom': '-500px',
+        'opacity': 0
     });
     $("#response").css({
         'transition': '400ms ease-out',
@@ -141,10 +175,7 @@ $('#next').on("click", function() {
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
-response.done(function() {
-    headline = new Headline(headlines.getRandom(true));
-    setupPage();
-});
+headline = new Headline(headlines.getRandom(true));
 
 // Initial sizing of the #white div
 $("#white").height($("#question").outerHeight());
