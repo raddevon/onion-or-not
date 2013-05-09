@@ -40,7 +40,8 @@ $(document).ready(function() {
 				item = SetA[index];
 
 				SetA.splice(index,1);
-				$('#headline').text(item.headline);
+				$('#headline').text('"'+item.headline+'"');
+
 				$('#source').attr('href',item.url);
 				$('#source').text(domain(item.url));
 // 		SetA = data.Headlines.slice(0);
@@ -107,7 +108,7 @@ $next.on("click", function() {
 		item = SetA[index];
 
 		SetA.splice(index,1);
-		$('#headline').text(item.headline);
+		$('#headline').text('"'+item.headline+'"');
 		$('#source').attr('href',item.url);
 		$('#source').text(domain(item.url));
 
