@@ -78,14 +78,21 @@ function quoted(text) {
 }
 
 function newHeadline() {
+    // Remove inline styles added by jQuery
     $('#feedback, #answer, #white').removeAttr('style');
-    headline = new Headline(headlines.getRandom(true));
-    $("#headline").html(quoted(headline.title));
 
     // Initial sizing of the #white div
     $("#white").height($("#answer").outerHeight());
     // Initial positioning of #feedback div
     $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
+
+    // Give a message when the player has seen all the headlines
+    if (headlines.quantity === 0) {
+        alert("You've been through all the headlines. I'll load them up again so you can keep playing.");
+    }
+
+    headline = new Headline(headlines.getRandom(true));
+    $("#headline").html(quoted(headline.title));
 }
 
 function showResponse(response) {
