@@ -1,4 +1,4 @@
-var headline, headlines, response;
+var headline, headlines;
 
 function HeadlineList(url) {
     this.url = url;
@@ -8,18 +8,18 @@ function HeadlineList(url) {
     }
 
     this.waitGetRandom = function(remove) {
-        response.done(function() {
+        $(document).ajaxComplete(function() {
             return this.nowGetRandom(remove);
         }.bind(this));
     }
 
     this.nowGetRandom = function(remove) {
         var headlineNumber = Math.floor(Math.random()*this.quantity);
-        var headline = this.list[headlineNumber];
+        var headlinePick = this.list[headlineNumber];
         if (remove) {
             this.deleteHeadline(headlineNumber);
         }
-        return headline;
+        return headlinePick;
     }
 
     this.getRandom = function(remove) {
@@ -32,17 +32,17 @@ function HeadlineList(url) {
     };
 
     this.waitGetHeadline = function(number, remove) {
-        response.done(function() {
+        $(document).ajaxComplete(function() {
             return this.nowGetHeadline(number, remove);
         }.bind(this));
     }
 
     this.nowGetHeadline = function(number, remove) {
-        var headline = this.list[number]
+        var headlinePick = this.list[number]
         if (remove) {
             this.deleteHeadline(number);
         }
-        return headline;
+        return headlinePick;
     };
 
     this.getHeadline = function(number, remove) {
@@ -65,7 +65,7 @@ function HeadlineList(url) {
     };
 
     this.refreshContent = function() {
-        response = $.when($.getJSON(this.url, this.fillFromJSON.bind(this)));
+        $.getJSON(this.url, this.fillFromJSON.bind(this));
     };
 
     this.refreshContent();
@@ -175,7 +175,9 @@ $('#next').on("click", function() {
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
-headline = new Headline(headlines.getRandom(true));
+$(document).ajaxComplete(function() {
+    headline = new Headline(headlines.getRandom(true));
+});
 
 // Initial sizing of the #white div
 $("#white").height($("#question").outerHeight());
