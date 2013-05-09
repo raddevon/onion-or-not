@@ -78,34 +78,34 @@ function quoted(text) {
 }
 
 function newHeadline() {
-    $('#response, #question, #white').removeAttr('style');
+    $('#feedback, #answer, #white').removeAttr('style');
     headline = new Headline(headlines.getRandom(true));
     $("#headline").html(quoted(headline.title));
 
     // Initial sizing of the #white div
-    $("#white").height($("#question").outerHeight());
-    // Initial positioning of #response div
-    $("#response").css('bottom', $('#question').outerHeight() + $('#response').outerHeight()+ 'px');
+    $("#white").height($("#answer").outerHeight());
+    // Initial positioning of #feedback div
+    $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
 }
 
 function showResponse(response) {
     // Fill the response in the appropriate element
-    $("#response .message").text(response);
+    $("#feedback .message").text(response);
 
     // Animate the response
-    $("#question").css({
+    $("#answer").css({
         'transition': '400ms ease-out',
         'bottom': '-500px',
         'opacity': 0
     });
-    $("#response").css({
+    $("#feedback").css({
         'transition': '400ms ease-out',
         'opacity': 1,
-        'top': 0 - $('#question').outerHeight() + 'px'
+        'top': 0 - $('#answer').outerHeight() + 'px'
     });
     $("#white").css({
         'transition': '400ms ease-out',
-        'height': $("#response").outerHeight()
+        'height': $("#feedback").outerHeight()
     });
 }
 

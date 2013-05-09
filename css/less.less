@@ -180,19 +180,9 @@ body {
 			}
 }
 
-#wrapper {
-
-	display: inline-block;
-	// margin: 0 auto;
-	width: 100%;
-	height: 100%;
-
-	text-align: center;
-	
-
-	#window {
+	#quiz {
 		margin: 3% auto 10% auto;
-		max-width: 75%;
+		max-width: 70em;
 		position: relative;
 		display: inline-block;
 	}
@@ -238,7 +228,7 @@ body {
 
 		}
 
-		#question {
+		#answer {
 			width: 100%;
 			position: relative;
 			transition: 400ms linear;
@@ -246,7 +236,7 @@ body {
 			opacity: 1.0;
 		}
 
-		#response {
+		#feedback {
 			top: -500px;
 			position: relative;
 			// width: inherit;
@@ -260,7 +250,7 @@ body {
 				display: inline-block;
 			}
 
-			.options li {
+			.data li {
 				display: inline-table;
 				background-color: fadeout(@Mcolor, 40%);
 				color: darken(@Bcolor, 0%);
@@ -354,5 +344,3 @@ body {
 			}
 
 		}
-
-}
