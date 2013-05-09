@@ -1,5 +1,0 @@
-@import "less.css";
-
-body {
-	background: url(@background) no-repeat;
-}
