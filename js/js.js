@@ -1,89 +1,75 @@
 var headline, headlines;
 
 function HeadlineList(url) {
+    // Object that retrieves a list of headlines from a JSON file
     this.url = url;
 
     this.isEmpty = function() {
         return (this.quantity === 0 || this.quantity === undefined);
-    }
+    };
 
-    this.waitGetRandom = function(remove) {
-        $(document).ajaxComplete(function() {
-            return this.nowGetRandom(remove);
-        }.bind(this));
-    }
-
-    this.nowGetRandom = function(remove) {
+    this.getRandom = function(remove) {
+        // Selects and returns a random headline object
+        if (this.isEmpty()) {
+            this.refreshContent();
+        }
         var headlineNumber = Math.floor(Math.random()*this.quantity);
         var headlinePick = this.list[headlineNumber];
         if (remove) {
             this.deleteHeadline(headlineNumber);
         }
         return headlinePick;
-    }
-
-    this.getRandom = function(remove) {
-        if (this.isEmpty()) {
-            this.refreshContent();
-            return this.waitGetRandom(remove);
-        } else {
-            return this.nowGetRandom(remove);
-        }
     };
 
-    this.waitGetHeadline = function(number, remove) {
-        $(document).ajaxComplete(function() {
-            return this.nowGetHeadline(number, remove);
-        }.bind(this));
-    }
-
-    this.nowGetHeadline = function(number, remove) {
-        var headlinePick = this.list[number]
+    this.getHeadline = function(number, remove) {
+        // Returns a headline specified by index
+        if (this.isEmpty()) {
+            this.refreshContent();
+        }
+        var headlinePick = this.list[number];
         if (remove) {
             this.deleteHeadline(number);
         }
         return headlinePick;
     };
 
-    this.getHeadline = function(number, remove) {
-        if (this.isEmpty()) {
-            this.refreshContent();
-            return this.waitGetHeadline(number, remove);
-        } else {
-            return this.nowGetHeadline(number, remove);
-        }
-    };
-
     this.deleteHeadline = function(number) {
+        // Deletes a headline specified by index
         this.list.splice(number, 1);
         this.quantity -= 1;
     };
 
     this.fillFromJSON = function(data) {
+        // Sets object properties with results from the AJAX call
         this.list = data.headlines;
         this.quantity = this.list.length;
     };
 
     this.refreshContent = function() {
-        $.getJSON(this.url, this.fillFromJSON.bind(this));
+        // Reloads JSON file
+        $.ajax(this.url, {
+            async: false,
+            success: this.fillFromJSON.bind(this),
+            type: 'GET',
+            data: {},
+            datatype: 'json'
+        });
     };
 
+    // Initial content load
     this.refreshContent();
 }
 
 function Headline(object) {
     this.title = object.title;
     this.url = object.url;
+    // Grabs the portion of the URL between the second and third slashes
+    this.domain = this.url.split('/')[2];
     this.onion = object.onion;
 
     this.isOnion = function(){
         return this.onion;
-    }
-}
-
-function newHeadline() {
-    headline = new Headline(headlines.getRandom(true));
-    setupPage();
+    };
 }
 
 function quoted(text) {
@@ -91,30 +77,18 @@ function quoted(text) {
     return '&#8220;' + text + '&#8221;';
 }
 
-function setupPage() {
-    $("#headline").html(quoted(headline.title))
+function newHeadline() {
+    $('#response, #question, #white').removeAttr('style');
+    headline = new Headline(headlines.getRandom(true));
+    $("#headline").html(quoted(headline.title));
+
+    // Initial sizing of the #white div
+    $("#white").height($("#question").outerHeight());
+    // Initial positioning of #response div
+    $("#response").css('bottom', $('#question').outerHeight() + $('#response').outerHeight()+ 'px');
 }
 
-function answerResponse() {
-    // Grabs the portion of the URL between the second and third slashes and lists it as the source. Uses the full link as the href.
-    var site = headline.url.split('/')[2];
-    $("#source").text(site).attr('href', headline.url);
-
-    var response;
-    // Compare button clicked with headline's onion value. Starts building a response based on whether the response was correct or not.
-    if ( (this.id === "not" && !headline.onion) || (this.id === "onion" && headline.onion) ) {
-        response = "Yup. ";
-        $("body").css("background", "url('imgs/Fullgreen.jpg')").css("background-size", "cover");
-    } else {
-        response = "Nope. ";
-        $("body").css("background", "url('imgs/nogreen.jpg')").css("background-size", "cover");
-    }
-    // Appends to reflect the fakeness or realness of the story.
-    if (headline.onion) {
-        response += "It's fake.";
-    } else {
-        response += "This happened.";
-    }
+function showResponse(response) {
     // Fill the response in the appropriate element
     $("#response .message").text(response);
 
@@ -135,51 +109,32 @@ function answerResponse() {
     });
 }
 
-function nextHeadline() {
+function answerResponse() {
+    // Grabs the portion of the URL between the second and third slashes and lists it as the source. Uses the full link as the href.
+    $("#source").text(headline.domain).attr('href', headline.url);
 
+    var response;
+    // Compare button clicked with headline's onion value. Starts building a response based on whether the response was correct or not.
+    if ( (this.id === "not" && !headline.onion) || (this.id === "onion" && headline.onion) ) {
+        response = "Yup. ";
+        $("body").css("background", "url('imgs/Fullgreen.jpg')").css("background-size", "cover");
+    } else {
+        response = "Nope. ";
+        $("body").css("background", "url('imgs/nogreen.jpg')").css("background-size", "cover");
+    }
+    // Appends to reflect the fakeness or realness of the story.
+    if (headline.onion) {
+        response += "It's fake.";
+    } else {
+        response += "This happened.";
+    }
+    showResponse(response);
 }
 
+// Click event bindings for the buttons
 $('#onion, #not').on("click",answerResponse);
-
-
-
-$('#next').on("click", function() {
-
-
-
-	$.getJSON('js/links.json', function(data) {
-		// SetA = data.list.slice(0);
-		$("#response").removeClass("answer");
-		$("#question").removeClass("answer");
-		$("#white").removeClass("answer");
-
-		item = SetA[Math.floor(Math.random()*SetA.length)];
-		console.log(item);
-		$('#headline').replaceWith('<h1 id = "headline">' + '"' + item.headline+ '"' + '</h1>');
-		$('#source').replaceWith("<a target='_blank' id='source' href = " + item.url + "></a>");
-		$('#source').text(domain(item.url));
-		SetA.splice(item,1);
-
-		if (SetA.length === 0) {
-			SetA = data.list.slice(0);
-		}
-
-
-
-
-		// list[0].headline
-  });
-
-	});
-// });
+$('#next').on("click", newHeadline);
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
-$(document).ajaxComplete(function() {
-    headline = new Headline(headlines.getRandom(true));
-});
-
-// Initial sizing of the #white div
-$("#white").height($("#question").outerHeight());
-
-$("#response").css('bottom', $('#question').outerHeight() + $('#response').outerHeight()+ 'px');
+newHeadline();
