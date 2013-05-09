@@ -124,10 +124,10 @@ function answerResponse() {
     // Compare button clicked with headline's onion value. Starts building a response based on whether the response was correct or not.
     if ( (this.id === "not" && !headline.onion) || (this.id === "onion" && headline.onion) ) {
         response = "Yup. ";
-        $("body").css("background", "url('imgs/Fullgreen.jpg')").css("background-size", "cover");
+        $("body").css("background", "url('imgs/FullGreen.jpg')").css("background-size", "cover");
     } else {
         response = "Nope. ";
-        $("body").css("background", "url('imgs/nogreen.jpg')").css("background-size", "cover");
+        $("body").css("background", "url('imgs/NoGreen.jpg')").css("background-size", "cover");
     }
     // Appends to reflect the fakeness or realness of the story.
     if (headline.onion) {
