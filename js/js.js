@@ -80,8 +80,8 @@ function quoted(text) {
 function newHeadline() {
     // Remove inline styles added by jQuery
     $('#feedback, #answer, #white').removeAttr('style');
-    $('#white').css('overflow', 'hidden');
 
+    $('#white').css('overflow', 'hidden');
 
     // Initial sizing of the #white div
     $("#white").height($("#answer").outerHeight());
@@ -101,7 +101,6 @@ function showResponse(response) {
     // Fill the response in the appropriate element
     $("#feedback .message").text(response);
 
-    // $('#white').css('overflow', 'hidden');
     // Animate the response
     $("#answer").css({
         'transition': '400ms ease-out',
@@ -118,6 +117,7 @@ function showResponse(response) {
         'height': $("#feedback").outerHeight()
     });
 
+    // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){$('#white').css('overflow', '');},400);
 }
 
