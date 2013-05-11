@@ -79,7 +79,9 @@ function quoted(text) {
 
 function newHeadline() {
     // Remove inline styles added by jQuery
+    $('#white').css('overflow', 'hidden');
     $('#feedback, #answer, #white').removeAttr('style');
+    $('#white').delay(400).css('overflow', '');
 
     // Initial sizing of the #white div
     $("#white").height($("#answer").outerHeight());
@@ -99,10 +101,11 @@ function showResponse(response) {
     // Fill the response in the appropriate element
     $("#feedback .message").text(response);
 
+    $('#white').css('overflow', 'hidden');
     // Animate the response
     $("#answer").css({
         'transition': '400ms ease-out',
-        'bottom': '-500px',
+        'top': 0 - $('#answer').outerHeight(),
         'opacity': 0
     });
     $("#feedback").css({
@@ -114,6 +117,8 @@ function showResponse(response) {
         'transition': '400ms ease-out',
         'height': $("#feedback").outerHeight()
     });
+
+    $('#white').delay(400).css('overflow', '');
 }
 
 function answerResponse() {

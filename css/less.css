@@ -244,7 +244,6 @@ button:hover {
   border-radius: 0 0 8px 8px;
   width: 95%;
   margin: 0 auto;
-  overflow: hidden;
   transition: 400ms linear;
 }
 #answer {
@@ -258,7 +257,7 @@ button:hover {
   top: -500px;
   position: relative;
   padding: 1em;
-  transition: 250ms linear;
+  transition: 400ms linear;
   opacity: 0;
 }
 #feedback .message {
