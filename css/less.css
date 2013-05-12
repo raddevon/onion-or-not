@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -318,17 +318,21 @@ button:hover {
   font-weight: bold;
   font-style: italic;
 }
-#feedback .social div {
-  display: inline-block;
-  padding: 3% 10% 0 20%;
-}
-#feedback .social iframe {
-  display: inline-block;
-  padding: 3% 20% 7% 10%;
-}
 #feedback button {
   width: 30%;
   display: inline-block;
   bottom: 0;
   margin: .5em;
+}
+.social-buttons {
+  margin: 0 auto;
+  display: inline-block;
+}
+.social-buttons > div,
+.social-buttons > iframe {
+  float: left;
+  margin: 0 40px;
+}
+iframe {
+  padding: 0;
 }
