@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -12,8 +12,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	// height: 100%;
@@ -26,7 +26,7 @@ time, mark, audio, video {
 	text-align: center;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -345,18 +345,18 @@ body {
 				}
 			}
 
-			.social{
-				// height: inherit;
-				& div {
-					display: inline-block;
-					padding: 3% 10% 0 20%;
-				}
+			// .social{
+			// 	// height: inherit;
+			// 	& div {
+			// 		display: inline-block;
+			// 		padding: 3% 10% 0 20%;
+			// 	}
 
-				& iframe {
-					display: inline-block;
-					padding: 3% 20% 7% 10%;
-				}
-			}
+			// 	& iframe {
+			// 		display: inline-block;
+			// 		padding: 3% 20% 7% 10%;
+			// 	}
+			// }
 
 			button{
 				width: 30%;
@@ -366,3 +366,14 @@ body {
 			}
 
 		}
+
+.social-buttons {
+	margin:0 auto;
+	display: inline-block;
+	> div, > iframe {
+		float: left;
+		margin: 0 40px;
+	}
+}
+
+iframe { padding: 0; }

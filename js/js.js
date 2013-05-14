@@ -104,7 +104,6 @@ function showResponse(response) {
     // Fill the response in the appropriate element
     $("#feedback .message").text(response);
 
-    // $('#white').css('overflow', 'hidden');
     // Animate the response
     $("#answer").css({
         // 'transition': '400ms ease-out',
@@ -123,6 +122,7 @@ function showResponse(response) {
         // 'background': 'linear-gradient(to bottom, rgba(86,154,127,.9) 15%,rgba(230,234,242,.85) 50%)'
     });
 
+    // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){$('#white').css('overflow', '');},400);
 }
 
