@@ -82,9 +82,12 @@ function newHeadline() {
     $('#feedback, #answer, #white').removeAttr('style');
     $('#white').css('overflow', 'hidden');
 
+    setTimeout(function(){$('#white').removeClass('correct wrong');},400);
+
 
     // Initial sizing of the #white div
     $("#white").height($("#answer").outerHeight());
+
     // Initial positioning of #feedback div
     $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
 
@@ -104,18 +107,20 @@ function showResponse(response) {
     // $('#white').css('overflow', 'hidden');
     // Animate the response
     $("#answer").css({
-        'transition': '400ms ease-out',
+        // 'transition': '400ms ease-out',
         'bottom': 0 - $('#feedback').outerHeight(),
         'opacity': 0
     });
     $("#feedback").css({
-        'transition': '400ms ease-out',
+        // 'transition': '400ms ease-out',
         'opacity': 1,
         'top': 0 - $('#answer').outerHeight() + 'px'
     });
     $("#white").css({
-        'transition': '400ms ease-out',
+        // 'transition': '400ms ease-out',
         'height': $("#feedback").outerHeight()
+        // 'background': 'green'
+        // 'background': 'linear-gradient(to bottom, rgba(86,154,127,.9) 15%,rgba(230,234,242,.85) 50%)'
     });
 
     setTimeout(function(){$('#white').css('overflow', '');},400);
@@ -129,14 +134,18 @@ function answerResponse() {
     // Compare button clicked with headline's onion value. Starts building a response based on whether the response was correct or not.
     if ( (this.id === "not" && !headline.onion) || (this.id === "onion" && headline.onion) ) {
         response = "Yup. ";
-        $("body").css("background", "url('imgs/FullGreen.jpg')").css("background-size", "cover");
+        // $("body").css("background", "url('imgs/FullGreen.jpg')").css("background-size", "cover");
+        // setTimeout(function(){$("#white").toggleClass("correct");},50);
+        $("#white").toggleClass("correct");
     } else {
         response = "Nope. ";
-        $("body").css("background", "url('imgs/NoGreen.jpg')").css("background-size", "cover");
+        // setTimeout(function(){$("#white").toggleClass("wrong");},50);
+        $("#white").toggleClass("wrong");
+        // $("body").css("background", "url('imgs/NoGreen.jpg')").css("background-size", "cover");
     }
     // Appends to reflect the fakeness or realness of the story.
     if (headline.onion) {
-        response += "It's fake.";
+        response += "Just a joke";
     } else {
         response += "This happened.";
     }
