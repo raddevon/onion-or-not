@@ -236,20 +236,33 @@ button:hover {
   padding: 2%;
   color: #e0e9ee;
   display: inline-block;
-  transition: 400ms linear;
+  transition: 400ms ease-out;
   content: test;
 }
 #white {
-  background-color: rgba(224, 233, 238, 0.75);
+  background: rgba(224, 233, 238, 0.75);
   border-radius: 0 0 8px 8px;
   width: 95%;
   margin: 0 auto;
-  transition: 400ms linear;
+  transition: 400ms ease-out;
+}
+#white.correct {
+  background: linear-gradient(to bottom, rgba(86, 154, 127, 0.9) 15%, rgba(230, 234, 242, 0.75) 50%);
+}
+#white.wrong {
+  background: linear-gradient(to bottom, rgba(162, 111, 90, 0.9) 15%, rgba(232, 235, 242, 0.75) 50%);
+}
+#gradient {
+  width: 100%;
+  height: 20%;
+  position: relative;
+  display: inline;
+  top: 0;
 }
 #answer {
   width: 100%;
   position: relative;
-  transition: 400ms linear;
+  transition: 400ms ease-out;
   bottom: 0;
   opacity: 1.0;
 }
@@ -257,11 +270,17 @@ button:hover {
   top: -500px;
   position: relative;
   padding: 1em;
-  transition: 400ms linear;
+  transition: 400ms ease-out;
   opacity: 0;
 }
+#feedback.correct {
+  background: linear-gradient(to bottom, rgba(86, 154, 127, 0.8) 15%, rgba(230, 234, 242, 0) 70%);
+}
+#feedback.wrong {
+  background: linear-gradient(to bottom, rgba(162, 111, 90, 0.8) 15%, rgba(232, 235, 242, 0) 70%);
+}
 #feedback .message {
-  color: rgba(61, 110, 90, 0.9);
+  color: #e0e9ee;
   padding: 0 0 .25em 0;
   display: inline-block;
 }
