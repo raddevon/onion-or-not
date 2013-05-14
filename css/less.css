@@ -273,6 +273,12 @@ button:hover {
   transition: 400ms ease-out;
   opacity: 0;
 }
+#feedback.correct {
+  background: linear-gradient(to bottom, rgba(86, 154, 127, 0.8) 15%, rgba(230, 234, 242, 0) 70%);
+}
+#feedback.wrong {
+  background: linear-gradient(to bottom, rgba(162, 111, 90, 0.8) 15%, rgba(232, 235, 242, 0) 70%);
+}
 #feedback .message {
   color: #e0e9ee;
   padding: 0 0 .25em 0;

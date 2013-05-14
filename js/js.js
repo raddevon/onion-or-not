@@ -82,7 +82,7 @@ function newHeadline() {
     $('#feedback, #answer, #white').removeAttr('style');
     $('#white').css('overflow', 'hidden');
 
-    setTimeout(function(){$('#white').removeClass('correct wrong');},400);
+    setTimeout(function(){$('#feedback').removeClass('correct wrong');},400);
 
 
     // Initial sizing of the #white div
@@ -136,11 +136,11 @@ function answerResponse() {
         response = "Yup. ";
         // $("body").css("background", "url('imgs/FullGreen.jpg')").css("background-size", "cover");
         // setTimeout(function(){$("#white").toggleClass("correct");},50);
-        $("#white").toggleClass("correct");
+        $("#feedback").toggleClass("correct");
     } else {
         response = "Nope. ";
         // setTimeout(function(){$("#white").toggleClass("wrong");},50);
-        $("#white").toggleClass("wrong");
+        $("#feedback").toggleClass("wrong");
         // $("body").css("background", "url('imgs/NoGreen.jpg')").css("background-size", "cover");
     }
     // Appends to reflect the fakeness or realness of the story.
