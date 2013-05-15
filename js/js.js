@@ -78,12 +78,22 @@ function quoted(text) {
 }
 
 function newHeadline() {
-    // Remove inline styles added by jQuery
-    $('#feedback, #answer, #white').removeAttr('style');
-    $('#white').css('overflow', 'hidden');
+
+    headline = new Headline(headlines.getRandom(true));
+
+    var w = $("#hidden").html(quoted(headline.title));
+    height = w.height();
+    width = w.width();
+
+    $("#headline").animate({
+		height: height,
+		width: width
+		}, 50, 'linear', function(){
+		$("#headline").html(quoted(headline.title));
+		$('#feedback, #answer, #white').removeAttr('style');
+		$('#white').css('overflow', 'hidden');
 
     setTimeout(function(){$('#feedback').removeClass('correct wrong');},400);
-
 
     // Initial sizing of the #white div
     $("#white").height($("#answer").outerHeight());
@@ -91,14 +101,18 @@ function newHeadline() {
     // Initial positioning of #feedback div
     $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
 
+    });
+
+        // Remove inline styles added by jQuery
+
     // Give a message when the player has seen all the headlines
     if (headlines.quantity === 0) {
         alert("You've been through all the headlines. I'll load them up again so you can keep playing.");
     }
 
-    headline = new Headline(headlines.getRandom(true));
-    $("#headline").html(quoted(headline.title));
 }
+
+
 
 function showResponse(response) {
     // Fill the response in the appropriate element
