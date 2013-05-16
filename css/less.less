@@ -110,7 +110,7 @@ body {
 	// min-height: 100%;
 	// max-height: 1200px;
 	margin: 0 auto;
-	background: url(@back3);
+	background: url(../imgs/halfGreen.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 
@@ -144,7 +144,7 @@ body {
 
 	nav{
 		// position: absolute;
-		border-radius: 0  0 8px 8px;
+		border-radius: 0  0 15px 15px;
 		margin: 0 auto;
 		max-width: 1600px;
 		width: 100%;
@@ -198,7 +198,7 @@ body {
 			padding: .25em;
 			cursor: pointer;
 			border: 2px outset @White;
-			border-radius: 8px;
+			border-radius: 15px;
 			margin: .5em 2.5em;
 			&:hover{
 				background-color: fadeout(@Green,5%);
@@ -209,14 +209,23 @@ body {
 			// font-size: 100%;
 			background-color: fadeout(@Green, 5%);
 			border: 3px outset rgba(70, 126, 103, .4);
-			border-radius: 8px;
+			border-radius: 15px;
 			padding: 2%;
 			// max-height: 250px;
 			color: @White;
 			display: inline-block;
 			transition: 400ms ease-out;
-			content: test;
+		}
 
+		#hidden {
+			border: 3px outset rgba(70, 126, 103, .4);
+			border-radius: 15px;
+			padding: 2%;
+			visibility: hidden;
+			z-index: -100;
+			// top: 2000px;
+			position: relative;
+			display: inline-block;
 		}
 
 
@@ -227,7 +236,7 @@ body {
 
 			// background: -webkit-linear-gradient(top, rgba(86,154,127,.9) 15%,rgba(230,234,242,.85) 50%); 
 			// background: -webkit-linear-gradient(top, rgba(162,111,90,.9) 15%,rgba(232,235,242,.85) 50%); 
-			border-radius:0 0 8px 8px;
+			border-radius:0 0 15px 15px;
 			width: 95%;
 			margin: 0 auto;
 			transition: 400ms ease-out;
@@ -274,7 +283,6 @@ body {
 			}
 
 			.message {
-				// color: fadeout(@White, 10%);
 				color: @White;
 				padding: 0 0 .25em 0;
 				display: inline-block;
@@ -290,7 +298,7 @@ body {
 				min-width: 35%;
 				width: 40%;
 				// display: inline-table;
-				border-radius: 4px;
+				border-radius: 15px;
 				// float: left;
 				margin: 1%;
 				height: 150px;
@@ -316,7 +324,7 @@ body {
 				overflow: hidden;
 				display: inline-block;
 				cursor: pointer;
-				border-radius: 4px;
+				border-radius: 15px;
 				text-decoration: none;
 				&:hover{
 					background-color: fadeout(@Green, 30%);
