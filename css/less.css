@@ -363,7 +363,7 @@ button {
 button:hover {
   background-color: rgba(61, 110, 90, 0.95);
 }
-#headline {
+#headline-box {
   background-color: rgba(61, 110, 90, 0.95);
   border: 3px outset rgba(70, 126, 103, 0.4);
   border-radius: 15px;
@@ -500,7 +500,9 @@ iframe {
 .error,
 .loading {
   display: none;
+  font-size: 1.5em;
 }
 #spinner {
   color: rgba(255, 255, 255, 0.5);
+  font-size: 3.5em;
 }

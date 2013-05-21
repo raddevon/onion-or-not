@@ -94,6 +94,7 @@ table {
 // @Green6: rgba(224,233,238, 1.0);
 @Green: #3d6e5a;
 @lighten: rgba(255, 255, 255, 0.5);
+@headline-size: 3.5em;
 
 
 //#a8635a
@@ -127,7 +128,7 @@ body {
 
 	h1 {
 		font-family: 'Georgia';
-		font-size: 3.5em;
+		font-size: @headline-size;
 		font-weight: 400;
 		min-width: 750px;
 		line-height: 1.1em;
@@ -208,7 +209,7 @@ body {
 			}
 		}
 
-		#headline {
+		#headline-box {
 			// font-size: 100%;
 			background-color: fadeout(@Green, 5%);
 			border: 3px outset rgba(70, 126, 103, .4);
@@ -386,8 +387,10 @@ iframe { padding: 0; }
 
 .error, .loading {
 	display: none;
+	font-size: 1.5em;
 }
 
 #spinner {
 	color: @lighten;
+	font-size: @headline-size;
 }
