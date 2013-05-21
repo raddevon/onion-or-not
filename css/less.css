@@ -210,7 +210,7 @@ nav ul a:hover {
   color: #3d6e5a;
 }
 #quiz {
-  margin: 3% auto 10% auto;
+  margin: 3% auto auto auto;
   max-width: 70em;
   position: relative;
   display: inline-block;
@@ -352,7 +352,7 @@ button:hover {
   margin: .5em;
 }
 .social-buttons {
-  margin: 0 auto;
+  margin: .5em auto auto auto;
   display: inline-block;
 }
 .social-buttons > div,
