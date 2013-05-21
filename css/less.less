@@ -93,6 +93,7 @@ table {
 // @Green: #e0e9ee;
 // @Green6: rgba(224,233,238, 1.0);
 @Green: #3d6e5a;
+@lighten: rgba(255, 255, 255, 0.5);
 
 
 //#a8635a
@@ -124,7 +125,7 @@ body {
 
 
 
-	h1{
+	h1 {
 		font-family: 'Georgia';
 		font-size: 3.5em;
 		font-weight: 400;
@@ -382,3 +383,11 @@ body {
 }
 
 iframe { padding: 0; }
+
+.error, .loading {
+	display: none;
+}
+
+#spinner {
+	color: @lighten;
+}

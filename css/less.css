@@ -497,3 +497,10 @@ button:hover {
 iframe {
   padding: 0;
 }
+.error,
+.loading {
+  display: none;
+}
+#spinner {
+  color: rgba(255, 255, 255, 0.5);
+}
