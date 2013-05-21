@@ -497,8 +497,8 @@ button:hover {
 iframe {
   padding: 0;
 }
-.error,
-.loading {
+#error,
+#loading {
   display: none;
   font-size: 1.5em;
 }
