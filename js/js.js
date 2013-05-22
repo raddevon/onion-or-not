@@ -1,5 +1,17 @@
 var headline, headlines;
 
+function Headline(title, url, onion) {
+    this.title = title;
+    this.url = url;
+    // Grabs the portion of the URL between the second and third slashes
+    this.domain = this.url.split('/')[2];
+    this.onion = onion;
+
+    this.isOnion = function(){
+        return this.onion;
+    };
+}
+
 function HeadlineList(url) {
     // Object that retrieves a list of headlines from a JSON file
     this.url = url;
@@ -10,46 +22,37 @@ function HeadlineList(url) {
 
     this.getRandom = function(remove) {
         // Selects and returns a random headline object
-        if (this.isEmpty()) {
-            this.refreshContent();
+        var thisList = this;
 
-            $(this).bind('ajaxSuccess', function() {
-                var headlineNumber = Math.floor(Math.random()*this.quantity);
-                var headlinePick = this.list[headlineNumber];
-                if (remove) {
-                    this.deleteHeadline(headlineNumber);
-                }
-                $(this).unbind('ajaxSuccess');
-                return headlinePick;
-            });
-        } else {
-            var headlineNumber = Math.floor(Math.random()*this.quantity);
-            var headlinePick = this.list[headlineNumber];
+        if (thisList.isEmpty()) {
+            thisList.refreshContent();
+        }
+
+        thisList.ajaxPromise.done(function() {
+            var headlineNumber = Math.floor(Math.random()*thisList.quantity);
+            var headlinePick = thisList.list[headlineNumber];
             if (remove) {
-                this.deleteHeadline(headlineNumber);
+                thisList.deleteHeadline(headlineNumber);
             }
             return headlinePick;
-        }
+        });
     };
 
     this.getHeadline = function(number, remove) {
         // Returns a headline specified by index
+        var thisList = this;
+
         if (this.isEmpty()) {
             this.refreshContent();
-            $(this).bind('ajaxSuccess', function() {
-                if (remove) {
-                    this.deleteHeadline(number);
-                }
-                $(this).unbind('ajaxSuccess');
-                return headlinePick;
-            });
-        } else {
-            var headlinePick = this.list[number];
+        }
+
+        thisList.ajaxPromise.success(function() {
+            var headlinePick = thisList.list[number];
             if (remove) {
-                this.deleteHeadline(number);
+                thisList.deleteHeadline(number);
             }
             return headlinePick;
-        }
+        });
     };
 
     this.deleteHeadline = function(number) {
@@ -60,14 +63,18 @@ function HeadlineList(url) {
 
     this.fillFromJSON = function(data) {
         // Sets object properties with results from the AJAX call
-        this.list = data.headlines;
+        this.list = [];
+        for (var i = 0; i < data.headlines.length; i++) {
+            var currentHeadline = data.headlines[i];
+            this.list[i] = new Headline(currentHeadline.title, currentHeadline.url, currentHeadline.onion);
+        }
         this.quantity = this.list.length;
         $(this).trigger('ajaxSuccess');
     };
 
     this.refreshContent = function() {
         // Reloads JSON file
-        $.ajax(this.url, {
+        this.ajaxPromise = $.ajax(this.url, {
             success: this.fillFromJSON.bind(this),
             beforeSend: function() {
                 $(this).trigger('ajaxLoading');
@@ -79,21 +86,6 @@ function HeadlineList(url) {
             datatype: 'json'
         });
     };
-
-    // Initial content load
-    this.refreshContent();
-}
-
-function Headline(object) {
-    this.title = object.title;
-    this.url = object.url;
-    // Grabs the portion of the URL between the second and third slashes
-    this.domain = this.url.split('/')[2];
-    this.onion = object.onion;
-
-    this.isOnion = function(){
-        return this.onion;
-    };
 }
 
 function quoted(text) {
@@ -102,8 +94,8 @@ function quoted(text) {
 }
 
 function newHeadline() {
-    headline = new Headline(headlines.getRandom(true));
-    fillHeadline();
+    headline = headlines.getRandom(true);
+    headlines.ajaxPromise.success(fillHeadline);
 
     // Give a message when the player has seen all the headlines
     if (headlines.quantity === 0) {
