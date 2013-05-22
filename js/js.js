@@ -16,23 +16,25 @@ function HeadlineList(url) {
     // Object that retrieves a list of headlines from a JSON file
     this.url = url;
 
+    this.loaded = $.Deferred();
+
     this.isEmpty = function() {
         return (this.quantity === 0 || this.quantity === undefined);
     };
 
     this.getRandom = function(remove) {
         // Selects and returns a random headline object
-        var thisList = this;
+        var listObject = this;
 
-        if (thisList.isEmpty()) {
-            thisList.refreshContent();
+        if (listObject.isEmpty()) {
+            listObject.refreshContent();
         }
 
-        thisList.ajaxPromise.done(function() {
-            var headlineNumber = Math.floor(Math.random()*thisList.quantity);
-            var headlinePick = thisList.list[headlineNumber];
+        listObject.ajaxPromise.done(function() {
+            var headlineNumber = Math.floor(Math.random()*listObject.quantity);
+            var headlinePick = listObject.list[headlineNumber];
             if (remove) {
-                thisList.deleteHeadline(headlineNumber);
+                listObject.deleteHeadline(headlineNumber);
             }
             return headlinePick;
         });
@@ -40,16 +42,16 @@ function HeadlineList(url) {
 
     this.getHeadline = function(number, remove) {
         // Returns a headline specified by index
-        var thisList = this;
+        var listObject = this;
 
         if (this.isEmpty()) {
             this.refreshContent();
         }
 
-        thisList.ajaxPromise.success(function() {
-            var headlinePick = thisList.list[number];
+        listObject.ajaxPromise.success(function() {
+            var headlinePick = listObject.list[number];
             if (remove) {
-                thisList.deleteHeadline(number);
+                listObject.deleteHeadline(number);
             }
             return headlinePick;
         });
@@ -70,17 +72,26 @@ function HeadlineList(url) {
         }
         this.quantity = this.list.length;
         $(this).trigger('ajaxSuccess');
+        this.loaded.resolve();
     };
 
     this.refreshContent = function() {
         // Reloads JSON file
-        this.ajaxPromise = $.ajax(this.url, {
-            success: this.fillFromJSON.bind(this),
-            beforeSend: function() {
-                $(this).trigger('ajaxLoading');
+        var listObject = this;
+
+        listObject.ajaxPromise = $.ajax(listObject.url, {
+            success: function() {
+                listObject.fillFromJSON.bind(listObject);
             },
-            complete: $(this).trigger('ajaxComplete'),
-            error: $(this).trigger('ajaxError'),
+            beforeSend: function() {
+                $(listObject).trigger('ajaxLoading');
+            },
+            complete: function() {
+                $(listObject).trigger('ajaxComplete');
+            },
+            error: function() {
+                $(listObject).trigger('ajaxError');
+            },
             type: 'GET',
             data: {},
             datatype: 'json'
@@ -95,7 +106,9 @@ function quoted(text) {
 
 function newHeadline() {
     headline = headlines.getRandom(true);
-    headlines.ajaxPromise.success(fillHeadline);
+    headlines.loaded.done(function() {
+        fillHeadline();
+    });
 
     // Give a message when the player has seen all the headlines
     if (headlines.quantity === 0) {
@@ -123,6 +136,24 @@ function fillHeadline() {
 
         // Initial positioning of #feedback div
         $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
+
+        // Fills the next headline after a successful AJAX call
+        $(headlines).on('ajaxSuccess', function() {
+            fillHeadline();
+            $('#loading').hide();
+            $('#error').hide();
+        });
+
+        // Bindings for loading and error events to display appropriate divs
+        $(headlines).on('ajaxLoading', function() {
+            $('#loading').show();
+            $('#error').hide();
+        });
+
+        $(headlines).on('ajaxError', function() {
+            $('#loading').hide();
+            $('#error').show();
+        });
 
     });
 }
@@ -182,24 +213,6 @@ function answerResponse() {
 // Click event bindings for the buttons
 $('#onion, #not').on("click",answerResponse);
 $('#next').on("click", newHeadline);
-
-// Fills the next headline after a successful AJAX call
-$(headlines).on('ajaxSuccess', function() {
-    fillHeadline();
-    $('#loading').hide();
-    $('#error').hide();
-});
-
-// Bindings for loading and error events to display appropriate divs
-$(headlines).on('ajaxLoading', function() {
-    $('#loading').show();
-    $('#error').hide();
-});
-
-$(headlines).on('ajaxError', function() {
-    $('#loading').hide();
-    $('#error').show();
-});
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
