@@ -80,8 +80,8 @@ function HeadlineList(url) {
         var listObject = this;
 
         listObject.ajaxPromise = $.ajax(listObject.url, {
-            success: function() {
-                listObject.fillFromJSON.bind(listObject);
+            success: function(data) {
+                listObject.fillFromJSON(data);
             },
             beforeSend: function() {
                 $(listObject).trigger('ajaxLoading');
@@ -136,24 +136,6 @@ function fillHeadline() {
 
         // Initial positioning of #feedback div
         $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
-
-        // Fills the next headline after a successful AJAX call
-        $(headlines).on('ajaxSuccess', function() {
-            fillHeadline();
-            $('#loading').hide();
-            $('#error').hide();
-        });
-
-        // Bindings for loading and error events to display appropriate divs
-        $(headlines).on('ajaxLoading', function() {
-            $('#loading').show();
-            $('#error').hide();
-        });
-
-        $(headlines).on('ajaxError', function() {
-            $('#loading').hide();
-            $('#error').show();
-        });
 
     });
 }
@@ -216,4 +198,23 @@ $('#next').on("click", newHeadline);
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
+
+// Fills the next headline after a successful AJAX call
+$(headlines).on('ajaxSuccess', function() {
+    fillHeadline();
+    $('#loading').hide();
+    $('#error').hide();
+});
+
+// Bindings for loading and error events to display appropriate divs
+$(headlines).on('ajaxLoading', function() {
+    $('#loading').show();
+    $('#error').hide();
+});
+
+$(headlines).on('ajaxError', function() {
+    $('#loading').hide();
+    $('#error').show();
+});
+
 newHeadline();
