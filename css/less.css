@@ -157,6 +157,7 @@ body {
   position: relative;
   display: inline-block;
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   background: url(../imgs/HalfGreen.jpg);
   background-size: cover;
@@ -178,11 +179,13 @@ h3 {
   font-family: sans-serif;
 }
 nav {
+  position: absolute;
   border-radius: 0  0 15px 15px;
   margin: 0 auto;
   max-width: 1600px;
   width: 100%;
-  height: inherit;
+  height: 3em;
+  bottom: 0;
   clear: both;
 }
 nav ul {
@@ -233,18 +236,10 @@ button:hover {
   border: 3px outset rgba(70, 126, 103, 0.4);
   border-radius: 15px;
   padding: 2%;
+  min-width: 570px;
   color: #e0e9ee;
   display: inline-block;
   transition: 400ms ease-out;
-}
-#hidden {
-  border: 3px outset rgba(70, 126, 103, 0.4);
-  border-radius: 15px;
-  padding: 2%;
-  visibility: hidden;
-  z-index: -100;
-  position: relative;
-  display: inline-block;
 }
 #white {
   background: rgba(224, 233, 238, 0.75);
