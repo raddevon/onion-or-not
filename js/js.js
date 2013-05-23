@@ -109,7 +109,7 @@ function showResponse(response) {
     $("#answer").css({
         // 'transition': '400ms ease-out',
         'bottom': 0 - $('#feedback').outerHeight(),
-        'opacity': 0,
+        // 'opacity': 0,
         'visibility': 'hidden'
     });
     $("#feedback").css({

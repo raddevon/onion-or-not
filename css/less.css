@@ -221,7 +221,6 @@ nav ul a:hover {
   display: none;
 }
 #quiz {
-  margin: 3% auto auto auto;
   max-width: 70em;
   position: relative;
   display: inline-block;
