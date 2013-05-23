@@ -1,0 +1,381 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	// height: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-align: center;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+	text-align: center;
+	position: relative;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+
+
+
+
+
+
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
+@back1: "../imgs/Huge_onions.jpg";
+@back2: "../imgs/onion_peel.jpg";
+@back3: "../imgs/halfGreen.jpg";
+@back4: "../imgs/onions.55.jpg";
+
+@White: rgba(224,233,238, 1.0);
+// @Fcolor: #e1d0ac;
+// @Fcolor: red;
+
+// @Green: #e0e9ee;
+// @Green6: rgba(224,233,238, 1.0);
+@Green: #3d6e5a;
+
+
+//#a8635a
+@font: 'Roboto Condensed', sans-serif;
+
+html {
+	height: 100%;
+}
+
+body {
+	// position: fixed;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+	// max-width: 1600px;
+	width: 100%;
+	overflow: hidden;
+	// min-height: 100%;
+	// max-height: 1200px;
+	margin: 0 auto;
+	background: url(../imgs/HalfGreen.jpg);
+
+
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	background-position: center center;
+	}
+
+
+	h1{
+		font-family: 'Georgia';
+		font-size: 2em;
+		font-weight: 400;
+		// min-width: 750px;
+		line-height: 1.1em;
+
+	}
+
+	h2{
+		font-size: 2em;
+		font-family: sans-serif;
+	}
+
+	h3{
+		font-size: 1.5em;
+		font-family: sans-serif;
+	}
+
+
+	nav{
+		// position: absolute;
+		// border-radius: 0  0 15px 15px;
+		margin: 0 auto;
+		max-width: 1600px;
+		width: 100%;
+		height: inherit;
+
+		clear: both;
+
+		ul {
+		// padding: 0 5%;
+		clear: both;
+
+		width: 100%;
+			li {
+
+				float: left;
+				// margin-left: 1em;
+				margin-top: .5em;
+			}
+			li:last-child {
+				float: right;
+				// margin-right: 1em;
+			}
+				a {
+					font-family: sans-serif;
+					font-size: 1.5em;
+					padding: .3em;
+					// padding-left: 0;
+					text-decoration: none;
+					color: fadeout(@Green, 10%);
+					// letter-spacing: 1.1px;
+				}
+
+			}
+}
+
+	#quiz {
+		margin: .3em auto auto auto;
+		max-width: 70em;
+		position: relative;
+		display: inline-block;
+	}
+
+		button {
+
+			background-color: @Green;
+			color: @White;
+			font-size: 1.5em;
+			width: 40%;
+			padding: .25em;
+			cursor: pointer;
+			border: 2px outset @White;
+			border-radius: 15px;
+			margin: .5em .5em;
+
+		}
+
+		#headline {
+			// font-size: 100%;
+			background-color: @Green;
+			border: 3px outset rgba(70, 126, 103, .4);
+			border-radius: 15px;
+			padding: 1%;
+			// max-height: 250px;
+			color: @White;
+			display: inline-block;
+			transition: 400ms ease-out;
+		}
+
+		#hidden {
+			border: 3px outset rgba(70, 126, 103, .4);
+			border-radius: 15px;
+			padding: 2%;
+			visibility: hidden;
+			z-index: -100;
+			// top: 2000px;
+			position: relative;
+			display: inline-block;
+		}
+
+
+
+		#white{
+			background: fadeout(@White, 25%);
+			border-radius:0 0 15px 15px;
+			width: 93%;
+			margin: 0 auto;
+			transition: 400ms ease-out;
+			
+		}
+
+		#gradient{
+			width: 100%;
+			height: 20%;
+			position: relative;
+			display: inline;
+			top: 0;
+
+		}
+
+		#answer {
+			width: 100%;
+			position: relative;
+			transition: 400ms ease-out;
+			bottom: 0;
+			opacity: 1.0;
+		}
+
+		#feedback {
+			top: -350px;
+			position: relative;
+			visibility: hidden;
+			// width: inherit;
+			padding: 2%;
+			transition: 400ms ease-out;
+			opacity: 0;
+
+			&.correct{
+				background: -moz-linear-gradient(top, rgba(86,154,127,0.8) 15%, rgba(230,234,242,0) 70%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,rgba(86,154,127,0.8)), color-stop(70%,rgba(230,234,242,0))); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top, rgba(86,154,127,0.8) 15%,rgba(230,234,242,0) 70%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top, rgba(86,154,127,0.8) 15%,rgba(230,234,242,0) 70%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top, rgba(86,154,127,0.8) 15%,rgba(230,234,242,0) 70%); /* IE10+ */
+				background: linear-gradient(to bottom, rgba(86,154,127,0.8) 15%,rgba(230,234,242,0) 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc569a7f', endColorstr='#00e6eaf2',GradientType=0 ); /* IE6-9 */			
+			}
+			&.wrong{
+				background: -moz-linear-gradient(top, rgba(162,111,90,0.8) 15%, rgba(232,235,242,0) 70%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,rgba(162,111,90,0.8)), color-stop(70%,rgba(232,235,242,0))); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top, rgba(162,111,90,0.8) 15%,rgba(232,235,242,0) 70%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top, rgba(162,111,90,0.8) 15%,rgba(232,235,242,0) 70%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top, rgba(162,111,90,0.8) 15%,rgba(232,235,242,0) 70%); /* IE10+ */
+				background: linear-gradient(to bottom, rgba(162,111,90,0.8) 15%,rgba(232,235,242,0) 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cca26f5a', endColorstr='#00e8ebf2',GradientType=0 ); /* IE6-9 */
+			}
+
+			.message {
+				color: @White;
+				padding: 0 0 2% 0;
+				display: inline-block;
+			}
+
+			.data li {
+				display: inline-block;
+				background-color: lighten(@Green, 2%);
+				color: @White;
+				line-height: 1.5em;
+				padding: .5em;
+				// width: 92%;
+				min-width: 25%;
+				width: 90%;
+				// display: inline-table;
+				border-radius: 15px;
+				// float: left;
+				margin: 1%;
+				// height: 5%;
+
+				h3{
+					float: left;
+					left: 0;
+					display: inline-block;
+					padding: .1em;
+					// border-bottom: 1px dashed fadeout(@White, 30%);
+
+				}
+
+			}
+
+
+			#source {
+				// background-color: fadeout(@Green, 40%);
+				color: darken(@White, 0%);
+				display: inline-block;
+				// padding: 3%;
+				// width: inherit;
+				font-size: 1.2em;
+				font-family: @font;
+				overflow: hidden;
+				display: inline-block;
+				cursor: pointer;
+				border-radius: 15px;
+				// text-decoration: none;
+
+				// img{
+				// 	// margin: 0 1em;
+				// 	border: 2px solid;
+				// 	border-radius: 4px;
+				// 	color: fadeout(@Green,60%);
+				// 	width: 20%;
+				// 	max-height: 200px;
+				// 	// display: inline;
+				// 	float: left;
+				// 	// display: inl
+				// }
+				p{
+					// display: inline-block;
+					padding: 0 1em;
+					// max-height: 115px;
+					overflow: hidden;
+					// width: 70%;
+					text-align: left;
+					font-family: sans-serif;
+					font-size: 1em;
+					span {
+						display: block;
+						text-align: left;
+						font-size: 1.2em;
+						font-weight: bold;
+						font-style: italic;
+					}
+				}
+			}
+
+			button{
+				width: 70%;
+				display: inline-block;
+				bottom: 0;
+				margin: .5em;
+			}
+
+		}
+
+.social-buttons {
+	margin:.5em auto auto auto;
+	display: none;
+	> div, > iframe {
+		float: left;
+		margin: 0 40px;
+	}
+}
+
+
+	
+
+
+iframe { padding: 0; }

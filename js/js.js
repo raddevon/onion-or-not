@@ -109,12 +109,14 @@ function showResponse(response) {
     $("#answer").css({
         // 'transition': '400ms ease-out',
         'bottom': 0 - $('#feedback').outerHeight(),
-        'opacity': 0
+        'opacity': 0,
+        'visibility': 'hidden'
     });
     $("#feedback").css({
         // 'transition': '400ms ease-out',
         'opacity': 1,
-        'top': 0 - $('#answer').outerHeight() + 'px'
+        'top': 0 - $('#answer').outerHeight() + 'px',
+        'visibility': 'visible'
     });
     $("#white").css({
         // 'transition': '400ms ease-out',
