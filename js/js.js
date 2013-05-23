@@ -64,7 +64,7 @@ function Headline(object) {
     this.title = object.title;
     this.url = object.url;
     // Grabs the portion of the URL between the second and third slashes
-    this.domain = this.url.split('/')[2];
+    this.domain = this.url.split('/')[2].split('www.')[1] || this.url.split('/')[2];
     this.onion = object.onion;
 
     this.isOnion = function(){

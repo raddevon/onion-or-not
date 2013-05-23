@@ -171,7 +171,7 @@ h1 {
   line-height: 1.1em;
 }
 h2 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-family: sans-serif;
 }
 h3 {
@@ -342,7 +342,6 @@ button {
   overflow: hidden;
   display: inline-block;
   cursor: pointer;
-  border-radius: 15px;
 }
 #feedback #source p {
   padding: 0 1em;
