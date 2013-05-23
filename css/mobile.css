@@ -208,11 +208,12 @@ nav ul a {
   max-width: 70em;
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 button {
   background-color: #3d6e5a;
   color: #e0e9ee;
-  font-size: 1.5em;
+  font-size: 1.3em;
   width: 40%;
   padding: .25em;
   cursor: pointer;
