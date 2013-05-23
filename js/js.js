@@ -1,4 +1,4 @@
-var headline, headlines;
+var currentHeadline, headlines;
 
 function Headline(title, url, onion) {
     this.title = title;
@@ -30,8 +30,8 @@ function HeadlineList(url) {
             listObject.refreshContent();
         }
 
-        listObject.ajaxPromise.done(function() {
-            var headlineNumber = Math.floor(Math.random()*listObject.quantity);
+        return listObject.ajaxPromise.pipe(function() {
+            var headlineNumber = Math.floor(Math.random() * listObject.quantity);
             var headlinePick = listObject.list[headlineNumber];
             if (remove) {
                 listObject.deleteHeadline(headlineNumber);
@@ -105,9 +105,9 @@ function quoted(text) {
 }
 
 function newHeadline() {
-    headline = headlines.getRandom(true);
-    headlines.loaded.done(function() {
-        fillHeadline();
+    headlines.getRandom(true).done(function(randomHeadline) {
+        currentHeadline = randomHeadline;
+        fillHeadline(randomHeadline);
     });
 
     // Give a message when the player has seen all the headlines
@@ -117,27 +117,29 @@ function newHeadline() {
 }
 
 function fillHeadline() {
-    var w = $("#hidden").html(quoted(headline.title));
-    height = w.height();
-    width = w.width();
+    if (currentHeadline) {
+        var w = $("#hidden").html(quoted(currentHeadline.title));
+        height = w.height();
+        width = w.width();
 
-    $("#headline").animate({
-        height: height,
-        width: width
-        }, 50, 'linear', function(){
-        $("#headline").html(quoted(headline.title));
-        $('#feedback, #answer, #white').removeAttr('style');
-        $('#white').css('overflow', 'hidden');
+        $("#headline").animate({
+            height: height,
+            width: width
+            }, 50, 'linear', function(){
+            $("#headline").html(quoted(currentHeadline.title));
+            $('#feedback, #answer, #white').removeAttr('style');
+            $('#white').css('overflow', 'hidden');
 
-        setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
+            setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
 
-        // Initial sizing of the #white div
-        $("#white").height($("#answer").outerHeight());
+            // Initial sizing of the #white div
+            $("#white").height($("#answer").outerHeight());
 
-        // Initial positioning of #feedback div
-        $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
+            // Initial positioning of #feedback div
+            $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
 
-    });
+        });
+    }
 }
 
 function showResponse(response) {
@@ -168,11 +170,11 @@ function showResponse(response) {
 
 function answerResponse() {
     // Grabs the portion of the URL between the second and third slashes and lists it as the source. Uses the full link as the href.
-    $("#source").text(headline.domain).attr('href', headline.url);
+    $("#source").text(currentHeadline.domain).attr('href', currentHeadline.url);
 
     var response;
     // Compare button clicked with headline's onion value. Starts building a response based on whether the response was correct or not.
-    if ( (this.id === "not" && !headline.onion) || (this.id === "onion" && headline.onion) ) {
+    if ( (this.id === "not" && !currentHeadline.onion) || (this.id === "onion" && currentHeadline.onion) ) {
         response = "Yup. ";
         // $("body").css("background", "url('imgs/FullGreen.jpg')").css("background-size", "cover");
         // setTimeout(function(){$("#white").toggleClass("correct");},50);
@@ -184,7 +186,7 @@ function answerResponse() {
         // $("body").css("background", "url('imgs/NoGreen.jpg')").css("background-size", "cover");
     }
     // Appends to reflect the fakeness or realness of the story.
-    if (headline.onion) {
+    if (currentHeadline.onion) {
         response += "Just a joke";
     } else {
         response += "This happened.";
@@ -201,7 +203,6 @@ headlines = new HeadlineList('js/headlines.json');
 
 // Fills the next headline after a successful AJAX call
 $(headlines).on('ajaxSuccess', function() {
-    fillHeadline();
     $('#loading').hide();
     $('#error').hide();
 });
