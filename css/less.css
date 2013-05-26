@@ -256,13 +256,6 @@ button:hover {
   margin: 0 auto;
   transition: 400ms ease-out;
 }
-#gradient {
-  width: 100%;
-  height: 20%;
-  position: relative;
-  display: inline;
-  top: 0;
-}
 #answer {
   width: 100%;
   position: relative;

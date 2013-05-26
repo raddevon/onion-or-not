@@ -234,6 +234,7 @@ button {
   margin: .5em .5em;
 }
 #headline {
+  width: 100%;
   background-color: #3d6e5a;
   border: 3px outset rgba(70, 126, 103, 0.4);
   border-radius: 0 0 5px 5px;
