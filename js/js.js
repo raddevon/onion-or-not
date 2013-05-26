@@ -160,8 +160,8 @@ function answerResponse() {
 }
 
 // Click event bindings for the buttons
-$('#onion, #not').on("touchend",answerResponse);
-$('#next').on("touchend", newHeadline);
+$(document).on("tap",'#onion, #not', answerResponse);
+$(document).on("tap",'#next', newHeadline);
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
