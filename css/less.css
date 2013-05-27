@@ -165,7 +165,7 @@ body {
   background-position: center center;
 }
 h1 {
-  font-family: 'Georgia';
+  font-family: 'baskerville', 'Georgia';
   font-size: 3.5em;
   font-weight: 400;
   line-height: 1.1em;
@@ -254,20 +254,19 @@ button:hover {
   border-radius: 0 0 15px 15px;
   width: 95%;
   margin: 0 auto;
-  transition: 400ms ease-out;
+  -webkit-transition: 400ms ease-out;
 }
 #answer {
   width: 100%;
   position: relative;
-  transition: 400ms ease-out;
+  -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
   bottom: 0;
   opacity: 1.0;
 }
 #feedback {
-  top: -500px;
   position: relative;
   padding: 1em;
-  transition: 400ms ease-out;
+  -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
   opacity: 0;
 }
 #feedback.correct {

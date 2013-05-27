@@ -79,6 +79,7 @@ function quoted(text) {
 
 function newHeadline() {
     // Remove inline styles added by jQuery
+   initial = 0 - ($('#answer').outerHeight() + $('#feedback').outerHeight());
     $('#feedback, #answer, #white').removeAttr('style');
     $('#white').css('overflow', 'hidden');
 
@@ -90,32 +91,34 @@ function newHeadline() {
     $("#white").height($("#answer").outerHeight());
 
     // Initial positioning of #feedback div
-    $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
-
-    // Give a message when the player has seen all the headlines
-    if (headlines.quantity === 0) {
-        alert("You've been through all the headlines. I'll load them up again so you can keep playing.");
-    }
+    // $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
+    $("#feedback").css({
+        'transform':'translate(0,' + initial + 'px)'
+    });
 
     headline = new Headline(headlines.getRandom(true));
     $("#headline").html(quoted(headline.title));
 }
 
 function showResponse(response) {
+    answer = (0 - $('#answer').outerHeight()) + 'px';
+
+
     // Fill the response in the appropriate element
     $("#feedback .message").text(response);
 
     // Animate the response
     $("#answer").css({
-        // 'transition': '400ms ease-out',
-        'bottom': 0 - $('#feedback').outerHeight(),
+        // 'bottom': 0 - $('#feedback').outerHeight(),
+        'transform':'translate(0,' + $('#feedback').outerHeight() + 'px)',
         // 'opacity': 0,
         'visibility': 'hidden'
     });
     $("#feedback").css({
         // 'transition': '400ms ease-out',
         'opacity': 1,
-        'top': 0 - $('#answer').outerHeight() + 'px',
+        // 'top': 0 - answer + 'px',
+        'transform':'translate(0,' + answer + ')',
         'visibility': 'visible'
     });
     $("#white").css({
@@ -127,6 +130,7 @@ function showResponse(response) {
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){$('#white').css('overflow', '');},400);
+
 }
 
 function answerResponse() {
@@ -140,14 +144,10 @@ function answerResponse() {
         // $("body").css("background", "url('imgs/FullGreen.jpg')").css("background-size", "cover");
         // setTimeout(function(){$("#white").toggleClass("correct");},50);
         $("#feedback").toggleClass("correct");
-        $("#white").toggleClass("correct");
-
     } else {
         response = "Nope. ";
         // setTimeout(function(){$("#white").toggleClass("wrong");},50);
         $("#feedback").toggleClass("wrong");
-        $("#white").toggleClass("wrong");
-
         // $("body").css("background", "url('imgs/NoGreen.jpg')").css("background-size", "cover");
     }
     // Appends to reflect the fakeness or realness of the story.
@@ -160,8 +160,9 @@ function answerResponse() {
 }
 
 // Click event bindings for the buttons
-$(document).on("tap",'#onion, #not', answerResponse);
-$(document).on("tap",'#next', newHeadline);
+// document.addEventListener('touchend', answerResponse(e) );
+$('#onion, #not').on("tap click",answerResponse);
+$('#next').on("tap click", newHeadline);
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
