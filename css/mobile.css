@@ -251,7 +251,7 @@ button {
   border-radius: 0 0 15px 15px;
   width: 93%;
   margin: 0 auto;
-  -webkit-transition: -webkit-transform 400ms ease-out;
+  -webkit-transition: 400ms ease-out;
   position: relative;
   z-index: 1;
 }

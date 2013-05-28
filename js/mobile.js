@@ -98,14 +98,6 @@ function newHeadline() {
     setTimeout(function(){$('#feedback').removeClass('correct wrong');},400);
 
     // Initial sizing of the #white div
-    // $("#white").height(total,function(){
-    //     $("#white").css({
-    //     'overflow': 'hidden',
-    //     // 'height': + total + 'px',
-    //     'transform':'translate(0,'+(0-feedback)+'px)'
-    // });
-    //        });
-
 $("#white").css({
         'overflow': 'hidden',
         'height': + total + 'px',
@@ -154,8 +146,8 @@ function showResponse(response) {
         // 'transition': '400ms ease-out',
         'opacity': 1,
         // 'top': 0 - answer + 'px',
-        'transform':'translate(0,' +  answer + 'px)'
-        // 'visibility': 'visible'
+        'transform':'translate(0,' +  answer + 'px)',
+        'visibility': 'visible'
     });
 
 
@@ -163,7 +155,6 @@ function showResponse(response) {
     setTimeout(function(){
         $('#white').css('overflow', '');
         $('#answer').css('visibility', 'hidden');
-        $('#feedback').css('visibility', 'visible');
         },400);
 
 }
@@ -195,7 +186,10 @@ function answerResponse() {
 
 // Click event bindings for the buttons
 // document.addEventListener('touchend', answerResponse(e) );
-$('#onion, #not').on("tap click",answerResponse);
+$('#onion, #not').on("tap click",function(e) {
+    answerResponse();
+    e.stopPropogation();
+});
 $('#next').on("tap click", newHeadline);
 
 // Initial load of headlines and first random headline
