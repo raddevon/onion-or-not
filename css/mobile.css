@@ -172,7 +172,7 @@ h1 {
   line-height: 1.1em;
 }
 h2 {
-  font-size: 1.8em;
+  font-size: 1.7em;
   font-family: sans-serif;
 }
 h3 {
@@ -232,8 +232,11 @@ button {
   border: 2px outset #e0e9ee;
   border-radius: 15px;
   margin: .5em .5em;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 #headline {
+  z-index: 2;
+  position: relative;
   width: 100%;
   background-color: #3d6e5a;
   border: 3px outset rgba(70, 126, 103, 0.4);
@@ -244,24 +247,24 @@ button {
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
 }
 #white {
-  background: #e0e9ee;
+  background: rgba(224, 233, 238, 0.75);
   border-radius: 0 0 15px 15px;
   width: 93%;
   margin: 0 auto;
   -webkit-transition: 400ms ease-out;
-  -webkit-transform: translate3d(0, 0, 0);
   position: relative;
+  z-index: 1;
 }
 #answer {
   width: 100%;
-  position: relative;
   transition: 400ms ease-out;
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
   bottom: 0;
   opacity: 1.0;
+  z-index: 0;
 }
 #feedback {
-  z-index: 1;
+  z-index: -1;
   position: relative;
   padding: 1em;
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;

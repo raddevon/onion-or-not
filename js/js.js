@@ -180,3 +180,7 @@ $('#next').on("tap click", newHeadline);
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
 newHeadline();
+
+if (window.matchMedia('only screen and (min-width: 581px)').matches) {
+    $("#mobile").remove();
+}

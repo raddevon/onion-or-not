@@ -96,6 +96,7 @@ table {
 //#a8635a
 @font: 'Roboto Condensed', sans-serif;
 
+
 html {
 	height: 100%;
 }
@@ -201,6 +202,7 @@ body {
 		max-width: 70em;
 		position: relative;
 		display: inline-block;
+		overflow: hidden;
 	}
 
 		button {
@@ -221,6 +223,7 @@ body {
 
 		#headline {
 			// font-size: 100%;
+			position: relative;
 			background-color: fadeout(@Green, 5%);
 			border: 3px outset rgba(70, 126, 103, .4);
 			border-radius: 15px;
@@ -229,8 +232,8 @@ body {
 			// max-height: 250px;
 			color: @White;
 			display: inline-block;
-			transition: 400ms ease-out;
-			z-index: 100;
+			-webkit-transition: 400ms ease-out;
+			z-index: 2;
 		}
 
 
@@ -243,6 +246,7 @@ body {
 			// z-index: -1;
 			-webkit-transform: translate3d(0,0,0);
 			position: relative;
+			z-index: 1;
 			
 		}
 
@@ -253,12 +257,12 @@ body {
 			-webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
 			bottom: 0;
 			opacity: 1.0;
-			// z-index: 2;
+			z-index: 0;
 			// position: absolute;
 		}
 
 		#feedback {
-			z-index: 1;
+			z-index: -1;
 			position: relative;
 			// width: inherit;
 			padding: 1em;
