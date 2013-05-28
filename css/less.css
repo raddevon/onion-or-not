@@ -255,6 +255,7 @@ button:hover {
   width: 95%;
   margin: 0 auto;
   -webkit-transition: 400ms ease-out;
+  z-index: 0;
 }
 #answer {
   width: 100%;
@@ -262,8 +263,10 @@ button:hover {
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
   bottom: 0;
   opacity: 1.0;
+  z-index: 2;
 }
 #feedback {
+  z-index: 1;
   position: relative;
   padding: 1em;
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;

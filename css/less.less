@@ -182,9 +182,6 @@ body {
 
 	}
 
-		.top{
-
-		}
 
 		.bottom{
 		position: absolute;
@@ -241,6 +238,7 @@ body {
 			width: 95%;
 			margin: 0 auto;
 			-webkit-transition: 400ms ease-out;
+			z-index: 0;
 			
 		}
 
@@ -251,10 +249,11 @@ body {
 			-webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
 			bottom: 0;
 			opacity: 1.0;
+			z-index: 2;
 		}
 
 		#feedback {
-			// top: -500px;
+			z-index: 1;
 			position: relative;
 			// width: inherit;
 			padding: 1em;

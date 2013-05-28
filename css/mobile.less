@@ -223,7 +223,9 @@ body {
 			// max-height: 250px;
 			color: @White;
 			display: inline-block;
-			transition: 400ms ease-out;
+			// transition: 400ms ease-out;
+			-webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
+
 		}
 
 		#white{
@@ -231,7 +233,8 @@ body {
 			border-radius:0 0 15px 15px;
 			width: 93%;
 			margin: 0 auto;
-			transition: 400ms ease-out;
+			-webkit-transition: 400ms ease-out;
+
 			
 		}
 
@@ -248,12 +251,12 @@ body {
 			width: 100%;
 			position: relative;
 			transition: 400ms ease-out;
+			-webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
 			bottom: 0;
 			opacity: 1.0;
 		}
 
 		#feedback {
-			top: -350px;
 			position: relative;
 			visibility: hidden;
 			// width: inherit;

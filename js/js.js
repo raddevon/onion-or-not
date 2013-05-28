@@ -82,6 +82,9 @@ function newHeadline() {
    initial = 0 - ($('#answer').outerHeight() + $('#feedback').outerHeight());
     $('#feedback, #answer, #white').removeAttr('style');
     $('#white').css('overflow', 'hidden');
+    console.log($('#answer').outerHeight());
+    console.log($('#feedback').outerHeight());
+    console.log(initial);
 
     setTimeout(function(){$('#feedback').removeClass('correct wrong');},400);
     setTimeout(function(){$('#white').removeClass('correct wrong');},400);
