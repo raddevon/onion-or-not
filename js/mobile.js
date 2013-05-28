@@ -186,11 +186,11 @@ function answerResponse() {
 
 // Click event bindings for the buttons
 // document.addEventListener('touchend', answerResponse(e) );
-$('#onion, #not').on("tap",function(e) {
+$('#onion, #not').on("touchend",function(e) {
     answerResponse();
     e.stopPropagation();
 });
-$('#next').on("tap",function(e) {
+$('#next').on("touchend",function(e) {
     newHeadline();
     e.stopPropagation();
 });
