@@ -190,7 +190,10 @@ $('#onion, #not').on("tap click",function(e) {
     answerResponse();
     e.stopPropogation();
 });
-$('#next').on("tap click", newHeadline);
+$('#next').on("tap click",function(e) {
+    newHeadline();
+    e.stopPropogation();
+});
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
