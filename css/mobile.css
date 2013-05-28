@@ -223,7 +223,7 @@ nav ul a {
   width: 100%;
 }
 button {
-  background-color: #3d6e5a;
+  background-color: rgba(61, 110, 90, 0.8);
   color: #e0e9ee;
   font-size: 1.3em;
   width: 40%;
@@ -238,7 +238,7 @@ button {
   z-index: 2;
   position: relative;
   width: 100%;
-  background-color: #3d6e5a;
+  background-color: rgba(61, 110, 90, 0.95);
   border: 3px outset rgba(70, 126, 103, 0.4);
   border-radius: 0 0 5px 5px;
   padding: 1%;
