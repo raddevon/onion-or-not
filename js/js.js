@@ -80,10 +80,15 @@ function quoted(text) {
 function newHeadline() {
     feedback = $('#feedback').outerHeight();
     answer = $('#answer').outerHeight();
+    // $("#white").height(answer);
+
     // Remove inline styles added by jQuery
    total = 0 - ($('#answer').outerHeight() + $('#feedback').outerHeight());
-    $('#feedback, #answer, #white').removeAttr('style');
-    $('#white').css('overflow', 'hidden');
+    $('#feedback, #answer').removeAttr('style');
+    $('#white').css({
+        'overflow': 'hidden',
+        'height': answer + 'px'
+        });
     console.log($('#answer').outerHeight());
     console.log($('#feedback').outerHeight());
     console.log(total);
@@ -93,7 +98,6 @@ function newHeadline() {
 
 
     // Initial sizing of the #white div
-    $("#white").height(answer);
     // $("#white").css({
     //     'transform':'scaleY('+answer/feedback+')'
     // });
@@ -116,6 +120,12 @@ function showResponse(response) {
     $("#feedback .message").text(response);
 
     // Animate the response
+    $("#white").css({
+        // 'transition': '400ms ease-out',
+        'height': $("#feedback").outerHeight()
+        // 'background': 'green'
+        // 'background': 'linear-gradient(to bottom, rgba(86,154,127,.9) 15%,rgba(230,234,242,.85) 50%)'
+    });
     $("#answer").css({
         // 'bottom': 0 - $('#feedback').outerHeight(),
         'transform':'translate(0,' + $('#feedback').outerHeight() + 'px)',
@@ -129,12 +139,7 @@ function showResponse(response) {
         'transform':'translate(0,' + answer + ')',
         'visibility': 'visible'
     });
-    $("#white").css({
-        // 'transition': '400ms ease-out',
-        'height': $("#feedback").outerHeight()
-        // 'background': 'green'
-        // 'background': 'linear-gradient(to bottom, rgba(86,154,127,.9) 15%,rgba(230,234,242,.85) 50%)'
-    });
+
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){$('#white').css('overflow', '');},400);
