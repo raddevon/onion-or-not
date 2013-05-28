@@ -208,3 +208,8 @@ touchClick('#next', newHeadline);
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
 newHeadline();
+
+if ($(window).width() > 580) {
+    Socialite.load('.social-buttons');
+}
+
