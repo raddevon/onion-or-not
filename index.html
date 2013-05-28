@@ -23,18 +23,6 @@
 </head>
 <!-- <div id="wrapper"> -->
 <body>
-    <!-- Facebook like button code -->
-    <div id="fb-root"></div>
-    <script async>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=195090780514458";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-    <script async>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-    </script>
-
     <!-- Begin navbar -->
     <nav class="top cf">
       <ul class="cf">
@@ -51,7 +39,6 @@
         <div id="white">
 
             <!-- <div id="gradient"></div> -->
-            
 
             <div id="feedback" class="cf">
                 <h2 class="message">filler</h2>
@@ -67,9 +54,12 @@
                             Share:
                         </h3>
                         <div class="social-buttons cf">
-                            <div class="fb-like" data-send="true" data-layout="box_count" data-width="150" data-show-faces="true" data-font="verdana"></div>
-                            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="vertical">Tweet</a>
-
+                            <a class="socialite twitter-share" href="http://twitter.com/share" data-url="http://raddevon.github.io/onionornot/" data-count="vertical">
+                                Share on Twitter
+                            </a>
+                            <a class="socialite facebook-like" href="http://www.facebook.com/sharer/sharer.php" data-layout="box_count" data-send="true" data-href="http://raddevon.github.io/onionornot/">
+                                Share on Facebook
+                            </a>
                         </div>
                     </li>
                     <!-- End social sharing buttons -->
@@ -93,8 +83,9 @@
     <!-- Script imports -->
     <script type="text/javascript" src="js/jquery.js"></script>
      <!-- <script id="desktop" type="text/javascript" src="js/js.js"></script> -->
-    <script class ="mobile" type="text/javascript" src="js/jquery.mobile.custom.js"></script>
-    <script id="mobile" type="text/javascript" src="js/mobile.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.custom.js"></script>
+    <script type="text/javascript" src="js/socialite.min.js"></script>
+    <script type="text/javascript" src="js/mobile.js"></script>
 
 </body>
 <!-- </div> -->
