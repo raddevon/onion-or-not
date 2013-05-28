@@ -159,12 +159,12 @@ function showResponse(response) {
 
 }
 
-function answerResponse() {
+function answerResponse(trigger) {
     // Grabs the portion of the URL between the second and third slashes and lists it as the source. Uses the full link as the href.
 
     var response;
     // Compare button clicked with headline's onion value. Starts building a response based on whether the response was correct or not.
-    if ( (this.id === "not" && !headline.onion) || (this.id === "onion" && headline.onion) ) {
+    if ( (trigger.id === "not" && !headline.onion) || (trigger.id === "onion" && headline.onion) ) {
         response = "Yup. ";
         // $("body").css("background", "url('imgs/FullGreen.jpg')").css("background-size", "cover");
         // setTimeout(function(){$("#white").toggleClass("correct");},50);
@@ -184,16 +184,26 @@ function answerResponse() {
     showResponse(response);
 }
 
-// Click event bindings for the buttons
-// document.addEventListener('touchend', answerResponse(e) );
-$('#onion, #not').on("touchend",function(e) {
-    answerResponse();
-    e.stopPropagation();
+function touchClick(sel, fnc) {
+  $(sel).on('touchstart click', function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        if(event.handled !== true) {
+            fnc(event);
+            event.handled = true;
+        } else {
+            return false;
+        }
+  });
+}
+
+// Click binding for answer buttons
+touchClick('#onion, #not', function(e) {
+    answerResponse(e.delegateTarget);
 });
-$('#next').on("touchend",function(e) {
-    newHeadline();
-    e.stopPropagation();
-});
+
+// Click binding for next headline button
+touchClick('#next', newHeadline);
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
