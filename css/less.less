@@ -148,6 +148,7 @@ body {
 		height: 3em;
 		margin: 0 auto;
 		// bottom: 0;
+		// z-index: 1;
 		clear: both;
 		// text-align: center;
 
@@ -229,6 +230,7 @@ body {
 			color: @White;
 			display: inline-block;
 			transition: 400ms ease-out;
+			z-index: 100;
 		}
 
 
@@ -238,7 +240,9 @@ body {
 			width: 95%;
 			margin: 0 auto;
 			-webkit-transition: 400ms ease-out;
-			z-index: 0;
+			// z-index: -1;
+			-webkit-transform: translate3d(0,0,0);
+			position: relative;
 			
 		}
 
@@ -249,7 +253,8 @@ body {
 			-webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
 			bottom: 0;
 			opacity: 1.0;
-			z-index: 2;
+			// z-index: 2;
+			// position: absolute;
 		}
 
 		#feedback {

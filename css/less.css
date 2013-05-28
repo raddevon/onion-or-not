@@ -248,6 +248,7 @@ button:hover {
   color: #e0e9ee;
   display: inline-block;
   transition: 400ms ease-out;
+  z-index: 100;
 }
 #white {
   background: rgba(224, 233, 238, 0.75);
@@ -255,7 +256,8 @@ button:hover {
   width: 95%;
   margin: 0 auto;
   -webkit-transition: 400ms ease-out;
-  z-index: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  position: relative;
 }
 #answer {
   width: 100%;
@@ -263,7 +265,6 @@ button:hover {
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
   bottom: 0;
   opacity: 1.0;
-  z-index: 2;
 }
 #feedback {
   z-index: 1;

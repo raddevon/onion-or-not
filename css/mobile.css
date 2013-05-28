@@ -249,6 +249,8 @@ button {
   width: 93%;
   margin: 0 auto;
   -webkit-transition: 400ms ease-out;
+  -webkit-transform: translate3d(0, 0, 0);
+  position: relative;
 }
 #answer {
   width: 100%;
@@ -259,11 +261,11 @@ button {
   opacity: 1.0;
 }
 #feedback {
+  z-index: 1;
   position: relative;
-  visibility: hidden;
-  padding: 2%;
-  -webkit-transition: 400ms ease-out;
-  opacity: 1;
+  padding: 1em;
+  -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
+  opacity: 0;
 }
 #feedback.correct {
   background: -moz-linear-gradient(top, rgba(86, 154, 127, 0.8) 15%, rgba(230, 234, 242, 0) 70%);

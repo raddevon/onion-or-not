@@ -78,25 +78,30 @@ function quoted(text) {
 }
 
 function newHeadline() {
+    feedback = $('#feedback').outerHeight();
+    answer = $('#answer').outerHeight();
     // Remove inline styles added by jQuery
-   initial = 0 - ($('#answer').outerHeight() + $('#feedback').outerHeight());
+   total = 0 - ($('#answer').outerHeight() + $('#feedback').outerHeight());
     $('#feedback, #answer, #white').removeAttr('style');
     $('#white').css('overflow', 'hidden');
     console.log($('#answer').outerHeight());
     console.log($('#feedback').outerHeight());
-    console.log(initial);
+    console.log(total);
 
     setTimeout(function(){$('#feedback').removeClass('correct wrong');},400);
     setTimeout(function(){$('#white').removeClass('correct wrong');},400);
 
 
     // Initial sizing of the #white div
-    $("#white").height($("#answer").outerHeight());
+    $("#white").height(answer);
+    // $("#white").css({
+    //     'transform':'scaleY('+answer/feedback+')'
+    // });
 
     // Initial positioning of #feedback div
     // $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
     $("#feedback").css({
-        'transform':'translate(0,' + initial + 'px)'
+        'transform':'translate(0,' + total + 'px)'
     });
 
     headline = new Headline(headlines.getRandom(true));
