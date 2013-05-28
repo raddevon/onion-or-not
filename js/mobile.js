@@ -188,11 +188,11 @@ function answerResponse() {
 // document.addEventListener('touchend', answerResponse(e) );
 $('#onion, #not').on("tap click",function(e) {
     answerResponse();
-    e.stopPropogation();
+    e.stopPropagation();
 });
 $('#next').on("tap click",function(e) {
     newHeadline();
-    e.stopPropogation();
+    e.stopPropagation();
 });
 
 // Initial load of headlines and first random headline
