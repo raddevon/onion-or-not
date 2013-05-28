@@ -385,13 +385,14 @@ button:hover {
   margin: .5em;
 }
 .social-buttons {
+  min-width: 200px;
   margin: .5em auto auto auto;
   display: inline-block;
 }
 .social-buttons > div,
 .social-buttons > iframe {
   float: left;
-  margin: 0 40px;
+  margin: 0 20px;
 }
 @media only screen and (max-width: 500px) {
   h1 {

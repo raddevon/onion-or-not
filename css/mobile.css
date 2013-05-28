@@ -365,7 +365,6 @@ button {
 }
 .social-buttons {
   margin: .5em auto auto auto;
-  display: none;
 }
 .social-buttons > div,
 .social-buttons > iframe {
