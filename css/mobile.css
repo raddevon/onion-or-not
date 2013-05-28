@@ -251,7 +251,7 @@ button {
   border-radius: 0 0 15px 15px;
   width: 93%;
   margin: 0 auto;
-  -webkit-transition: 400ms ease-out;
+  -webkit-transition: -webkit-transform 400ms ease-out;
   position: relative;
   z-index: 1;
 }
@@ -259,8 +259,6 @@ button {
   width: 100%;
   transition: 400ms ease-out;
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
-  bottom: 0;
-  opacity: 1.0;
   z-index: 0;
 }
 #feedback {

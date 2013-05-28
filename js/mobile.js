@@ -117,11 +117,11 @@ $("#white").css({
     // Initial positioning of #feedback div
     // $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
     $("#feedback").css({
-        'transform':'translate(0,' + (0-answer) + 'px)',
+        'transform':'translate(0,' + 0 + 'px)',
         'opacity': '0'
     });
     $("#answer").css({
-        'transform':'translate(0,' + feedback + 'px)',
+        'transform':'translate(0,' + 0 + 'px)',
         'opacity': '1',
         'visibility' : 'visible'
     });
@@ -146,7 +146,7 @@ function showResponse(response) {
     });
     $("#answer").css({
         // 'bottom': 0 - $('#feedback').outerHeight(),
-        'transform':'translate(0,' + total + 'px)',
+        'transform':'translate(0,' + answer + 'px)',
         'opacity': 0
         // 'visibility': 'hidden'
     });
@@ -154,13 +154,17 @@ function showResponse(response) {
         // 'transition': '400ms ease-out',
         'opacity': 1,
         // 'top': 0 - answer + 'px',
-        'transform':'translate(0,' +  0 + 'px)',
-        'visibility': 'visible'
+        'transform':'translate(0,' +  answer + 'px)'
+        // 'visibility': 'visible'
     });
 
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
-    setTimeout(function(){$('#white').css('overflow', '');},400);
+    setTimeout(function(){
+        $('#white').css('overflow', '');
+        $('#answer').css('visibility', 'hidden');
+        $('#feedback').css('visibility', 'visible');
+        },400);
 
 }
 

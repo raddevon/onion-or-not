@@ -249,7 +249,6 @@ button:hover {
   min-width: 570px;
   color: #e0e9ee;
   display: inline-block;
-  -webkit-transition: 400ms ease-out;
   z-index: 2;
 }
 #white {
@@ -257,8 +256,7 @@ button:hover {
   border-radius: 0 0 15px 15px;
   width: 95%;
   margin: 0 auto;
-  -webkit-transition: 400ms ease-out;
-  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 400ms ease-out;
   position: relative;
   z-index: 1;
 }
