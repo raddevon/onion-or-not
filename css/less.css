@@ -269,7 +269,7 @@ button:hover {
   z-index: 2;
 }
 #white {
-  background: rgba(224, 233, 238, 0.35);
+  background: rgba(224, 233, 238, 0.44999999999999996);
   border-radius: 0 0 15px 15px;
   width: 95%;
   margin: 0 auto;

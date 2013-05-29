@@ -212,3 +212,9 @@ if ($(window).width() > 580) {
     Socialite.load('.social-buttons');
 }
 
+window.addEventListener("load",function() {
+    setTimeout(function(){
+        window.scrollTo(0, 1);
+    }, 0);
+});
+
