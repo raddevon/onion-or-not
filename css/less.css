@@ -282,9 +282,6 @@ button:hover {
   z-index: 0;
   border-radius: 0 0 15px 15px;
 }
-#gloss.glossify {
-  background: none;
-}
 #answer {
   width: 100%;
   position: relative;
