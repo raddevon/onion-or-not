@@ -173,11 +173,11 @@ h1 {
 }
 h2 {
   font-size: 1.6em;
-  font-family: sans-serif;
+  font-family: helvetica;
 }
 h3 {
   font-size: 1.5em;
-  font-family: sans-serif;
+  font-family: helvetica;
 }
 nav {
   position: absolute;
@@ -200,7 +200,7 @@ nav ul li:last-child {
   float: right;
 }
 nav ul a {
-  font-family: sans-serif;
+  font-family: helvetica;
   font-size: 1.5em;
   padding: .3em;
   text-decoration: none;
@@ -346,18 +346,18 @@ button {
 #feedback #source {
   color: #e0e9ee;
   font-size: 1.2em;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', helvetica;
   overflow: hidden;
   display: inline-block;
   cursor: pointer;
-  margin: .6em 0;
+  margin: .7em 0;
   float: left;
 }
 #feedback #source p {
   padding: 0 1em;
   overflow: hidden;
   text-align: left;
-  font-family: sans-serif;
+  font-family: helvetica;
   font-size: 1em;
 }
 #feedback #source p span {
@@ -368,7 +368,7 @@ button {
   font-style: italic;
 }
 #feedback button {
-  width: 90%;
+  width: 95%;
   display: inline-block;
   bottom: 0;
   padding: .7em;
