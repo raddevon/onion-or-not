@@ -268,7 +268,6 @@ button {
   z-index: 0;
 }
 #feedback {
-  z-index: -1;
   position: relative;
   padding: 1em;
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
