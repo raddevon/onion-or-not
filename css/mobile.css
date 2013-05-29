@@ -248,7 +248,7 @@ button {
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
 }
 #white {
-  background: rgba(224, 233, 238, 0.44999999999999996);
+  background: rgba(224, 233, 238, 0.4);
   border-radius: 0 0 15px 15px;
   width: 93%;
   margin: 0 auto;
@@ -342,7 +342,7 @@ button {
 }
 #feedback #source {
   color: #e0e9ee;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-family: 'Roboto Condensed', sans-serif;
   overflow: hidden;
   display: inline-block;
@@ -370,11 +370,11 @@ button {
 }
 .social-buttons {
   margin: .5em auto auto auto;
+  display: inline-block;
 }
-.social-buttons > div,
-.social-buttons > iframe {
+.social-buttons > a {
   float: left;
-  margin: 0 40px;
+  margin: 0 15px;
 }
 iframe {
   padding: 0;
