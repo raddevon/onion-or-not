@@ -297,8 +297,8 @@ body {
 
 			.message {
 				color: @White;
-				padding: 0 0 2% 0;
 				display: inline-block;
+				margin-bottom: .5em;
 			}
 
 			.data li {
@@ -308,23 +308,30 @@ body {
 				line-height: 1.5em;
 				padding: .5em;
 				// width: 92%;
-				min-width: 25%;
+				// min-width: 25%;
+				height: 3em;
 				width: 90%;
 				// display: inline-table;
 				border-radius: 15px;
 				// float: left;
-				margin: 1%;
+				margin: .3em;
 				// height: 5%;
 
 				h3{
 					float: left;
 					left: 0;
-					display: inline-block;
-					padding: .1em;
+					display: inline-table;
+					// padding: .1em;
+					margin: .5em;
 					// border-bottom: 1px dashed fadeout(@White, 30%);
-
 				}
 
+			}
+
+			.social {
+				h3{
+				letter-spacing: .1em	
+					} ;
 			}
 
 
@@ -334,11 +341,13 @@ body {
 				display: inline-block;
 				// padding: 3%;
 				// width: inherit;
-				font-size: 1.1em;
+				font-size: 1.2em;
 				font-family: @font;
 				overflow: hidden;
 				display: inline-block;
 				cursor: pointer;
+				margin: .6em 0;
+				float: left;
 
 				p{
 					// display: inline-block;
@@ -359,21 +368,37 @@ body {
 				}
 			}
 
+
+
 			button{
-				width: 70%;
+				width: 90%;
 				display: inline-block;
 				bottom: 0;
-				margin: .5em;
+				padding: .7em;
 			}
 
 		}
 
+	#next {
+		font-size: 1.5em;	
+	}
+
 .social-buttons {
-	margin:.5em auto auto auto;
+	margin:.3em auto;
 	display: inline-block;
+	float: left;
 	> a {
 		float: left;
-		margin: 0 15px;
+		margin: 0 1.3em;
+	}
+
+	.socialite {
+		margin-left: 0;
+	}
+	img {
+		width: 2.3em;
+
+
 	}
 }
 

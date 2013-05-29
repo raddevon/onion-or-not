@@ -320,8 +320,8 @@ button {
 }
 #feedback .message {
   color: #e0e9ee;
-  padding: 0 0 2% 0;
   display: inline-block;
+  margin-bottom: .5em;
 }
 #feedback .data li {
   display: inline-block;
@@ -329,24 +329,29 @@ button {
   color: #e0e9ee;
   line-height: 1.5em;
   padding: .5em;
-  min-width: 25%;
+  height: 3em;
   width: 90%;
   border-radius: 15px;
-  margin: 1%;
+  margin: .3em;
 }
 #feedback .data li h3 {
   float: left;
   left: 0;
-  display: inline-block;
-  padding: .1em;
+  display: inline-table;
+  margin: .5em;
+}
+#feedback .social h3 {
+  letter-spacing: 0.1em;
 }
 #feedback #source {
   color: #e0e9ee;
-  font-size: 1.1em;
+  font-size: 1.2em;
   font-family: 'Roboto Condensed', sans-serif;
   overflow: hidden;
   display: inline-block;
   cursor: pointer;
+  margin: .6em 0;
+  float: left;
 }
 #feedback #source p {
   padding: 0 1em;
@@ -363,18 +368,28 @@ button {
   font-style: italic;
 }
 #feedback button {
-  width: 70%;
+  width: 90%;
   display: inline-block;
   bottom: 0;
-  margin: .5em;
+  padding: .7em;
+}
+#next {
+  font-size: 1.5em;
 }
 .social-buttons {
-  margin: .5em auto auto auto;
+  margin: .3em auto;
   display: inline-block;
+  float: left;
 }
 .social-buttons > a {
   float: left;
-  margin: 0 15px;
+  margin: 0 1.3em;
+}
+.social-buttons .socialite {
+  margin-left: 0;
+}
+.social-buttons img {
+  width: 2.3em;
 }
 iframe {
   padding: 0;
