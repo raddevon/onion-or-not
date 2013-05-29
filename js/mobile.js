@@ -134,7 +134,6 @@ function showResponse(response) {
         // 'height': $("#feedback").outerHeight()
         'transform':'translate(0,' + (0-answer) + 'px)'
         // 'background': 'green'
-        // 'background': 'linear-gradient(to bottom, rgba(86,154,127,.9) 15%,rgba(230,234,242,.85) 50%)'
     });
     $("#answer").css({
         // 'bottom': 0 - $('#feedback').outerHeight(),
@@ -153,7 +152,7 @@ function showResponse(response) {
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){
-        $('#white, #quiz').css('overflow', '');
+        $('#white').css('overflow', '');
         $('#answer').css('visibility', 'hidden');
         },400);
 
