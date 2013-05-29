@@ -196,6 +196,7 @@ body {
 		position: relative;
 		display: inline-block;
 		width: 100%;
+		overflow: visible;
 		}
 
 		button {
@@ -206,7 +207,9 @@ body {
 			width: 40%;
 			padding: .25em;
 			cursor: pointer;
-			border: 2px outset @White;
+			// border: 2px outset @White;
+			border: 2px outset fadeout(@White, 35%);
+
 			border-radius: 15px;
 			margin: .5em .5em;
 			-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -232,7 +235,7 @@ body {
 		}
 
 		#white{
-			background: fadeout(@White, 25%);
+			background: fadeout(@White, 55%);
 			border-radius:0 0 15px 15px;
 			width: 93%;
 			margin: 0 auto;
@@ -242,8 +245,6 @@ body {
 			// -webkit-transform: translate3d(0,0,0);
 			position: relative;
 			z-index: 1;
-
-			
 		}
 
 
@@ -290,7 +291,7 @@ body {
 
 			.data li {
 				display: inline-block;
-				background-color: lighten(@Green, 2%);
+				background-color: fadeout(@Green, 40%);
 				color: @White;
 				line-height: 1.5em;
 				padding: .5em;

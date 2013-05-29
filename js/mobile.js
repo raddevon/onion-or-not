@@ -153,7 +153,7 @@ function showResponse(response) {
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){
-        $('#white').css('overflow', '');
+        $('#white, #quiz').css('overflow', '');
         $('#answer').css('visibility', 'hidden');
         },400);
 
