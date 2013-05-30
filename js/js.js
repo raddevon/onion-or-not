@@ -94,6 +94,7 @@ function HeadlineList(url) {
             },
             type: 'GET',
             data: {},
+            timeout: 4000,
             datatype: 'json'
         });
     };
