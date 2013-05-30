@@ -235,7 +235,7 @@ button {
   margin: .5em .5em;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-button:active {
+.active {
   background-color: rgba(61, 110, 90, 0.95);
   border: 2px inset rgba(224, 233, 238, 0.65);
 }

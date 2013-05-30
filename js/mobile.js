@@ -185,10 +185,12 @@ function answerResponse(trigger) {
 
 function touchClick(sel, fnc) {
   $(sel).on('touchstart click', function(event) {
+        $(sel).toggleClass('active');
         event.stopPropagation();
         event.preventDefault();
         if(event.handled !== true) {
             fnc(event);
+            $(sel).toggleClass('active');
             event.handled = true;
         } else {
             return false;
