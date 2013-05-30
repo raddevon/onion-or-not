@@ -321,37 +321,31 @@ button {
 #feedback .message {
   color: #e0e9ee;
   display: inline-block;
-  margin-bottom: .5em;
+}
+#feedback .data {
+  margin: .5em 0;
 }
 #feedback .data li {
   display: inline-block;
   background-color: rgba(61, 110, 90, 0.6);
   color: #e0e9ee;
-  line-height: 1.5em;
-  padding: .5em;
-  height: 3em;
-  width: 90%;
+  height: 4.8em;
+  width: 95%;
   border-radius: 15px;
   margin: .3em;
+  text-align: center;
 }
 #feedback .data li h3 {
-  float: left;
-  left: 0;
-  display: inline-table;
-  margin: .5em;
-}
-#feedback .social h3 {
-  letter-spacing: 0.1em;
+  border-bottom: 1px dashed rgba(224, 233, 238, 0.9);
+  padding: .1em 0;
 }
 #feedback #source {
   color: #e0e9ee;
   font-size: 1.2em;
   font-family: 'Roboto Condensed', helvetica;
-  overflow: hidden;
   display: inline-block;
   cursor: pointer;
-  margin: .7em 0;
-  float: left;
+  padding-top: .6em;
 }
 #feedback #source p {
   padding: 0 1em;
@@ -371,25 +365,30 @@ button {
   width: 95%;
   display: inline-block;
   bottom: 0;
-  padding: .7em;
-}
-#next {
+  padding: .5em 0;
+  margin: 0;
   font-size: 1.5em;
 }
 .social-buttons {
-  margin: .3em auto;
   display: inline-block;
-  float: left;
+  opacity: .85;
+  padding-top: .5em;
 }
 .social-buttons > a {
-  float: left;
-  margin: 0 1.3em;
+  display: inline-block;
+  height: 2em;
+  width: 2em;
+  margin-right: 2em;
+  background: url(../imgs/fb.png);
+  background-size: cover;
 }
-.social-buttons .socialite {
-  margin-left: 0;
+.social-buttons .twitter-share {
+  background: url(../imgs/twitter.png);
+  background-size: cover;
+  margin: 0;
 }
 .social-buttons img {
-  width: 2.3em;
+  height: 2em;
 }
 iframe {
   padding: 0;
