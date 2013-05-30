@@ -120,7 +120,7 @@ body {
 	// min-height: 100%;
 	// max-height: 1200px;
 	margin: 0 auto;
-	background: url(../imgs/HalfGreen.jpg);
+	background: url(../imgs/halfgreen.jpg);
 
 
 	background-size: cover;
@@ -220,7 +220,7 @@ body {
 			width: 25%;
 			padding: .25em;
 			cursor: pointer;
-			border: 2px outset @White;
+			border: 2px outset fadeout(@White, 35%);
 			border-radius: 15px;
 			margin: .5em 2.5em;
 			&:hover{
@@ -262,9 +262,6 @@ body {
 			// -webkit-transition: -webkit-transform 400ms ease-out;
 			z-index: 0;
 			border-radius:0 0 15px 15px;
-
-			// position: absolute;
-
 		}
 
 		#answer {
@@ -316,10 +313,9 @@ body {
 				background-color: fadeout(@Green, 40%);
 				color: darken(@White, 0%);
 				line-height: 1.1em;
-				padding: 1em;
+				padding: 1em .5em .5em .5em;
 				// width: 92%;
 				min-width: 35%;
-				width: 40%;
 				// display: inline-table;
 				border-radius: 15px;
 				// float: left;
@@ -337,11 +333,9 @@ body {
 
 
 			#source {
-				// background-color: fadeout(@Green, 40%);
 				color: darken(@White, 0%);
 				display: inline-block;
-				padding: 10%;
-				// width: inherit;
+				padding: 12%;
 				font-size: 1.5em;
 				font-family: @font;
 				overflow: hidden;
@@ -385,10 +379,11 @@ body {
 			}
 
 			button{
-				width: 30%;
+				width: 50%;
 				display: inline-block;
 				bottom: 0;
 				margin: .5em;
+				font-size: 2em;
 			}
 
 		}
