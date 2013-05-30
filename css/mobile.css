@@ -338,6 +338,8 @@ button {
 #feedback .data li h3 {
   border-bottom: 1px dashed rgba(224, 233, 238, 0.9);
   padding: .1em 0;
+  display: inline-block;
+  width: 90%;
 }
 #feedback #source {
   color: #e0e9ee;
@@ -371,7 +373,7 @@ button {
 }
 .social-buttons {
   display: inline-block;
-  opacity: .85;
+  opacity: .75;
   padding-top: .5em;
 }
 .social-buttons > a {
