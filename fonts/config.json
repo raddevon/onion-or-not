@@ -1,0 +1,13 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "glyphs": [
+    {
+      "uid": "9bc2902722abb366a213a052ade360bc",
+      "css": "spin",
+      "code": 59392,
+      "src": "fontelico"
+    }
+  ]
+}
