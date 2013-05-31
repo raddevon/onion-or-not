@@ -48,7 +48,7 @@ function HeadlineList(url) {
             this.refreshContent();
         }
 
-        listObject.ajaxPromise.success(function() {
+        return listObject.ajaxPromise.pipe(function() {
             var headlinePick = listObject.list[number];
             if (remove) {
                 listObject.deleteHeadline(number);
@@ -109,19 +109,10 @@ function newHeadline() {
         currentHeadline = randomHeadline;
         fillHeadline(randomHeadline);
     });
-
-    // Give a message when the player has seen all the headlines
-    if (headlines.quantity === 0) {
-        alert("You've been through all the headlines. I'll load them up again so you can keep playing.");
-    }
 }
 
 function fillHeadline() {
     if (currentHeadline) {
-        var w = $("#hidden").html(quoted(currentHeadline.title));
-        height = w.height();
-        width = w.width();
-
         $("#headline").animate({
             height: height,
             width: width
