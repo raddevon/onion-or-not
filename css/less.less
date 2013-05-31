@@ -79,6 +79,8 @@ table {
 
 
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
+@import "fontello";
+@import "animation";
 @back1: "../imgs/Huge_onions.jpg";
 @back2: "../imgs/onion_peel.jpg";
 @back3: "../imgs/halfGreen.jpg";
@@ -91,6 +93,8 @@ table {
 // @Green: #e0e9ee;
 // @Green6: rgba(224,233,238, 1.0);
 @Green: #3d6e5a;
+@lighten: rgba(255, 255, 255, 0.5);
+@headline-size: 3.5em;
 
 
 //#a8635a
@@ -121,10 +125,9 @@ body {
 	background-position: center center;
 	}
 
-
 	h1{
 		font-family: 'baskerville', 'Georgia';
-		font-size: 3.5em;
+		font-size: @headline-size;
 		font-weight: 400;
 		line-height: 1.1em;
 	}
@@ -220,7 +223,7 @@ body {
 			}
 		}
 
-		#headline {
+		#headline-box {
 			// font-size: 100%;
 			position: relative;
 			background-color: fadeout(@Green, 5%);
@@ -403,3 +406,13 @@ body {
 
 
 iframe { padding: 0; }
+
+#error, #loading {
+	display: none;
+	font-size: 1.5em;
+}
+
+#spinner {
+	color: @lighten;
+	font-size: @headline-size;
+}
