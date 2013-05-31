@@ -7,8 +7,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script>
+     window.addEventListener("load",function() {
+       setTimeout(function(){
+        window.scrollTo(0, 0);
+        }, 0);
+     });
+  </script>
     <title>OnionOrNot</title>
     <!--[if lt IE 9]> HTML5Shiv
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,6 +26,7 @@
       media="only screen and (min-width: 641px) and (max-width: 800px)" href="css/tablet.css">  -->
     <link rel="stylesheet"
       media="only screen and (min-width: 581px)" href="css/less.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 </head>
 <!-- <div id="wrapper"> -->
 <body>
@@ -44,6 +51,7 @@
         </div>
 
         <div id="white">
+          <div id ="gloss">
 
             <!-- <div id="gradient"></div> -->
 
@@ -52,21 +60,22 @@
 
                 <ul class="data cf">
                     <li>
-                        <h3>Source:</h3>
+                        <h3>Read the Source:</h3>
                         <a target="_blank" id="source" class ="" href=""></a>
                     </li>
                     <!-- Begin social sharing buttons -->
                     <li class ="social">
                         <h3>
-                            Share:
+                            Show and tell:
                         </h3>
                         <div class="social-buttons cf">
-                            <a class="socialite twitter-share" href="http://twitter.com/share" data-url="http://raddevon.github.io/onionornot/" data-count="vertical">
-                                Share on Twitter
+                            <a class="socialite facebook-like" href="http://www.facebook.com/sharer/sharer.php" data-layout="box_count" data-send="true" data-href="http://raddevon.github.io/onionornot/"target="_blank">
+                              <!-- <img src="imgs/fb.png"> -->
+                            </a> 
+                            <a class="socialite twitter-share" href="http://twitter.com/share" data-url="http://raddevon.github.io/onionornot/" data-count="vertical"target="_blank">
+                                <!-- <img src="imgs/twitter.png"> -->
                             </a>
-                            <a class="socialite facebook-like" href="http://www.facebook.com/sharer/sharer.php" data-layout="box_count" data-send="true" data-href="http://raddevon.github.io/onionornot/">
-                                Share on Facebook
-                            </a>
+
                         </div>
                     </li>
                     <!-- End social sharing buttons -->
@@ -78,6 +87,7 @@
                 <button id="not">Not Onion</button>
             </div>
         </div>
+    </div>
     </div>
 
         <nav class="bottom cf">
@@ -93,6 +103,7 @@
     <script type="text/javascript" src="js/jquery.mobile.custom.js"></script>
     <script type="text/javascript" src="js/socialite.min.js"></script>
     <script type="text/javascript" src="js/mobile.js"></script>
+
 
 </body>
 <!-- </div> -->

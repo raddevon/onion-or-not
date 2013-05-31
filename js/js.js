@@ -159,7 +159,7 @@ function fillHeadline() {
 
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
-    setTimeout(function(){$('#white').css('overflow', '');},400);
+    setTimeout(function(){$('#white, #quiz').css('overflow', '');},400);
 
 }
 

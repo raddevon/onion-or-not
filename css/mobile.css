@@ -153,6 +153,7 @@ html {
   height: 100%;
 }
 body {
+  min-height: 480px;
   text-align: center;
   position: relative;
   display: inline-block;
@@ -160,24 +161,24 @@ body {
   height: 100%;
   overflow: hidden;
   margin: 0 auto;
-  background: url(../imgs/HalfGreen.jpg);
+  background: url(../imgs/small.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 h1 {
-  font-family: 'Georgia';
+  font-family: 'Baskervile';
   font-size: 2em;
   font-weight: 400;
   line-height: 1.1em;
 }
 h2 {
   font-size: 1.6em;
-  font-family: sans-serif;
+  font-family: helvetica;
 }
 h3 {
   font-size: 1.5em;
-  font-family: sans-serif;
+  font-family: helvetica;
 }
 nav {
   position: absolute;
@@ -200,7 +201,7 @@ nav ul li:last-child {
   float: right;
 }
 nav ul a {
-  font-family: sans-serif;
+  font-family: helvetica;
   font-size: 1.5em;
   padding: .3em;
   text-decoration: none;
@@ -221,24 +222,29 @@ nav ul a {
   position: relative;
   display: inline-block;
   width: 100%;
+  overflow: visible;
 }
 button {
-  background-color: #3d6e5a;
+  background-color: rgba(61, 110, 90, 0.8);
   color: #e0e9ee;
   font-size: 1.3em;
   width: 40%;
   padding: .25em;
   cursor: pointer;
-  border: 2px outset #e0e9ee;
+  border: 2px outset rgba(224, 233, 238, 0.65);
   border-radius: 15px;
   margin: .5em .5em;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.active {
+  background-color: rgba(61, 110, 90, 0.95);
+  border: 2px inset rgba(224, 233, 238, 0.65);
 }
 #headline {
   z-index: 2;
   position: relative;
   width: 100%;
-  background-color: #3d6e5a;
+  background-color: rgba(61, 110, 90, 0.95);
   border: 3px outset rgba(70, 126, 103, 0.4);
   border-radius: 0 0 5px 5px;
   padding: 1%;
@@ -247,13 +253,18 @@ button {
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
 }
 #white {
-  background: rgba(224, 233, 238, 0.75);
+  background: rgba(224, 233, 238, 0.44999999999999996);
   border-radius: 0 0 15px 15px;
   width: 93%;
   margin: 0 auto;
   -webkit-transition: 400ms ease-out;
   position: relative;
   z-index: 1;
+}
+#gloss {
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.1)), color-stop(100%, #ffffff));
+  z-index: 0;
+  border-radius: 0 0 15px 15px;
 }
 #answer {
   width: 100%;
@@ -262,7 +273,6 @@ button {
   z-index: 0;
 }
 #feedback {
-  z-index: -1;
   position: relative;
   padding: 1em;
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
@@ -315,39 +325,40 @@ button {
 }
 #feedback .message {
   color: #e0e9ee;
-  padding: 0 0 2% 0;
   display: inline-block;
+}
+#feedback .data {
+  margin: .5em 0;
 }
 #feedback .data li {
   display: inline-block;
-  background-color: #41755f;
+  background-color: rgba(61, 110, 90, 0.6);
   color: #e0e9ee;
-  line-height: 1.5em;
-  padding: .5em;
-  min-width: 25%;
-  width: 90%;
+  height: 4.8em;
+  width: 95%;
   border-radius: 15px;
-  margin: 1%;
+  margin: .3em;
+  text-align: center;
 }
 #feedback .data li h3 {
-  float: left;
-  left: 0;
+  border-bottom: 1px dashed rgba(224, 233, 238, 0.9);
+  padding: .1em 0;
   display: inline-block;
-  padding: .1em;
+  width: 90%;
 }
 #feedback #source {
   color: #e0e9ee;
   font-size: 1.2em;
-  font-family: 'Roboto Condensed', sans-serif;
-  overflow: hidden;
+  font-family: 'Roboto Condensed', helvetica;
   display: inline-block;
   cursor: pointer;
+  padding-top: .6em;
 }
 #feedback #source p {
   padding: 0 1em;
   overflow: hidden;
   text-align: left;
-  font-family: sans-serif;
+  font-family: helvetica;
   font-size: 1em;
 }
 #feedback #source p span {
@@ -358,18 +369,33 @@ button {
   font-style: italic;
 }
 #feedback button {
-  width: 70%;
+  width: 95%;
   display: inline-block;
   bottom: 0;
-  margin: .5em;
+  padding: .5em 0;
+  margin: 0;
+  font-size: 1.5em;
 }
 .social-buttons {
-  margin: .5em auto auto auto;
+  display: inline-block;
+  opacity: .75;
+  padding-top: .5em;
 }
-.social-buttons > div,
-.social-buttons > iframe {
-  float: left;
-  margin: 0 40px;
+.social-buttons > a {
+  display: inline-block;
+  height: 2em;
+  width: 2em;
+  margin-right: 2em;
+  background: url(../imgs/fb.png);
+  background-size: cover;
+}
+.social-buttons .twitter-share {
+  background: url(../imgs/twitter.png);
+  background-size: cover;
+  margin: 0;
+}
+.social-buttons img {
+  height: 2em;
 }
 iframe {
   padding: 0;

@@ -134,7 +134,6 @@ function showResponse(response) {
         // 'height': $("#feedback").outerHeight()
         'transform':'translate(0,' + (0-answer) + 'px)'
         // 'background': 'green'
-        // 'background': 'linear-gradient(to bottom, rgba(86,154,127,.9) 15%,rgba(230,234,242,.85) 50%)'
     });
     $("#answer").css({
         // 'bottom': 0 - $('#feedback').outerHeight(),
@@ -186,10 +185,12 @@ function answerResponse(trigger) {
 
 function touchClick(sel, fnc) {
   $(sel).on('touchstart click', function(event) {
+        $(sel).toggleClass('active');
         event.stopPropagation();
         event.preventDefault();
         if(event.handled !== true) {
             fnc(event);
+            $(sel).toggleClass('active');
             event.handled = true;
         } else {
             return false;
@@ -212,4 +213,6 @@ newHeadline();
 if ($(window).width() > 580) {
     Socialite.load('.social-buttons');
 }
+
+
 
