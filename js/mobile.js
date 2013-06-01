@@ -210,9 +210,7 @@ touchClick('#next', newHeadline);
 headlines = new HeadlineList('js/headlines.json');
 newHeadline();
 
-if ($(window).width() > 580) {
-    Socialite.load('.social-buttons');
-}
+
 
 
 

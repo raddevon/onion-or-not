@@ -1,5 +1,7 @@
 var currentHeadline, headlines;
-var feedbackHeight, answerHeight, whiteHeight;
+var answerHeight    = $('#answer').outerHeight();
+var feedbackHeight;
+var whiteHeight     = feedbackHeight + answerHeight;
 
 function Headline(title, url, onion) {
     this.title = title;
@@ -99,6 +101,7 @@ function HeadlineList(url) {
             datatype: 'json'
         });
     };
+}
 
 function quoted(text) {
     // Returns the text with the HTML entities for proper quotes
@@ -114,75 +117,75 @@ function newHeadline() {
 
 function fillHeadline() {
     feedbackHeight  = $('#feedback').outerHeight();
-    answerHeight    = $('#answer').outerHeight();
-    whiteHeight     = feedbackHeight + answerHeight;
 
     if (currentHeadline) {
         $("#headline").html(quoted(currentHeadline.title));
-            $('#feedback, #answer, #white').removeAttr('style');
-            $('#white').css('overflow', 'hidden');
 
-            setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
+        setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
 
-            // Initial sizing of the #white div
-            $("#white").css({
-                'overflow': 'hidden',
-                'height': + total + 'px',
-                'transform':'translate(0,'+(0-feedbackHeight
-            });
+        // Initial sizing of the #white div
+        $("#white").css({
+            'overflow': 'hidden',
+            'height': whiteHeight + 'px',
+            'transform':'translate(0,'+ (0-feedbackHeight) + 'px)'
+        });
 
-            // Initial positioning of #feedback div
-            $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
+        // Initial positioning of #feedback div
+        $("#feedback").css({
+            'transform':'translate(0,' + 0 + 'px)',
+            'opacity': '0'
+        });
 
-        }
+        $("#answer").css({
+            'transform':'translate(0,' + 0 + 'px)',
+            'opacity': '1',
+            'visibility' : 'visible'
+        });
     }
-
-    // Fill the response in the appropriate element
-    $("#feedback .message").text(response);
-
-    // Animate the response
-    $("#white").css({
-        // 'transition': '400ms ease-out',
-        'height': $("#feedback").outerHeight()
-        // 'background': 'green'
-        // 'background': 'linear-gradient(to bottom, rgba(86,154,127,.9) 15%,rgba(230,234,242,.85) 50%)'
-    });
-    $("#answer").css({
-        // 'bottom': 0 - $('#feedback').outerHeight(),
-        'transform':'translate(0,' + $('#feedback').outerHeight() + 'px)',
-        // 'opacity': 0,
-        'visibility': 'hidden'
-    });
-    $("#feedback").css({
-        // 'transition': '400ms ease-out',
-        'opacity': 1,
-        // 'top': 0 - answer + 'px',
-        'transform':'translate(0,' + answer + ')',
-        'visibility': 'visible'
-    });
-
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){$('#white, #quiz').css('overflow', '');},400);
 
 }
 
-function answerResponse() {
+function showResponse(response) {
+    // Fill the response in the appropriate element
+    $("#feedback .message").text(response);
+
+    // Animate the response
+    $("#white").css({
+        'transform':'translate(0,' + (0-answerHeight) + 'px)'
+    });
+    $("#answer").css({
+        'transform':'translate(0,' + answerHeight + 'px)',
+        'opacity': 0
+    });
+    $("#feedback").css({
+        'opacity': 1,
+        'transform':'translate(0,' +  answerHeight + 'px)',
+        'visibility': 'visible'
+    });
+
+    // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
+    setTimeout(function(){
+        $('#white').css('overflow', '');
+        $('#answer').css('visibility', 'hidden');
+        },400);
+
+}
+
+function answerResponse(trigger) {
     // Grabs the portion of the URL between the second and third slashes and lists it as the source. Uses the full link as the href.
     $("#source").text(currentHeadline.domain).attr('href', currentHeadline.url);
 
     var response;
     // Compare button clicked with headline's onion value. Starts building a response based on whether the response was correct or not.
-    if ( (this.id === "not" && !currentHeadline.onion) || (this.id === "onion" && currentHeadline.onion) ) {
+    if ( (trigger.id === "not" && !currentHeadline.onion) || (trigger.id === "onion" && currentHeadline.onion) ) {
         response = "Yup. ";
-        // $("body").css("background", "url('imgs/FullGreen.jpg')").css("background-size", "cover");
-        // setTimeout(function(){$("#white").toggleClass("correct");},50);
-        $("#feedback").toggleClass("correct");
+        $("#feedback").addClass("correct");
     } else {
         response = "Nope. ";
-        // setTimeout(function(){$("#white").toggleClass("wrong");},50);
-        $("#feedback").toggleClass("wrong");
-        // $("body").css("background", "url('imgs/NoGreen.jpg')").css("background-size", "cover");
+        $("#feedback").addClass("wrong");
     }
     // Appends to reflect the fakeness or realness of the story.
     if (currentHeadline.onion) {
@@ -193,13 +196,30 @@ function answerResponse() {
     showResponse(response);
 }
 
-// Click event bindings for the buttons
-// document.addEventListener('touchend', answerResponse(e) );
-$('#onion, #not').on("tap click",answerResponse);
-$('#next').on("tap click", newHeadline);
+function touchClick(sel, fnc) {
+  $(sel).on('touchstart click', function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        if(event.handled !== true) {
+            fnc(event);
+            event.handled = true;
+        } else {
+            return false;
+        }
+  });
+}
+
+// Click binding for answer buttons
+touchClick('#onion, #not', function(e) {
+    answerResponse(e.delegateTarget);
+});
+
+// Click binding for next headline button
+touchClick('#next', newHeadline);
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
+newHeadline();
 
 // Fills the next headline after a successful AJAX call
 $(headlines).on('ajaxSuccess', function() {
@@ -218,8 +238,7 @@ $(headlines).on('ajaxError', function() {
     $('#error').show();
 });
 
-newHeadline();
 
-if (window.matchMedia('only screen and (min-width: 581px)').matches) {
-    $("#mobile").remove();
+if ($(window).width() > 580) {
+    Socialite.load('.social-buttons');
 }

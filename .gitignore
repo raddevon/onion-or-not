@@ -65,4 +65,4 @@ local_settings.py
 tmp
 
 # Local Secrets
-secrets.txt
+secrets.txtcodekit-config.json
