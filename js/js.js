@@ -1,7 +1,6 @@
 var currentHeadline, headlines;
-var answerHeight    = $('#answer').outerHeight();
-var feedbackHeight;
-var whiteHeight     = feedbackHeight + answerHeight;
+var answerHeight = $('#answer').outerHeight();
+var feedbackHeight, whiteHeight;
 
 function Headline(title, url, onion) {
     this.title = title;
@@ -116,12 +115,15 @@ function newHeadline() {
 }
 
 function fillHeadline() {
-    feedbackHeight  = $('#feedback').outerHeight();
 
     if (currentHeadline) {
         $("#headline").html(quoted(currentHeadline.title));
 
+
         setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
+
+        feedbackHeight  = $('#feedback').outerHeight();
+        whiteHeight = feedbackHeight + answerHeight;
 
         // Initial sizing of the #white div
         $("#white").css({
