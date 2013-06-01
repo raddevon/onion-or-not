@@ -154,7 +154,8 @@ function showResponse(response) {
 
     // Animate the response
     $("#white").css({
-        'transform':'translate(0,' + (0-answerHeight) + 'px)'
+        'transform':'translate(0,' + (0-answerHeight) + 'px)',
+        'overflow': 'hidden'
     });
     $("#answer").css({
         'transform':'translate(0,' + answerHeight + 'px)',
