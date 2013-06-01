@@ -198,7 +198,7 @@ function answerResponse(trigger) {
 }
 
 function touchClick(sel, fnc) {
-  $(sel).on('touchstart click', function(event) {
+  $(sel).on('touchend click', function(event) {
         event.stopPropagation();
         event.preventDefault();
         if(event.handled !== true) {
