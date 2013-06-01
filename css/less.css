@@ -396,7 +396,7 @@ button:active {
 }
 #headline-box {
   position: relative;
-  background-color: rgba(61, 110, 90, 0.95);
+  background-color: #3d6e5a;
   border: 3px outset rgba(70, 126, 103, 0.4);
   border-radius: 15px;
   padding: 2%;

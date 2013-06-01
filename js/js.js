@@ -1,4 +1,5 @@
 var currentHeadline, headlines;
+var feedbackHeight, answerHeight, whiteHeight;
 
 function Headline(title, url, onion) {
     this.title = title;
@@ -112,26 +113,29 @@ function newHeadline() {
 }
 
 function fillHeadline() {
+    feedbackHeight  = $('#feedback').outerHeight();
+    answerHeight    = $('#answer').outerHeight();
+    whiteHeight     = feedbackHeight + answerHeight;
+
     if (currentHeadline) {
-        $("#headline").animate({
-            height: height,
-            width: width
-            }, 50, 'linear', function(){
-            $("#headline").html(quoted(currentHeadline.title));
+        $("#headline").html(quoted(currentHeadline.title));
             $('#feedback, #answer, #white').removeAttr('style');
             $('#white').css('overflow', 'hidden');
 
             setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
 
             // Initial sizing of the #white div
-            $("#white").height($("#answer").outerHeight());
+            $("#white").css({
+                'overflow': 'hidden',
+                'height': + total + 'px',
+                'transform':'translate(0,'+(0-feedbackHeight
+            });
 
             // Initial positioning of #feedback div
             $("#feedback").css('bottom', $('#answer').outerHeight() + $('#feedback').outerHeight()+ 'px');
 
-        });
+        }
     }
-}
 
     // Fill the response in the appropriate element
     $("#feedback .message").text(response);

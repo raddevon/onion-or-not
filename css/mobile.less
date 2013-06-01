@@ -91,10 +91,12 @@ table {
 // @Green: #e0e9ee;
 // @Green6: rgba(224,233,238, 1.0);
 @Green: #3d6e5a;
+@lighten: rgba(255, 255, 255, 0.5);
 
 
 //#a8635a
 @font: 'Roboto Condensed', helvetica;
+@headline-size: 3.5em;
 
 html {
 	height: 100%;
@@ -425,8 +427,14 @@ body {
 	}
 }
 
+#error, #loading {
+	display: none;
+	font-size: 1.5em;
+}
 
-	
-
+#spinner {
+	color: @lighten;
+	font-size: @headline-size;
+}
 
 iframe { padding: 0; }
