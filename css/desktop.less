@@ -1,0 +1,109 @@
+@import "base.less";
+
+html {
+	background-image: url(../imgs/halfgreen2.jpg);
+}
+
+h2 {
+	font-size: 3em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+nav {
+	position: relative;
+	border-radius: 0  0 15px 15px;
+	max-width: 1600px;
+	height: 3em;
+	margin: 0 auto;
+	ul li {
+		margin-left: 1em;
+		&:last-child {
+			float: right;
+			margin-right: 1em;
+		}
+	}
+	a {
+		font-size: 2em;
+		padding: .3em;
+	}
+}
+
+.bottom {
+	border-radius: 0  0 15px 15px;
+	height: 3em;
+	display: none;
+}
+
+#quiz {
+	overflow: hidden;
+}
+
+button {
+	font-size: 1.5em;
+	width: 25%;
+	margin: .5em 2.5em;
+	&:hover{
+		background-color: fadeout(@Green,5%);
+	}
+}
+
+#headline-box {
+	position: relative;
+	border-radius: 15px;
+	padding: 2%;
+	min-width: 570px;
+}
+
+#white { width: 95%; }
+
+#answer {
+	position: relative;
+	bottom: 0;
+}
+
+.message {
+	padding: 0 0 .25em 0;
+}
+
+.data li {
+	display: inline-table;
+	line-height: 1.1em;
+	padding: 1em .5em .5em .5em;
+	min-width: 35%;
+	margin: 1%;
+	height: 170px;
+	h3 {
+		padding-bottom: .4em;
+		margin-bottom: .25em;
+		border-bottom: 1px dashed fadeout(@White, 30%);
+	}
+
+}
+
+#source {
+	padding: 12%;
+	font-size: 1.5em;
+	border-radius: 15px;
+	text-decoration: none;
+	&:hover{
+		background-color: fadeout(@Green, 30%);
+	}
+}
+
+#next {
+	width: 50%;
+	margin: .5em;
+	font-size: 2em;
+}
+
+.social-buttons {
+	min-width: 200px;
+	margin:.5em auto auto auto;
+	> div, > iframe {
+		float: left;
+		margin: 0 20px;
+	}
+}

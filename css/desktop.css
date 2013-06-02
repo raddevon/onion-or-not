@@ -292,7 +292,11 @@ table {
   }
 }
 html {
-  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 body {
   text-align: center;
@@ -301,9 +305,6 @@ body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
 }
 h1 {
   font-family: 'Baskerville', 'Georgia', serif;
@@ -330,6 +331,11 @@ nav ul li {
 }
 nav ul li:last-child {
   float: right;
+}
+nav a {
+  font-family: 'Helvetica', sans-serif;
+  text-decoration: none;
+  color: rgba(61, 110, 90, 0.75);
 }
 .bottom {
   position: absolute;
@@ -479,8 +485,8 @@ iframe {
   color: rgba(255, 255, 255, 0.5);
   font-size: 3.5em;
 }
-body {
-  background: url(../imgs/halfgreen2.jpg);
+html {
+  background-image: url(../imgs/halfgreen2.jpg);
 }
 h2 {
   font-size: 3em;
@@ -501,6 +507,10 @@ nav ul li {
 nav ul li:last-child {
   float: right;
   margin-right: 1em;
+}
+nav a {
+  font-size: 2em;
+  padding: .3em;
 }
 .bottom {
   border-radius: 0  0 15px 15px;
@@ -523,6 +533,9 @@ button:hover {
   border-radius: 15px;
   padding: 2%;
   min-width: 570px;
+}
+#white {
+  width: 95%;
 }
 #answer {
   position: relative;
