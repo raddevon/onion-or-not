@@ -83,6 +83,8 @@ table {
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 @font: 'Roboto Condensed', sans-serif;
 
+@sans: 'Helvetica', sans-serif;
+
 // Icon font and spinner animation
 @import "fontello";
 @import "animation";
@@ -119,11 +121,12 @@ h1 {
 }
 
 h2, h3 {
-    font-family: 'Helvetica', sans-serif;
+    font-family: @sans;
 }
 
 nav {
     clear: both;
+    width: 100%;
     ul {
         clear: both;
         width: 100%;
@@ -133,19 +136,18 @@ nav {
             &:last-child {
                 float: right;
             }
-        /* NOTE: Left out an 'a' selector that may need to be added back */
         }
     }
     a {
-        font-family: 'Helvetica', sans-serif;
+        font-family: @sans;
         text-decoration: none;
-        color: rgba(61, 110, 90, 0.75);
+        color: fadeout(@Green, 10%);
     }
 }
 
 .bottom {
     position: absolute;
-    max-width: 1600px;
+    height: 2em;
     width: 100%;
     bottom: 0;
     clear: both;

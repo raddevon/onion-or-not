@@ -318,6 +318,7 @@ h3 {
 }
 nav {
   clear: both;
+  width: 100%;
 }
 nav ul {
   clear: both;
@@ -326,8 +327,6 @@ nav ul {
 nav ul li {
   float: left;
   margin-top: 0.5em;
-  /* NOTE: Left out an 'a' selector that may need to be added back */
-
 }
 nav ul li:last-child {
   float: right;
@@ -335,11 +334,11 @@ nav ul li:last-child {
 nav a {
   font-family: 'Helvetica', sans-serif;
   text-decoration: none;
-  color: rgba(61, 110, 90, 0.75);
+  color: rgba(61, 110, 90, 0.9);
 }
 .bottom {
   position: absolute;
-  max-width: 1600px;
+  height: 2em;
   width: 100%;
   bottom: 0;
   clear: both;
