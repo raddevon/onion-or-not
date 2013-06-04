@@ -1,6 +1,13 @@
 var currentHeadline, headlines;
-var answerHeight = $('#answer').outerHeight();
-var feedbackHeight, whiteHeight;
+var answerHeight;
+var aboutHeight;
+var feedbackHeight;
+var whiteHeight;
+
+
+// grab objects... values of a and b are switched later
+a = $('#headline');
+b = $('#above');
 
 function Headline(title, url, onion) {
     this.title = title;
@@ -110,43 +117,86 @@ function quoted(text) {
 function newHeadline() {
     headlines.getRandom(true).done(function(randomHeadline) {
         currentHeadline = randomHeadline;
-        fillHeadline(randomHeadline);
+
+    if (currentHeadline) {
+        a.html(quoted(currentHeadline.title));
+
+ answerHeight = $('#answer').outerHeight();
+ aboutHeight = $('#about').outerHeight();
+ feedbackHeight  = $('#feedback').outerHeight();
+
+        $("#white").css({
+            'overflow': 'hidden',
+            // 'height': whiteHeight + 'px',
+            'transform':'translate(0,'+ (0-feedbackHeight-aboutHeight) + 'px)'
+        });
+
+        // Initial positioning of #feedback div
+        $("#feedback, #about").css({
+            'transform':'translate(0,' + 0 + 'px)'
+            // 'opacity': '0'
+        });
+
+        $("#answer").css({
+            'transform':'translate(0,' + 0 + 'px)',
+            'visibility' : 'visible'
+        });
+    }
     });
 }
 
 function fillHeadline() {
 
     if (currentHeadline) {
-        $("#headline").html(quoted(currentHeadline.title));
 
+        aHeight = a.outerHeight();
+        aboveHeight = b.outerHeight();
+        aboveWidth = b.outerWidth();
+        a.html(quoted(currentHeadline.title));
+        // aboveHeight
 
-        setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
+        // Initial sizing of the divs
+        // $("#headline-box").css({
+        //     'transform': 'scale('+aboveWidth+','+aboveHeight+')',  //headline-box set to height of next hidden headline
+        //     'min-width': aboveWidth + 'px'
+        // });
 
-        feedbackHeight  = $('#feedback').outerHeight();
-        whiteHeight = feedbackHeight + answerHeight;
-
-        // Initial sizing of the #white div
-        $("#white").css({
-            'overflow': 'hidden',
-            'height': whiteHeight + 'px',
-            'transform':'translate(0,'+ (0-feedbackHeight) + 'px)'
+        $("#headline-box").animate({
+            'height': aboveHeight + 'px',  //headline-box set to height of next hidden headline
+            'min-width': aboveWidth + 'px'
         });
 
-        // Initial positioning of #feedback div
-        $("#feedback").css({
-            'transform':'translate(0,' + 0 + 'px)',
+        a.css({
+            'transform':'translate(0,' + (0-aboveHeight) + 'px)',
             'opacity': '0'
         });
 
-        $("#answer").css({
-            'transform':'translate(0,' + 0 + 'px)',
-            'opacity': '1',
-            'visibility' : 'visible'
+        b.css({
+            'transform':'translate(0,' + (0) + 'px)',
+            'opacity': '1'
         });
+
+        $("#white").css({
+            'transform':'translate(0,'+ (0-feedbackHeight-aboutHeight) + 'px)'
+        }).toggleClass('overflow');
+
+        // Initial positioning of #feedback div
+        $("#feedback, #answer").css({
+            'transform':'translate(0,' + 0 + 'px)',
+            'visibility' : 'visible'
+        }).toggleClass("opacity");
     }
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
-    setTimeout(function(){$('#white, #quiz').css('overflow', '');},400);
+    setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
+
+    //switch the values of a and b so to allow the headlines to cycle
+    oldA = a; //save object a to give to b later
+    a = b;    // make a equal to b
+    b = oldA; // make b equal to old a
+
+    // In the background move the a headline down below the headline-box to prep
+    setTimeout(function(){b.css('transform','translate(0,'+ (aboveHeight) + 'px)');}, 400);
 
 }
 
@@ -156,24 +206,30 @@ function showResponse(response) {
 
     // Animate the response
     $("#white").css({
-        'transform':'translate(0,' + (0-answerHeight) + 'px)',
-        'overflow': 'hidden'
+        'transform':'translate(0,' + (0-answerHeight-aboutHeight) + 'px)'
     });
-    $("#answer").css({
-        'transform':'translate(0,' + answerHeight + 'px)',
-        'opacity': 0
-    });
-    $("#feedback").css({
-        'opacity': 1,
-        'transform':'translate(0,' +  answerHeight + 'px)',
-        'visibility': 'visible'
-    });
+    $("#feedback, #answer").css({
+        // 'opacity': 1,
+        'transform':'translate(0,' +  (answerHeight - 4) + 'px)'
+    }).toggleClass("opacity");
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){
-        $('#white').css('overflow', '');
+        $('#white').toggleClass('overflow');
         $('#answer').css('visibility', 'hidden');
         },400);
+
+    // setTimeout(function(){b.css('transform','translate(0,'+ (aboveHeight) + 'px)');}, 400);
+
+    //Grab the next random headline
+    headlines.getRandom(true).done(function(randomHeadline){
+        currentHeadline = randomHeadline;
+    });
+    //Fill the other hidden h1 to measure it later
+    b.html(quoted(currentHeadline.title));
+        aboveHeight = b.outerHeight();
+        aboveWidth = b.outerWidth();
+
 
 }
 
@@ -199,6 +255,29 @@ function answerResponse(trigger) {
     showResponse(response);
 }
 
+function showAbout(){
+        total = feedbackHeight + answerHeight;
+
+            // Initial sizing of the #white div
+        $("#white").css({
+            'overflow': 'hidden',
+            // 'height': aboutHeight + 'px',
+            'transform':'translate(0,'+ (0-feedbackHeight-answerHeight) + 'px)'
+        });
+
+        // Initial positioning of #feedback div
+        $("#feedback, #about, #headline, #answer").css({
+            'transform':'translate(0,' + total + 'px)',
+            'opacity': '0'
+        });
+
+        $("#about").css({
+            'transform':'translate(0,' + total + 'px)',
+            'opacity': '1'
+        });
+
+}
+
 function touchClick(sel, fnc) {
   $(sel).on('touchend click', function(event) {
         event.stopPropagation();
@@ -212,17 +291,24 @@ function touchClick(sel, fnc) {
   });
 }
 
+// Initial load of headlines and first random headline
+headlines = new HeadlineList('js/headlines.json');
+newHeadline();
+
 // Click binding for answer buttons
 touchClick('#onion, #not', function(e) {
     answerResponse(e.delegateTarget);
 });
 
-// Click binding for next headline button
-touchClick('#next', newHeadline);
+touchClick('.about', function() {
+    showAbout();
+});
 
-// Initial load of headlines and first random headline
-headlines = new HeadlineList('js/headlines.json');
-newHeadline();
+// Click binding for next headline button
+touchClick('#next', function(e) {
+
+    fillHeadline(currentHeadline);
+});
 
 // Fills the next headline after a successful AJAX call
 $(headlines).on('ajaxSuccess', function() {
