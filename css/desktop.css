@@ -293,19 +293,17 @@ table {
 }
 html {
   max-height: 100%;
+  position: relative;
   overflow: hidden;
 }
 body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url(../imgs/halfgreen2.jpg);
   text-align: center;
-  position: relative;
   display: inline-block;
   width: 100%;
   margin: 0 auto;
-  width: 70em;
 }
 h1 {
   font-family: 'Baskerville', 'Georgia', serif;
@@ -337,14 +335,6 @@ nav a {
   text-decoration: none;
   color: rgba(61, 110, 90, 0.9);
 }
-.bottom {
-  position: absolute;
-  height: 2em;
-  width: 100%;
-  bottom: 0;
-  clear: both;
-  text-align: center;
-}
 #quiz {
   max-width: 70em;
   position: relative;
@@ -371,12 +361,27 @@ button:active {
   color: #e0e9ee;
   display: inline-block;
 }
+#aboutH {
+  position: absolute;
+  min-width: 100%;
+  padding: .5em;
+  -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
+  -webkit-transform: translateY(-200px);
+  opacity: 0;
+}
+#aboutH.opacity {
+  opacity: 1;
+}
 #above {
   position: absolute;
   min-width: 100%;
   padding: .5em;
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
-  -webkit-transform: translate(-0.5em, 500px);
+  -webkit-transform: translateY(500px);
+  opacity: 0;
+}
+#above.opacity {
+  opacity: 1;
 }
 #headline {
   z-index: 2;
@@ -387,6 +392,10 @@ button:active {
   color: #e0e9ee;
   display: inline-block;
   -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
+  opacity: 1;
+}
+#headline.opacity {
+  opacity: 0;
 }
 #white {
   background: rgba(224, 233, 238, 0.44999999999999996);
@@ -410,11 +419,11 @@ button:active {
   border-radius: 0 0 15px 15px;
 }
 #about {
-  height: 350px;
+  height: 450px;
   width: 100%;
-  background-color: rgba(61, 110, 90, 0.8);
+  min-width: 1000px;
   display: inline-block;
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: all 400ms;
 }
 #answer {
@@ -523,6 +532,9 @@ iframe {
   color: rgba(255, 255, 255, 0.5);
   font-size: 3.5em;
 }
+html {
+  background-image: url(../imgs/halfgreen2.jpg);
+}
 h2 {
   font-size: 3em;
 }
@@ -566,6 +578,9 @@ button:hover {
 #headline-box {
   border-radius: 15px;
   min-width: 570px;
+}
+#aboutH {
+  font-size: 4.5em;
 }
 #white {
   width: 95%;

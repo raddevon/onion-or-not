@@ -1,4 +1,4 @@
-var currentHeadline, headlines;
+var currentHeadline, headlines, aboveHeight, aboveWidth, mobile;
 var answerHeight;
 var aboutHeight;
 var feedbackHeight;
@@ -6,8 +6,8 @@ var whiteHeight;
 
 
 // grab objects... values of a and b are switched later
-a = $('#headline');
-b = $('#above');
+current = $('#headline');
+next = $('#above');
 
 function Headline(title, url, onion) {
     this.title = title;
@@ -114,19 +114,18 @@ function quoted(text) {
     return '&#8220;' + text + '&#8221;';
 }
 
-function newHeadline() {
+function firstLoad() {
     headlines.getRandom(true).done(function(randomHeadline) {
         currentHeadline = randomHeadline;
 
     if (currentHeadline) {
-        a.html(quoted(currentHeadline.title));
+        current.html(quoted(currentHeadline.title));
 
- answerHeight = $('#answer').outerHeight();
- aboutHeight = $('#about').outerHeight();
- feedbackHeight  = $('#feedback').outerHeight();
+         answerHeight = $('#answer').outerHeight();
+         aboutHeight = $('#about').outerHeight();
+         feedbackHeight  = $('#feedback').outerHeight();
 
         $("#white").css({
-            'overflow': 'hidden',
             // 'height': whiteHeight + 'px',
             'transform':'translate(0,'+ (0-feedbackHeight-aboutHeight) + 'px)'
         });
@@ -143,38 +142,41 @@ function newHeadline() {
         });
     }
     });
-}
 
+    mobile = screen.width < 580;
+}
+function animateHeadline(x,y){
+        // Initial sizing of the divs
+        if(mobile){
+            $("#headline-box").css({
+            'height': y + 'px',  //headline-box set to height of next hidden headline
+            'min-width': x + 'px'
+        });
+        }
+        //give enhanced version if not a mobile device
+        else {
+            $("#headline-box").animate({
+            'height': y + 'px',  //headline-box set to height of next hidden headline
+            'min-width': x + 'px'
+        });
+        }
+}
 function fillHeadline() {
 
     if (currentHeadline) {
 
-        aHeight = a.outerHeight();
-        aboveHeight = b.outerHeight();
-        aboveWidth = b.outerWidth();
-        a.html(quoted(currentHeadline.title));
-        // aboveHeight
+        current.html(quoted(currentHeadline.title));
 
-        // Initial sizing of the divs
-        // $("#headline-box").css({
-        //     'transform': 'scale('+aboveWidth+','+aboveHeight+')',  //headline-box set to height of next hidden headline
-        //     'min-width': aboveWidth + 'px'
-        // });
+        animateHeadline(aboveWidth,aboveHeight);
 
-        $("#headline-box").animate({
-            'height': aboveHeight + 'px',  //headline-box set to height of next hidden headline
-            'min-width': aboveWidth + 'px'
-        });
-
-        a.css({
-            'transform':'translate(0,' + (0-aboveHeight) + 'px)',
-            'opacity': '0'
-        });
-
-        b.css({
-            'transform':'translate(0,' + (0) + 'px)',
-            'opacity': '1'
-        });
+        //slide current headline up and out of the headline-box
+        current.css({
+            'transform':'translate(0,' + (0-aboveHeight) + 'px)'
+        }).toggleClass("opacity");
+        //slide the next headline up and into the headline-box
+        next.css({
+            'transform':'translate(0,' + (0) + 'px)'
+        }).toggleClass("opacity");
 
         $("#white").css({
             'transform':'translate(0,'+ (0-feedbackHeight-aboutHeight) + 'px)'
@@ -190,13 +192,13 @@ function fillHeadline() {
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
 
-    //switch the values of a and b so to allow the headlines to cycle
-    oldA = a; //save object a to give to b later
-    a = b;    // make a equal to b
-    b = oldA; // make b equal to old a
+    //switch the values of current and next so to allow the headlines to cycle
+    oldA = current; //save js object of current to give to next later
+    current = next;    // make current equal to next in the js
+    next = oldA; // make next equal to old current
 
-    // In the background move the a headline down below the headline-box to prep
-    setTimeout(function(){b.css('transform','translate(0,'+ (aboveHeight) + 'px)');}, 400);
+    // In the background move the current headline down below the headline-box to prep
+    setTimeout(function(){next.css('transform','translate(0,'+ (aboveHeight) + 'px)');}, 400);
 
 }
 
@@ -226,9 +228,9 @@ function showResponse(response) {
         currentHeadline = randomHeadline;
     });
     //Fill the other hidden h1 to measure it later
-    b.html(quoted(currentHeadline.title));
-        aboveHeight = b.outerHeight();
-        aboveWidth = b.outerWidth();
+    next.html(quoted(currentHeadline.title));
+        aboveHeight = next.outerHeight();
+        aboveWidth = next.outerWidth();
 
 
 }
@@ -257,24 +259,29 @@ function answerResponse(trigger) {
 
 function showAbout(){
         total = feedbackHeight + answerHeight;
+        aboutH = $("#aboutH").outerHeight();
+        aboutW = $("#aboutH").outerWidth;
 
             // Initial sizing of the #white div
         $("#white").css({
-            'overflow': 'hidden',
-            // 'height': aboutHeight + 'px',
             'transform':'translate(0,'+ (0-feedbackHeight-answerHeight) + 'px)'
         });
 
         // Initial positioning of #feedback div
-        $("#feedback, #about, #headline, #answer").css({
+        $("#feedback, #headline, #above, #answer").css({
             'transform':'translate(0,' + total + 'px)',
             'opacity': '0'
         });
 
+        $("#aboutH").css({
+            'transform':'translate(0,' + 0 + 'px)'
+        }).toggleClass("opacity");
+
         $("#about").css({
-            'transform':'translate(0,' + total + 'px)',
-            'opacity': '1'
+            'transform':'translate(0,' + total + 'px)'
         });
+
+        animateHeadline(aboutW,aboutH);
 
 }
 
@@ -293,7 +300,7 @@ function touchClick(sel, fnc) {
 
 // Initial load of headlines and first random headline
 headlines = new HeadlineList('js/headlines.json');
-newHeadline();
+firstLoad();
 
 // Click binding for answer buttons
 touchClick('#onion, #not', function(e) {
