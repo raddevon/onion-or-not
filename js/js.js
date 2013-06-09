@@ -156,6 +156,9 @@ function firstLoad() {
             'transform':'translate(0,' + feedbackHeight + 'px)'
         });
 
+        document.ontouchmove = function(event){
+            event.preventDefault();
+        };
         // $(".no-js").css({
         //     'max-height': $("body").outerHeight()
         // });
@@ -308,10 +311,12 @@ function showAbout(){
             'transform':'translate(0,' + 0 + 'px)'
         }).toggleClass("opacity");
 
-        $(".no-js").css({
-            'overflow': 'scroll'
-        });
+        // $(".no-js").css({
+        //     'overflow': 'scroll'
+        // });
 
+        document.ontouchmove = null;
+        
         animateHeadline(aboutH);
 
 }
@@ -339,6 +344,10 @@ function hideAbout(){
             // 'transform':'translate(0,' + fix + 'px)'
         });
 
+
+        document.ontouchmove = function(event){
+            event.preventDefault();
+        };
 
         if (flip) {
             fillHeadline();
