@@ -1,8 +1,22 @@
-var currentHeadline, headlines, aboveHeight, aboveWidth, mobile;
+var currentHeadline, headlines, nextHeight, currentHeight, mobile, fix;
 var answerHeight;
 var aboutHeight;
 var feedbackHeight;
-var whiteHeight;
+var aboutH;
+var flip;
+
+// WebFontConfig = {
+//     google: { families: [ 'Roboto+Condensed:400,300:latin' ] }
+//   };
+//   (function() {
+//     var wf = document.createElement('script');
+//     wf.src = ('https:' === document.location.protocol ? 'https' : 'http') +
+//       '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+//     wf.type = 'text/javascript';
+//     wf.async = 'true';
+//     var s = document.getElementsByTagName('script')[0];
+//     s.parentNode.insertBefore(wf, s);
+//   })();
 
 
 // grab objects... values of a and b are switched later
@@ -120,44 +134,55 @@ function firstLoad() {
 
     if (currentHeadline) {
         current.html(quoted(currentHeadline.title));
+        //cache heights for calucluating how much to move white div
+        feedbackHeight  = $('#feedback').outerHeight();
+        answerHeight = $('#answer').outerHeight();
+        aboutHeight = $('#about').outerHeight();
+        aboutH = $("#aboutH").outerHeight();
 
-         answerHeight = $('#answer').outerHeight();
-         aboutHeight = $('#about').outerHeight();
-         feedbackHeight  = $('#feedback').outerHeight();
+        fix = $("body").outerHeight() - $(".no-js").outerHeight();
+        console.log($("body").outerHeight());
+        console.log($(".no-js").outerHeight());
+
+        console.log(fix);
+
 
         $("#white").css({
-            // 'height': whiteHeight + 'px',
             'transform':'translate(0,'+ (0-feedbackHeight-aboutHeight) + 'px)'
         });
 
         // Initial positioning of #feedback div
-        $("#feedback, #about").css({
-            'transform':'translate(0,' + 0 + 'px)'
-            // 'opacity': '0'
+        $("#about").css({
+            'transform':'translate(0,' + feedbackHeight + 'px)'
         });
 
-        $("#answer").css({
-            'transform':'translate(0,' + 0 + 'px)',
-            'visibility' : 'visible'
-        });
+        // $(".no-js").css({
+        //     'max-height': $("body").outerHeight()
+        // });
+
+        // $("#answer").css({
+        //     'transform':'translate(0,' + 0 + 'px)',
+        //     'visibility' : 'visible'
+        // });
     }
     });
 
-    mobile = screen.width < 580;
+    mobile = screen.width < 780;
+    flip = false;
 }
-function animateHeadline(x,y){
+function animateHeadline(y){
         // Initial sizing of the divs
         if(mobile){
             $("#headline-box").css({
-            'height': y + 'px',  //headline-box set to height of next hidden headline
-            'min-width': x + 'px'
+            'height': y + 4 + 'px'
+            // 'width': x + 'px'  //headline-box set to height of next hidden headline
         });
         }
         //give enhanced version if not a mobile device
         else {
             $("#headline-box").animate({
-            'height': y + 'px',  //headline-box set to height of next hidden headline
-            'min-width': x + 'px'
+            'height': y + 4 + 'px'
+            // 'width': x + 'px'  //headline-box set to height of next hidden headline
         });
         }
 }
@@ -165,13 +190,11 @@ function fillHeadline() {
 
     if (currentHeadline) {
 
-        current.html(quoted(currentHeadline.title));
-
-        animateHeadline(aboveWidth,aboveHeight);
+        animateHeadline(nextHeight);
 
         //slide current headline up and out of the headline-box
         current.css({
-            'transform':'translate(0,' + (0-aboveHeight) + 'px)'
+            'transform':'translate(0,' + (0-nextHeight) + 'px)'
         }).toggleClass("opacity");
         //slide the next headline up and into the headline-box
         next.css({
@@ -190,16 +213,21 @@ function fillHeadline() {
     }
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
-    setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
+    // setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
 
-    //switch the values of current and next so to allow the headlines to cycle
-    oldA = current; //save js object of current to give to next later
+    //switch the selectors of current and next so to allow the headlines to cycle
+    trickPlay = current; //save js object of current to give to next later
     current = next;    // make current equal to next in the js
-    next = oldA; // make next equal to old current
+    next = trickPlay; // make next equal to old current
 
     // In the background move the current headline down below the headline-box to prep
-    setTimeout(function(){next.css('transform','translate(0,'+ (aboveHeight) + 'px)');}, 400);
+    setTimeout(function(){
+        next.css('transform','translate(0,'+ (nextHeight) + 'px)');
+        $('#feedback').removeClass('correct wrong');
+        }, 400);
 
+
+    flip = false;
 }
 
 function showResponse(response) {
@@ -208,12 +236,14 @@ function showResponse(response) {
 
     // Animate the response
     $("#white").css({
-        'transform':'translate(0,' + (0-answerHeight-aboutHeight) + 'px)'
+        'transform':'translate(0,' + (0-answerHeight-aboutHeight-4) + 'px)'
     });
     $("#feedback, #answer").css({
-        // 'opacity': 1,
-        'transform':'translate(0,' +  (answerHeight - 4) + 'px)'
+        'transform':'translate(0,' +  (answerHeight) + 'px)'
     }).toggleClass("opacity");
+    $("#about").css({
+        'transform':'translate(0,' +  (answerHeight) + 'px)'
+    });
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){
@@ -221,17 +251,15 @@ function showResponse(response) {
         $('#answer').css('visibility', 'hidden');
         },400);
 
-    // setTimeout(function(){b.css('transform','translate(0,'+ (aboveHeight) + 'px)');}, 400);
-
     //Grab the next random headline
     headlines.getRandom(true).done(function(randomHeadline){
         currentHeadline = randomHeadline;
     });
-    //Fill the other hidden h1 to measure it later
+    //Fill the other hidden h1 and measure it
     next.html(quoted(currentHeadline.title));
-        aboveHeight = next.outerHeight();
-        aboveWidth = next.outerWidth();
+        nextHeight = next.outerHeight();
 
+    flip = true;
 
 }
 
@@ -259,15 +287,18 @@ function answerResponse(trigger) {
 
 function showAbout(){
         total = feedbackHeight + answerHeight;
-        aboutH = $("#aboutH").outerHeight();
-        aboutW = $("#aboutH").outerWidth;
 
             // Initial sizing of the #white div
+
+        $("#about").css({
+            'transform':'translate(0,' + total + 'px)'
+        }).toggleClass("opacity");
+
         $("#white").css({
-            'transform':'translate(0,'+ (0-feedbackHeight-answerHeight) + 'px)'
+            'transform':'translate(0,'+ (0-total-4) + 'px)'
         });
 
-        // Initial positioning of #feedback div
+        // positioning of divs
         $("#feedback, #headline, #above, #answer").css({
             'transform':'translate(0,' + total + 'px)',
             'opacity': '0'
@@ -277,12 +308,60 @@ function showAbout(){
             'transform':'translate(0,' + 0 + 'px)'
         }).toggleClass("opacity");
 
-        $("#about").css({
-            'transform':'translate(0,' + total + 'px)'
+        $(".no-js").css({
+            'overflow': 'scroll'
         });
 
-        animateHeadline(aboutW,aboutH);
+        animateHeadline(aboutH);
 
+}
+
+function hideAbout(){
+    // $("#back").click(function(){
+        total = feedbackHeight + aboutHeight;
+        currentHeight = current.outerHeight();
+            // Initial sizing of the #white div
+        $("#about").css({
+            'transform':'translate(0,' + feedbackHeight + 'px)'
+            // 'display': 'inline-block'
+        }).toggleClass("opacity");
+
+        $("#aboutH").css({
+            'transform':'translate(0,' + (0 - aboutH) + 'px)'
+        }).toggleClass("opacity");
+
+        $("#feedback, #headline, #above, #answer").css({
+            'opacity': ''
+        });
+        $("html, body").animate({ scrollTop: 0 }, 400 ).css ({
+        // return false;
+            'overflow': ''
+            // 'transform':'translate(0,' + fix + 'px)'
+        });
+
+
+        if (flip) {
+            fillHeadline();
+        }
+
+        else{
+            $("#white").css({
+                'transform':'translate(0,'+ (0 - feedbackHeight - aboutHeight) + 'px)'
+            });
+
+            $("#answer, #feedback").css({
+                'transform':'translate(0,' + 0 + 'px)'
+            });
+            current.css({
+                'transform':'translate(0,' + 0 + 'px)'
+            });
+            //slide the next headline up and into the headline-box
+            next.css({
+                'transform':'translate(0,' + nextHeight + 'px)'
+            });
+            animateHeadline(currentHeight);
+        }
+    // });
 }
 
 function touchClick(sel, fnc) {
@@ -311,9 +390,12 @@ touchClick('.about', function() {
     showAbout();
 });
 
+touchClick('#back', function() {
+    hideAbout();
+});
+
 // Click binding for next headline button
 touchClick('#next', function(e) {
-
     fillHeadline(currentHeadline);
 });
 

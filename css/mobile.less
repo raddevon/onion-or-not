@@ -1,10 +1,11 @@
 @import "base.less";
 
-html {
+html {	
+	background-image: url(../imgs/small.jpg);
 }
 
 body {
-	background-image: url(../imgs/small.jpg);
+
 	overflow: hidden;
 }
 
@@ -23,11 +24,11 @@ h3{
 
 
 nav{
+	z-index: 1;
 	position: fixed;
 	margin: 0 auto;
 	bottom: 0;
 	clear: both;
-	display: none;
 	ul {
 		a {
 			font-size: 1.5em;
@@ -42,6 +43,7 @@ nav{
     bottom: 0;
     clear: both;
     text-align: center;
+    position: fixed;
 }
 
 #quiz {
@@ -65,6 +67,36 @@ button {
 	background: fadeout(@White, 55%);
 	border-radius:0 0 15px 15px;
 	width: 93%;
+}
+
+#about{
+
+#opener{
+	font-size: 1em;
+}
+img {
+	width: 3em;
+	height: 4em;
+}
+
+ h3 {
+	display: none;
+	width: 100%;
+	margin-bottom: .4em
+	}
+
+p {
+	font-size: 1em;
+}
+
+#info{
+	margin: 0;
+}
+
+}
+
+.extra {
+	display: none;
 }
 
 .data {
@@ -117,4 +149,16 @@ button {
 	img {
 		height: 2em;
 	}
+}
+
+#feedback {
+	opacity: 1;
+}
+
+#answer {
+	opacity: 1;
+}
+
+#about {
+	opacity: 1;
 }

@@ -5,16 +5,16 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> 
 <!--<![endif]-->
+<!--[if lt IE 9]> HTML5Shiv
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, user-scalable=no">
     <title>OnionOrNot</title>
-    <!--[if lt IE 9]> HTML5Shiv
-        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet"
       media="only screen and (max-width: 580px)" href="css/mobile.css">
     <link rel="stylesheet"
@@ -23,7 +23,7 @@
 </head>
 <body ontouchstart="">
     <!-- Begin navbar -->
-    <nav class="top cf">
+    <nav class=" cf">
       <ul class="cf">
          <li><a href="">OnionOrNot</a></li>
          <li><a class="about">About</a></li>
@@ -34,7 +34,7 @@
     <div id="quiz">
 
         <div id="headline-box">
-            <h1 id = "aboutH">OnionOrNot</h1>
+            <h1 id = "aboutH">OnionOrWhat?</h1>
             <h1 id = "above"></h1>
             <h1 id="headline"></h1>
             <div id="error">
@@ -48,7 +48,37 @@
           <div id ="gloss">
 
             <article id="about">
-                OnionOrNot is a silly game where you x y and z....
+                <p id = "opener">OnionOrNot was created by Luiz Neves and Devon Campbell as a collaborative <a href="http://www.thinkful.com" target="_blank">Thinkful</a> project. <span class = "extra">It is written in HTML/Less, javascript/jQuery, and soon Ruby on Rails.</span></p>
+                <ul class="data cf" id = "profile">
+                    <li class = "cf">
+                        <h3>Luiz:</h3>
+                        <div id = "info">
+                        <img src="imgs/luiz.jpg">
+                        <!-- <br/> -->
+                        <span>                        <div class="social-buttons cf">
+                            <a class="socialite facebook-like" href="http://www.facebook.com/sharer/sharer.php" data-layout="box_count" data-send="true" data-href="http://raddevon.github.io/onionornot/"target="_blank">
+                            </a>
+                            <a class="socialite twitter-share" href="http://twitter.com/share" data-url="http://raddevon.github.io/onionornot/" data-count="vertical"target="_blank">
+                            </a>
+
+                        </div></span>
+                        </div>
+                        <p>Luiz, an upcoming <a href="http://www.devbootcamp.com" target="_blank">bootcamper</a>, is a Portuguese-French-Texan with an engineering degree from The Ohio State University. He enjoys art, smart design, and long walks on the beach.</p>
+                    </li>
+
+                    <li>
+                        <h3>Devon:</h3>
+                        <div id = "info">
+                        <img src="imgs/devon.jpg">
+                        <!-- <br/> -->
+                        <span>@raddevon</span>
+                        </div>
+                        <p>Luiz, an upcoming <a href="http://www.devbootcamp.com" target="_blank">bootcamper</a>, is a Portuguese-French-Texan with an engineering degree from The Ohio State University. He enjoys art, smart design, and long walks on the beach.</p>
+                    </li>
+                </ul>
+
+                <button id="back">Next Headline</button>
+
             </article>
             <div id="feedback" class="cf">
                 <h2 class="message">filler</h2>
@@ -82,12 +112,12 @@
         </div>
     </div>
 
-        <nav class="bottom cf">
+<!--         <nav class="bottom cf">
       <ul class="cf">
          <li><a href="">OnionOrNot</a></li>
          <li><a class="about">About</a></li>
      </ul>
-    </nav>
+    </nav> -->
 
     <!-- Script imports -->
     <script type="text/javascript" src="js/jquery.js"></script>

@@ -80,8 +80,10 @@ table {
 
 // Google web font import
 /* TODO: Decide on a sans-serif typeface */
-@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
-@font: 'Roboto Condensed', sans-serif;
+// @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300);
+@font: Helvetica, sans-serif;
+// @font: 'Roboto Condensed', Helvetica, sans-serif;
+
 
 @sans: 'Helvetica', sans-serif;
 
@@ -101,19 +103,31 @@ html {
     // min-width: 100%;
     // height: 100%;
     max-height: 100%;
-    position: relative;
+    // -webkit-transition: -webkit-transform 400ms ease-out;
+    // -moz-transition: -moz-transform 400ms ease-out;
+    // -o-transition: -o-transform 400ms ease-out;
+    // -ms-transition: -ms-transform 400ms ease-out;
+    // transition: transform 400ms ease-out;
+    // height: 100%;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     overflow: hidden;
     // width: 100%;
 }
 
 body {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     // background-image: url(../imgs/halfgreen2.jpg);
-
     text-align: center;
     // position: relative;
+
+    position: relative;
+
     display: inline-block;
     width: 100%;
     // height: 100%;
@@ -130,7 +144,7 @@ h1 {
 }
 
 h2, h3 {
-    font-family: @sans;
+    font-family: @font;
 }
 
 nav {
@@ -148,7 +162,9 @@ nav {
         }
     }
     a {
-        font-family: @sans;
+        cursor: pointer;
+        font-family: @font;
+        font-weight: 400;
         text-decoration: none;
         color: fadeout(@Green, 10%);
     }
@@ -187,11 +203,19 @@ button {
 #aboutH{
     // margin: 1% 0;
     position: absolute;
-    min-width: 100%;
+    width: 100%;
     // top: 500px;
     padding: .5em;
-    -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
+    -webkit-transition: -webkit-transform 400ms ease-out;
+    -moz-transition: -moz-transform 400ms ease-out;
+    -o-transition: -o-transform 400ms ease-out;
+    -ms-transition: -ms-transform 400ms ease-out;
+    transition: transform 400ms ease-out;
     -webkit-transform:translateY(-200px);
+    -moz-transform:translateY(-200px);
+    -o-transform:translateY(-200px);
+    -ms-transform:translateY(-200px);
+    transform:translateY(-200px);
     opacity: 0;
     &.opacity {
         opacity: 1;
@@ -204,8 +228,12 @@ button {
     min-width: 100%;
     // top: 500px;
     padding: .5em;
-    -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
-    -webkit-transform:translateY(500px);
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+    // -webkit-transform:translateY(500px);
     opacity: 0;
     &.opacity {
         opacity: 1;
@@ -220,7 +248,11 @@ button {
     padding: .5em;
     color: @White;
     display: inline-block;
-    -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
     opacity: 1;
     &.opacity {
         opacity: 0;
@@ -251,23 +283,89 @@ button {
 }
 
 #about{
-    height: 450px;
-    width: 100%;
-    min-width: 1000px;
-    // background-color: fadeout(@Green, 20%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(20%,rgba(86,154,127,0.8)), color-stop(70%,rgba(230,234,242,0.2))); /* Chrome,Safari4+ */
     display: inline-block;
-    opacity: 1;
-    -webkit-transition: all 400ms;
+    // height: 0;
+    padding: 1em;
+    color: @White;
+    font-family: @font;
+    font-weight: 300;
+    opacity: 0;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
+    &.opacity {
+        opacity: 1;
+    }
 
+        li {
+            text-align: left;
+            padding: 1em;
+            // max-width: 40%;
+            height: 10em;
+            max-width: 29em;
+        }
+        p{
+        line-height: 1.1em;
+        text-align: left;
+        font-size: 1.2em;
+        // padding-bottom: .5em;
+        // display: inline-block;
+
+        a {
+        color: @White;
+        font-weight: 300;
+          }
+    }
+    #opener{
+        text-align: center;
+        font-size: 1.5em;
+        width: 90%;
+        margin: 0 auto;
+
+        a {
+            color: @Green;
+            font-weight: 400;
+          }
+    }
+    #profile {
+        padding-top: 1em;
+        width: 90%;
+        margin: 0 auto;
+        // background-color: fadeout(@White,75%);
+        // float: left;
+        // text-align: left;
+    }
+    #info {
+        display: inline-block;
+        text-align: left;
+        float: left;
+        margin-right: 1em;
+        width: 5em;
+    }
+    h3 {
+        font-weight: 400;
+        // display: inline-block;
+        }
+
+    img {
+        // height: 4em;
+        width: 5em;
+        height: 6.5em;
+        border: @Green;
+        display: inline-block;
+        }
 }
 
 #answer {
-    width: 100%;
-    -webkit-transition: all 400ms;
-    -moz-transition: all 400ms;
-    -o-transition: all 400ms;
-    -ms-transition: all 400ms;
-    transition: all 400ms;
+    // width: 100%;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
+    transition: all 400ms ease-out;
     // transform: translateY(0px);
     opacity: 1;
     z-index: 0;
@@ -280,10 +378,10 @@ button {
 #feedback {
     position: relative;
     padding: 1em;
-    -webkit-transition: all 400ms;
-    -moz-transition: all 400ms;
-    -o-transition: all 400ms;
-    -ms-transition: all 400ms;
+    -webkit-transition: all 400ms ease-out;
+    -moz-transition: all 400ms ease-out;
+    -o-transition: all 400ms ease-out;
+    -ms-transition: all 400ms ease-out;
     opacity: 0;
     // transform: translateY(0px);
     &.correct {
