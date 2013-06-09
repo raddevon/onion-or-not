@@ -1,0 +1,582 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-align: center;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  text-align: center;
+  position: relative;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.cf:before,
+.cf:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+.cf:after {
+  clear: both;
+}
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+  *zoom: 1;
+}
+/* End style resets */
+/* TODO: Decide on a sans-serif typeface */
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.eot?39845406');
+  src: url('../fonts/fontello.eot?39845406#iefix') format('embedded-opentype'), url('../fonts/fontello.woff?39845406') format('woff'), url('../fonts/fontello.ttf?39845406') format('truetype'), url('../fonts/fontello.svg?39845406#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?39845406#fontello') format('svg');
+  }
+}
+*/
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+
+  line-height: 1em;
+  /* Animation center compensation - magrins should be symmetric */
+
+  /* remove if not needed */
+
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+
+  /* font-size: 120%; */
+
+  /* Uncomment for 3D effect */
+
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+
+}
+.icon-spin:before {
+  content: '\e800';
+}
+/* '' *//*
+   Animation example, for spinners
+*/
+.animate-spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+html {
+  min-height: 100%;
+  min-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+body {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+h1 {
+  font-family: 'Baskerville', 'Georgia', serif;
+  font-size: 3.5em;
+  font-weight: 400;
+  line-height: 1.1em;
+}
+h2,
+h3 {
+  font-family: 'Helvetica', sans-serif;
+}
+nav {
+  clear: both;
+  width: 100%;
+}
+nav ul {
+  clear: both;
+  width: 100%;
+}
+nav ul li {
+  float: left;
+  margin-top: 0.5em;
+}
+nav ul li:last-child {
+  float: right;
+}
+nav a {
+  font-family: 'Helvetica', sans-serif;
+  text-decoration: none;
+  color: rgba(61, 110, 90, 0.9);
+}
+.bottom {
+  position: absolute;
+  height: 2em;
+  width: 100%;
+  bottom: 0;
+  clear: both;
+  text-align: center;
+}
+#quiz {
+  max-width: 70em;
+  position: relative;
+  display: inline-block;
+}
+button {
+  background-color: rgba(61, 110, 90, 0.8);
+  color: #e0e9ee;
+  padding: .25em;
+  cursor: pointer;
+  border: 2px outset rgba(224, 233, 238, 0.65);
+  border-radius: 15px;
+}
+button:active {
+  border: 2px inset rgba(224, 233, 238, 0.65);
+}
+#headline-box {
+  z-index: 2;
+  background-color: #3d6e5a;
+  border: 3px outset rgba(70, 126, 103, 0.4);
+  color: #e0e9ee;
+  display: inline-block;
+}
+#white {
+  background: rgba(224, 233, 238, 0.44999999999999996);
+  border-radius: 0 0 15px 15px;
+  margin: 0 auto;
+  -webkit-transition: -webkit-transform 400ms ease-out;
+  -moz-transition: -moz-transform 400ms ease-out;
+  -o-transition: -o-transform 400ms ease-out;
+  -ms-transition: -ms-transform 400ms ease-out;
+  transition: transform 400ms ease-out;
+  position: relative;
+  z-index: 1;
+}
+#gloss {
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.1)), color-stop(100%, #ffffff));
+  z-index: 0;
+  border-radius: 0 0 15px 15px;
+}
+#answer {
+  width: 100%;
+  -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
+  -moz-transition: -moz-transform 400ms ease-out, opacity 400ms;
+  -o-transition: -o-transform 400ms ease-out, opacity 400ms;
+  -ms-transition: -ms-transform 400ms ease-out, opacity 400ms;
+  transition: transform 400ms ease-out, opacity 400ms;
+  opacity: 1;
+  z-index: 0;
+}
+#feedback {
+  position: relative;
+  padding: 1em;
+  -webkit-transition: -webkit-transform 400ms ease-out, opacity 400ms;
+  -moz-transition: -moz-transform 400ms ease-out, opacity 400ms;
+  -o-transition: -o-transform 400ms ease-out, opacity 400ms;
+  -ms-transition: -ms-transform 400ms ease-out, opacity 400ms;
+  opacity: 0;
+}
+#feedback.correct {
+  background: -moz-linear-gradient(top, rgba(86, 154, 127, 0.8) 15%, rgba(230, 234, 242, 0) 70%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(15%, rgba(86, 154, 127, 0.8)), color-stop(70%, rgba(230, 234, 242, 0)));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, rgba(86, 154, 127, 0.8) 15%, rgba(230, 234, 242, 0) 70%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, rgba(86, 154, 127, 0.8) 15%, rgba(230, 234, 242, 0) 70%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, rgba(86, 154, 127, 0.8) 15%, rgba(230, 234, 242, 0) 70%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, rgba(86, 154, 127, 0.8) 15%, rgba(230, 234, 242, 0) 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc569a7f', endColorstr='#00e6eaf2', GradientType=0);
+  /* IE6-9 */
+
+}
+#feedback.wrong {
+  background: -moz-linear-gradient(top, rgba(162, 111, 90, 0.8) 15%, rgba(232, 235, 242, 0) 70%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(15%, rgba(162, 111, 90, 0.8)), color-stop(70%, rgba(232, 235, 242, 0)));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, rgba(162, 111, 90, 0.8) 15%, rgba(232, 235, 242, 0) 70%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, rgba(162, 111, 90, 0.8) 15%, rgba(232, 235, 242, 0) 70%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, rgba(162, 111, 90, 0.8) 15%, rgba(232, 235, 242, 0) 70%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, rgba(162, 111, 90, 0.8) 15%, rgba(232, 235, 242, 0) 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cca26f5a', endColorstr='#00e8ebf2', GradientType=0);
+  /* IE6-9 */
+
+}
+.message {
+  color: #e0e9ee;
+  display: inline-block;
+}
+.data li {
+  background-color: rgba(61, 110, 90, 0.6);
+  color: #e0e9ee;
+  border-radius: 15px;
+}
+#source {
+  color: #e0e9ee;
+  display: inline-block;
+  font-family: 'Roboto Condensed', sans-serif;
+  overflow: hidden;
+  cursor: pointer;
+}
+#next {
+  display: inline-block;
+  bottom: 0;
+}
+.social-buttons {
+  display: inline-block;
+}
+iframe {
+  padding: 0;
+}
+#error,
+#loading {
+  display: none;
+  font-size: 1.5em;
+}
+#spinner {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 3.5em;
+}
+html {
+  background-image: url(../imgs/small.jpg);
+}
+body {
+  overflow: hidden;
+}
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.6em;
+}
+h3 {
+  font-size: 1.5em;
+}
+nav {
+  position: absolute;
+  margin: 0 auto;
+  bottom: 0;
+  clear: both;
+  display: none;
+}
+nav ul a {
+  font-size: 1.5em;
+  padding: .3em;
+}
+.bottom {
+  display: block;
+}
+#quiz {
+  width: 100%;
+  overflow: visible;
+}
+button {
+  font-size: 1.3em;
+  width: 40%;
+  margin: .5em .5em;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+#headline-box {
+  position: relative;
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  padding: 1%;
+}
+#white {
+  background: rgba(224, 233, 238, 0.44999999999999996);
+  border-radius: 0 0 15px 15px;
+  width: 93%;
+}
+.data {
+  margin: .5em 0;
+}
+.data li {
+  display: inline-block;
+  height: 4.8em;
+  width: 95%;
+  margin: .3em;
+  text-align: center;
+}
+.data li h3 {
+  border-bottom: 1px dashed rgba(224, 233, 238, 0.9);
+  padding: .1em 0;
+  display: inline-block;
+  width: 90%;
+}
+#source {
+  font-size: 1.2em;
+  padding-top: .6em;
+}
+#next {
+  width: 95%;
+  padding: .5em 0;
+  margin: 0;
+  font-size: 1.5em;
+}
+.social-buttons {
+  opacity: .75;
+  padding-top: .5em;
+}
+.social-buttons > a {
+  display: inline-block;
+  height: 2em;
+  width: 2em;
+  margin-right: 2em;
+  background: url(../imgs/fb.png);
+  background-size: cover;
+}
+.social-buttons .twitter-share {
+  background: url(../imgs/twitter.png);
+  background-size: cover;
+  margin: 0;
+}
+.social-buttons img {
+  height: 2em;
+}
