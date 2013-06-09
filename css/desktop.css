@@ -300,7 +300,7 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  overflow: hidden;
+  position: fixed;
 }
 body {
   text-align: center;
