@@ -213,7 +213,10 @@ function fillHeadline() {
             'transform':'translate(0,' + 0 + 'px)',
             'visibility' : 'visible'
         }).toggleClass("opacity");
-    }
+
+        $("body").animate({ scrollTop: 0 }, 400 );
+        }
+
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     // setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
@@ -228,6 +231,10 @@ function fillHeadline() {
         next.css('transform','translate(0,'+ (nextHeight) + 'px)');
         $('#feedback').removeClass('correct wrong');
         }, 400);
+
+    document.ontouchmove = function(event){
+        event.preventDefault();
+    };
 
 
     flip = false;
@@ -263,6 +270,9 @@ function showResponse(response) {
         nextHeight = next.outerHeight();
 
     flip = true;
+    
+    document.ontouchmove = null;
+
 
 }
 
@@ -343,7 +353,6 @@ function hideAbout(){
             'overflow': ''
             // 'transform':'translate(0,' + fix + 'px)'
         });
-
 
         document.ontouchmove = function(event){
             event.preventDefault();
