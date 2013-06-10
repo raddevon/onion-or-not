@@ -458,6 +458,9 @@ button:active {
   opacity: 1;
 }
 #about li {
+  background-color: rgba(61, 110, 90, 0.6);
+  border-radius: 15px;
+  margin: .5em;
   text-align: left;
   padding: 1em;
   height: 10em;
@@ -484,7 +487,6 @@ button:active {
 }
 #about #profile {
   padding-top: 1em;
-  width: 90%;
   margin: 0 auto;
 }
 #about #info {
@@ -492,7 +494,10 @@ button:active {
   text-align: left;
   float: left;
   margin-right: 1em;
-  width: 5em;
+}
+#about .name {
+  font-weight: 400;
+  font-size: 1.2em;
 }
 #about h3 {
   font-weight: 400;
@@ -502,6 +507,7 @@ button:active {
   height: 6.5em;
   border: #3d6e5a;
   display: inline-block;
+  margin-right: .25em;
 }
 #answer {
   -webkit-transition: all 400ms ease-out;

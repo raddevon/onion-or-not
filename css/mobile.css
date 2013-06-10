@@ -458,6 +458,9 @@ button:active {
   opacity: 1;
 }
 #about li {
+  background-color: rgba(61, 110, 90, 0.6);
+  border-radius: 15px;
+  margin: .5em;
   text-align: left;
   padding: 1em;
   height: 10em;
@@ -484,7 +487,6 @@ button:active {
 }
 #about #profile {
   padding-top: 1em;
-  width: 90%;
   margin: 0 auto;
 }
 #about #info {
@@ -492,7 +494,10 @@ button:active {
   text-align: left;
   float: left;
   margin-right: 1em;
-  width: 5em;
+}
+#about .name {
+  font-weight: 400;
+  font-size: 1.2em;
 }
 #about h3 {
   font-weight: 400;
@@ -502,6 +507,7 @@ button:active {
   height: 6.5em;
   border: #3d6e5a;
   display: inline-block;
+  margin-right: .25em;
 }
 #answer {
   -webkit-transition: all 400ms ease-out;
@@ -661,12 +667,21 @@ button {
   border-radius: 0 0 15px 15px;
   width: 93%;
 }
+#about {
+  padding: .5em 1em;
+}
 #about #opener {
-  font-size: 1em;
+  font-size: 1.2em;
+}
+#about #profile {
+  padding: 0;
+}
+#about #profile li {
+  height: inherit;
 }
 #about img {
   width: 3em;
-  height: 4em;
+  height: 4.2em;
 }
 #about h3 {
   display: none;
@@ -678,6 +693,12 @@ button {
 }
 #about #info {
   margin: 0;
+  width: 5.5em;
+  height: 4em;
+}
+#about #info a {
+  display: block;
+  margin-left: 0;
 }
 .extra {
   display: none;
@@ -702,7 +723,8 @@ button {
   font-size: 1.2em;
   padding-top: .6em;
 }
-#next {
+#next,
+#back {
   width: 95%;
   padding: .5em 0;
   margin: 0;
@@ -710,13 +732,11 @@ button {
 }
 .social-buttons {
   opacity: .8;
-  padding-top: .5em;
 }
 .social-buttons > a {
   display: inline-block;
-  height: 2em;
-  width: 2em;
-  margin-right: 2em;
+  height: 1.875em;
+  width: 1.875em;
   background: url(../imgs/fb.png);
   background-size: cover;
 }
@@ -724,7 +744,10 @@ button {
   background: url(../imgs/twitter.png);
   background-size: cover;
   margin: 0;
+  margin-top: .5em;
+  margin-left: 3em;
 }
 .social-buttons img {
-  height: 2em;
+  height: 4em;
+  margin: 0 .25em;
 }

@@ -71,27 +71,46 @@ button {
 
 #about{
 
-#opener{
-	font-size: 1em;
-}
-img {
-	width: 3em;
-	height: 4em;
-}
+	padding: .5em 1em;
 
- h3 {
-	display: none;
-	width: 100%;
-	margin-bottom: .4em
+	#opener {
+		font-size: 1.2em;
 	}
 
-p {
-	font-size: 1em;
-}
+	#profile {
+    	padding: 0;
+
+		li{
+		height: inherit;
+
+
+		}
+	}
+	img {
+		width: 3em;
+		height: 4.2em;
+	}
+
+ 	h3 {
+		display: none;
+		width: 100%;
+		margin-bottom: .4em
+	}
+
+	p {
+		font-size: 1em;
+	}
 
 #info{
-	margin: 0;
-}
+		margin: 0;
+		width: 5.5em;
+		height: 4em;
+	a{
+		display: block;
+		margin-left: 0;
+
+	}
+	}
 
 }
 
@@ -121,35 +140,43 @@ p {
 	padding-top: .6em;
 }
 
-#next {
+#next, #back {
 	width: 95%;
 	padding: .5em 0;
 	margin: 0;
 	font-size: 1.5em;
 }
 
+
 .social-buttons {
 	opacity: .8;
-	padding-top: .5em;
+	// padding-top: .5em;
 	> a {
 		display: inline-block;
-		height: 2em;
-		width: 2em;
-		margin-right: 2em;
+		height: 1.875em;
+		width: 1.875em;
+		// margin-right: 2em;
 		background: url(../imgs/fb.png);
 		background-size: cover;
 	}
+	
+	
 
 	.twitter-share{
 		background: url(../imgs/twitter.png);
 		background-size: cover;
 		margin: 0;
+		margin-top: .5em;
+		margin-left: 3em;
 	}
 
 	img {
-		height: 2em;
+		height: 4em;
+		margin: 0 .25em;
 	}
 }
+
+
 
 // #feedback {
 // 	opacity: 1;
