@@ -27,7 +27,7 @@ function Headline(title, url, onion) {
     this.title = title;
     this.url = url;
     // Grabs the portion of the URL between the second and third slashes
-    this.domain = this.url.split('/')[2];
+    this.domain = this.url.split('/')[2].split('www.')[1] || this.url.split('/')[2];
     this.onion = onion;
 
     this.isOnion = function(){
@@ -326,7 +326,6 @@ function showAbout(){
         // });
 
         document.ontouchmove = null;
-        
         animateHeadline(aboutH);
 
 }
@@ -383,7 +382,11 @@ function hideAbout(){
 }
 
 function touchClick(sel, fnc) {
-  $(sel).on('touchend click', function(event) {
+    var targetEvent = 'touchend';
+    if (!mobile) {
+        targetEvent = 'click';
+    }
+    $(sel).on(targetEvent, function(event) {
         event.stopPropagation();
         event.preventDefault();
         if(event.handled !== true) {
@@ -392,7 +395,7 @@ function touchClick(sel, fnc) {
         } else {
             return false;
         }
-  });
+    });
 }
 
 // Initial load of headlines and first random headline
