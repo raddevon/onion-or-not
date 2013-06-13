@@ -290,6 +290,22 @@ table {
     transform: rotate(359deg);
   }
 }
+@-webkit-keyframes opacity_0 {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes opacity_1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 html {
   max-height: 100%;
   -webkit-transition: all 400ms ease-out;
@@ -300,6 +316,7 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  overflow: hidden;
 }
 body {
   text-align: center;
@@ -369,12 +386,12 @@ button:active {
 #aboutH {
   position: absolute;
   width: 100%;
-  padding: .5em;
-  -webkit-transition: -webkit-transform 400ms ease-out;
-  -moz-transition: -moz-transform 400ms ease-out;
-  -o-transition: -o-transform 400ms ease-out;
-  -ms-transition: -ms-transform 400ms ease-out;
-  transition: transform 400ms ease-out;
+  padding: .25em 0;
+  -webkit-transition: all 400ms ease-out;
+  -moz-transition: all 400ms ease-out;
+  -o-transition: all 400ms ease-out;
+  -ms-transition: all 400ms ease-out;
+  transition: all 400ms ease-out;
   -webkit-transform: translateY(-200px);
   -moz-transform: translateY(-200px);
   -o-transform: translateY(-200px);
@@ -394,6 +411,7 @@ button:active {
   -o-transition: all 400ms ease-out;
   -ms-transition: all 400ms ease-out;
   transition: all 400ms ease-out;
+  -webkit-transform: translateY(250px);
   opacity: 0;
 }
 #above.opacity {
@@ -422,11 +440,11 @@ button:active {
   border-radius: 0 0 15px 15px;
   margin: 0 auto;
   overflow: hidden;
-  -webkit-transition: -webkit-transform 400ms ease-out;
-  -moz-transition: -moz-transform 400ms ease-out;
-  -o-transition: -o-transform 400ms ease-out;
-  -ms-transition: -ms-transform 400ms ease-out;
-  transition: transform 400ms ease-out;
+  -webkit-transition: all 400ms ease-out;
+  -moz-transition: all 400ms ease-out;
+  -o-transition: all 400ms ease-out;
+  -ms-transition: all 400ms ease-out;
+  transition: all 400ms ease-out;
   position: relative;
   z-index: 1;
 }
@@ -442,6 +460,10 @@ button:active {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, rgba(86, 154, 127, 0.8)), color-stop(70%, rgba(230, 234, 242, 0.2)));
   /* Chrome,Safari4+ */
 
+  background: -moz-linear-gradient(top, rgba(86, 154, 127, 0.8) 20%, rgba(230, 234, 242, 0.2) 70%);
+  /* FF3.6+ */
+
+  background: linear-gradient(top, rgba(86, 154, 127, 0.8) 20%, rgba(230, 234, 242, 0.2) 70%);
   display: inline-block;
   padding: 1em;
   color: #e0e9ee;
@@ -459,12 +481,13 @@ button:active {
 }
 #about li {
   background-color: rgba(61, 110, 90, 0.6);
+  display: inline-block;
   border-radius: 15px;
   margin: .5em;
   text-align: left;
   padding: 1em;
-  height: 10em;
-  max-width: 29em;
+  min-height: 13.5em;
+  max-width: 28em;
 }
 #about p {
   line-height: 1.1em;
@@ -477,7 +500,7 @@ button:active {
 }
 #about #opener {
   text-align: center;
-  font-size: 1.5em;
+  font-size: 2em;
   width: 90%;
   margin: 0 auto;
 }
@@ -494,6 +517,29 @@ button:active {
   text-align: left;
   float: left;
   margin-right: 1em;
+  position: relative;
+  height: 9em;
+}
+#about #info div {
+  width: 2em;
+  display: inline-block;
+  bottom: 0;
+  position: absolute;
+  width: 5em;
+}
+#about #info a {
+  display: block;
+  height: 2em;
+  width: 2em;
+  float: left;
+}
+#about #info a.github {
+  background: url(../imgs/fb.png);
+  background-size: cover;
+}
+#about #info a.twitter {
+  background: url(../imgs/twitter.png);
+  background-size: cover;
 }
 #about .name {
   font-weight: 400;
@@ -507,7 +553,7 @@ button:active {
   height: 6.5em;
   border: #3d6e5a;
   display: inline-block;
-  margin-right: .25em;
+  border-radius: 10px;
 }
 #answer {
   -webkit-transition: all 400ms ease-out;
@@ -577,6 +623,7 @@ button:active {
 
 }
 #feedback.opacity {
+  -webkit-transition: all 400ms ease-out;
   opacity: 1;
 }
 .message {
@@ -660,7 +707,11 @@ button {
 }
 #headline-box {
   width: 100%;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 15px 15px;
+}
+#above,
+#headline {
+  padding: .5em 0;
 }
 #white {
   background: rgba(224, 233, 238, 0.44999999999999996);
@@ -677,11 +728,8 @@ button {
   padding: 0;
 }
 #about #profile li {
-  height: inherit;
-}
-#about img {
-  width: 3em;
-  height: 4.2em;
+  min-height: inherit;
+  width: inherit;
 }
 #about h3 {
   display: none;
@@ -692,13 +740,25 @@ button {
   font-size: 1em;
 }
 #about #info {
-  margin: 0;
-  width: 5.5em;
-  height: 4em;
+  padding: .25em;
+  width: 6em;
+  height: 5em;
+  margin-right: .5em;
+  border-bottom: 1px dashed;
+  border-right: 1px dashed;
+  border-radius: 15px;
 }
-#about #info a {
-  display: block;
-  margin-left: 0;
+#about #info div {
+  width: 2em;
+  height: 4.4em;
+  position: relative;
+}
+#about #info div .github {
+  margin-bottom: .4em;
+}
+#about #info img {
+  width: 3em;
+  height: 4.4em;
 }
 .extra {
   display: none;
@@ -735,19 +795,16 @@ button {
 }
 .social-buttons > a {
   display: inline-block;
-  height: 1.875em;
-  width: 1.875em;
+  height: 2em;
+  width: 2em;
+}
+.social-buttons .facebook-like {
   background: url(../imgs/fb.png);
   background-size: cover;
 }
 .social-buttons .twitter-share {
   background: url(../imgs/twitter.png);
   background-size: cover;
-  margin: 0;
   margin-top: .5em;
   margin-left: 3em;
-}
-.social-buttons img {
-  height: 4em;
-  margin: 0 .25em;
 }

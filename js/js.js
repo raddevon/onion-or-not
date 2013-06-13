@@ -186,7 +186,7 @@ function animateHeadline(y){
             $("#headline-box").animate({
             'height': y + 4 + 'px'
             // 'width': x + 'px'  //headline-box set to height of next hidden headline
-        });
+        },300);
         }
 }
 function fillHeadline() {

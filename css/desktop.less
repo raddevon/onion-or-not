@@ -10,6 +10,9 @@ h2 {
 
 h3 {
 	font-size: 2em;
+	padding-bottom: .4em;
+	margin-bottom: .25em;
+	border-bottom: 1px dashed fadeout(@White, 30%);
 }
 
 nav {
@@ -59,7 +62,19 @@ button {
 	    font-size: 4.5em;
 }
 
-#white { width: 95%; }
+#white { width: 95%;
+
+}
+
+#about {
+	.social-buttons{
+		width: inherit;
+	}
+
+	a.twitter {
+		margin-left: 1em;
+	}
+}
 
 #answer {
 	position: relative;
@@ -70,30 +85,28 @@ button {
 	padding: 0 0 .25em 0;
 }
 
-#about .socialite {
-	display: none;
-}
 
-.data li {
+div li {
 	display: inline-table;
 	line-height: 1.1em;
 	padding: 1em .5em .5em .5em;
 	min-width: 35%;
-	margin: 1%;
-	min-height: 170px;
-	h3 {
-		padding-bottom: .4em;
-		margin-bottom: .25em;
-		border-bottom: 1px dashed fadeout(@White, 30%);
-	}
+	margin: .5em;
+	height: 180px;
+	// h3 {
+	// // 	padding-bottom: .4em;
+	// // 	margin-bottom: .25em;
+	// // 	border-bottom: 1px dashed fadeout(@White, 30%);
+	// // }
 
 }
 
 #source {
-	padding: 12%;
+	padding: 2em;
 	font-size: 1.5em;
 	border-radius: 15px;
 	text-decoration: none;
+	// line-height: 2;
 	&:hover{
 		background-color: fadeout(@Green, 30%);
 	}
@@ -113,11 +126,15 @@ button {
 }
 
 .social-buttons {
-	min-width: 200px;
 	margin:.5em auto auto auto;
-	> div, > iframe {
+	width: 12em;
+	> div{
+		float: right;
+		display: inline-block;
+		// margin: 0 20px;
+	}
+	div:first-child{
 		float: left;
-		margin: 0 20px;
 	}
 }
 

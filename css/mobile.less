@@ -2,6 +2,7 @@
 
 html {	
 	background-image: url(../imgs/small.jpg);
+	// background-position: -85px -50px;
 }
 
 body {
@@ -11,7 +12,6 @@ body {
 
 h1{
 	font-size: 2em;
-
 }
 
 h2{
@@ -60,7 +60,11 @@ button {
 
 #headline-box {
 	width: 100%;
-	border-radius: 0 0 5px 5px;
+	border-radius: 0 0 15px 15px;
+}
+
+#above, #headline {
+	padding: .5em 0;
 }
 
 #white{
@@ -81,14 +85,11 @@ button {
     	padding: 0;
 
 		li{
-		height: inherit;
+		min-height: inherit;
+		width: inherit;
 
 
 		}
-	}
-	img {
-		width: 3em;
-		height: 4.2em;
 	}
 
  	h3 {
@@ -101,15 +102,27 @@ button {
 		font-size: 1em;
 	}
 
-#info{
-		margin: 0;
-		width: 5.5em;
-		height: 4em;
-	a{
-		display: block;
-		margin-left: 0;
+	#info{
+			padding: .25em;
+			width: 6em;
+			height: 5em;
+			margin-right: .5em;
+			border-bottom: 1px dashed;
+			border-right: 1px dashed;
+			border-radius: 15px;
+		div{
+			width: 2em;
+			height: 4.4em;
+			position: relative;
+			.github{
+				margin-bottom: .4em;
+			}
+		}
+		img {
+			width: 3em;
+			height: 4.4em;
+		}
 
-	}
 	}
 
 }
@@ -150,30 +163,30 @@ button {
 
 .social-buttons {
 	opacity: .8;
-	// padding-top: .5em;
+	// margin-right: .1em;
 	> a {
 		display: inline-block;
-		height: 1.875em;
-		width: 1.875em;
-		// margin-right: 2em;
+		height: 2em;
+		width: 2em;
+
+	}
+	
+	.facebook-like{
 		background: url(../imgs/fb.png);
 		background-size: cover;
 	}
-	
-	
 
 	.twitter-share{
 		background: url(../imgs/twitter.png);
 		background-size: cover;
-		margin: 0;
 		margin-top: .5em;
 		margin-left: 3em;
 	}
 
-	img {
-		height: 4em;
-		margin: 0 .25em;
-	}
+	// img {
+	// 	height: 4em;
+	// 	margin: 0 .25em;
+	// }
 }
 
 
