@@ -74,6 +74,19 @@ button {
 	a.twitter {
 		margin-left: 1em;
 	}
+
+	#view_mobile{
+		// float: left;
+		// color: darken(#999, 10%);
+		color: fadeout(@Green, 10%);
+
+
+		a{
+			color: fadeout(@Green, 10%);
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
 }
 
 #answer {
@@ -119,8 +132,9 @@ div li {
 }
 
 #back {
+	display: block;
 	width: 50%;
-	margin: .5em;
+	margin: .5em auto;
 	font-family: @font;
 	font-size: 2em;
 }

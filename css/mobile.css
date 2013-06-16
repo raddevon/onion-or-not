@@ -386,7 +386,7 @@ button:active {
 #aboutH {
   position: absolute;
   width: 100%;
-  padding: .25em 0;
+  padding: .5em;
   -webkit-transition: all 400ms ease-out;
   -moz-transition: all 400ms ease-out;
   -o-transition: all 400ms ease-out;
@@ -533,8 +533,8 @@ button:active {
   width: 2em;
   float: left;
 }
-#about #info a.github {
-  background: url(../imgs/fb.png);
+#about #info a.linked {
+  background: url(../imgs/linked.png);
   background-size: cover;
 }
 #about #info a.twitter {
@@ -662,7 +662,8 @@ iframe {
   font-size: 3.5em;
 }
 html {
-  background-image: url(../imgs/small.jpg);
+  background-image: url(../imgs/small3.jpg);
+  background-position: 90% -20px;
 }
 body {
   overflow: hidden;
@@ -671,7 +672,7 @@ h1 {
   font-size: 2em;
 }
 h2 {
-  font-size: 1.6em;
+  font-size: 1.5em;
 }
 h3 {
   font-size: 1.5em;
@@ -711,7 +712,7 @@ button {
 }
 #above,
 #headline {
-  padding: .5em 0;
+  padding: .25em 0;
 }
 #white {
   background: rgba(224, 233, 238, 0.44999999999999996);
@@ -753,14 +754,14 @@ button {
   height: 4.4em;
   position: relative;
 }
-#about #info div .github {
+#about #info div .linked {
   margin-bottom: .4em;
 }
 #about #info img {
   width: 3em;
   height: 4.4em;
 }
-.extra {
+.desktop_only {
   display: none;
 }
 .data {

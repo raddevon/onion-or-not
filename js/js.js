@@ -4,6 +4,7 @@ var aboutHeight;
 var feedbackHeight;
 var aboutH;
 var flip;
+var allowAbout;
 
 // WebFontConfig = {
 //     google: { families: [ 'Roboto+Condensed:400,300:latin' ] }
@@ -172,6 +173,7 @@ function firstLoad() {
 
     mobile = screen.width < 780;
     flip = false;
+    allowAbout = true;
 }
 function animateHeadline(y){
         // Initial sizing of the divs
@@ -283,17 +285,17 @@ function answerResponse(trigger) {
     var response;
     // Compare button clicked with headline's onion value. Starts building a response based on whether the response was correct or not.
     if ( (trigger.id === "not" && !currentHeadline.onion) || (trigger.id === "onion" && currentHeadline.onion) ) {
-        response = "Yup. ";
+        response = "Good job! ";
         $("#feedback").addClass("correct");
     } else {
-        response = "Nope. ";
+        response = "Nope! ";
         $("#feedback").addClass("wrong");
     }
     // Appends to reflect the fakeness or realness of the story.
     if (currentHeadline.onion) {
-        response += "Just a joke";
+        response += "It's The Onion";
     } else {
-        response += "This happened.";
+        response += "Not Onion";
     }
     showResponse(response);
 }
@@ -302,7 +304,7 @@ function showAbout(){
         total = feedbackHeight + answerHeight;
 
             // Initial sizing of the #white div
-
+    if(allowAbout) {
         $("#about").css({
             'transform':'translate(0,' + total + 'px)'
         }).toggleClass("opacity");
@@ -324,9 +326,12 @@ function showAbout(){
         // $(".no-js").css({
         //     'overflow': 'scroll'
         // });
+    }
 
         document.ontouchmove = null;
         animateHeadline(aboutH);
+
+        allowAbout = false;
 
 }
 
@@ -378,7 +383,8 @@ function hideAbout(){
             });
             animateHeadline(currentHeight);
         }
-    // });
+
+        allowAbout = true;
 }
 
 function touchClick(sel, fnc) {
@@ -418,6 +424,10 @@ touchClick('#back', function() {
 // Click binding for next headline button
 touchClick('#next', function(e) {
     fillHeadline(currentHeadline);
+});
+
+touchClick('#mobile_link', function(e) {
+    window.open("http://localhost/onion/onion-or-not/","","width=330, height=670");
 });
 
 // Fills the next headline after a successful AJAX call
