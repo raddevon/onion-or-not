@@ -435,6 +435,6 @@ $(headlines).on('ajaxError', function() {
 });
 
 
-if (!mobile) {
+if ($(window).width() > 580) {
     Socialite.load('.social-buttons');
 }
