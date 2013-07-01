@@ -3,16 +3,18 @@
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> 
+<!--<![endif]-->
+<!--[if lt IE 9]> HTML5Shiv
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<html class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, user-scalable=no">
     <title>OnionOrNot</title>
-    <!--[if lt IE 9]> HTML5Shiv
-        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet"
       media="only screen and (max-width: 580px)" href="css/mobile.css">
     <link rel="stylesheet"
@@ -21,10 +23,10 @@
 </head>
 <body ontouchstart="">
     <!-- Begin navbar -->
-    <nav class="top cf">
+    <nav class=" cf">
       <ul class="cf">
          <li><a href="">OnionOrNot</a></li>
-         <li><a href="">About</a></li>
+         <li><a class="about">About</a></li>
      </ul>
     </nav>
     <!-- End navbar -->
@@ -32,6 +34,8 @@
     <div id="quiz">
 
         <div id="headline-box">
+            <h1 id = "aboutH">OnionOrWhat?</h1>
+            <h1 id = "above"></h1>
             <h1 id="headline"></h1>
             <div id="error">
                 <h1>Couldn't load headlines!</h1>
@@ -42,6 +46,66 @@
 
         <div id="white">
           <div id ="gloss">
+
+            <article id="about">
+                <p id = "opener">OnionOrNot was created by Luiz Neves and Devon Campbell as a collaborative <a href="http://www.thinkful.com" target="_blank">Thinkful</a> project. <span class = "desktop_only">It is written in HTML/Less, javascript/jQuery, and soon Ruby on Rails.</span></p>
+                <ul class=" cf" id = "profile">
+                    <li>
+                        <h3>Luiz:</h3>
+                        <div class = "cf" id = "info">
+                        <!-- <br/> -->
+                        <div class="cf">
+                            <a  
+                                class="bio-social linked"
+                                href="http://www.linkedin.com/in/luizneves7"
+                                target="_blank">
+                            </a>
+                            <a 
+                                class="bio-social twitter"
+                                href="https://twitter.com/Hey_Luiz"
+                                target="_blank">
+                            </a>
+
+                        </div>
+                        <img src="imgs/Luiz.jpg">
+                        </div>
+                        <p><span class ="name">Luiz</span>, an upcoming <a href="http://www.devbootcamp.com" target="_blank">bootcamper</a>, is a Portuguese-French-Texan with an engineering degree from The Ohio State University. He enjoys art, smart design, and long walks on the beach.</p>
+                    </li>
+
+                    <li>
+                        <h3>Devon:</h3>
+                        <div class = "cf" id = "info">
+                        <!-- <br/> -->
+                        <div class="cf">
+                            <a 
+                                class="bio-social linked" 
+                                href="http://www.linkedin.com/in/raddevon"target="_blank">
+                            </a>
+                            <a 
+                                class="bio-social twitter"
+                                href="https://twitter.com/raddevon" 
+                                target="_blank">
+                            </a>
+
+                        </div>
+                        <img src="imgs/devon.jpg">
+                        </div>
+                        <p><span class = "name">Devon</span>, an aspiring designer and developer from Knoxville, Tennessee loves to geek out over the latest web tech. You should probably <a href="http://raddevon.com/" target="_blank">hire him</a> for your next project.</p>                    
+                    </li>
+                </ul>
+
+                <button id="back">Next Headline</button>
+
+                <span id ="view_mobile" class = "desktop_only">
+                    Check out the
+                    <a id="mobile_link" target = "_blank">
+                         mobile version</a>
+                     and the 
+                    <a target = "_blank" href="http://www.flagstaffotos.com.au/gallery23/main.php?g2_view=keyalbum.KeywordAlbum&g2_keyword=Onion">original image.
+                    </a>
+                </span>
+
+            </article>
             <div id="feedback" class="cf">
                 <h2 class="message">filler</h2>
                 <ul class="data cf">
@@ -65,21 +129,22 @@
                     <!-- End social sharing buttons -->
                 </ul>
                 <button id="next">Next Headline</button>
+
             </div>
             <div id="answer">
                 <button id="onion">Onion</button>
                 <button id="not">Not Onion</button>
             </div>
         </div>
-    </div>
+        </div>
     </div>
 
-        <nav class="bottom cf">
+<!--         <nav class="bottom cf">
       <ul class="cf">
          <li><a href="">OnionOrNot</a></li>
-         <li><a href="">About</a></li>
+         <li><a class="about">About</a></li>
      </ul>
-    </nav>
+    </nav> -->
 
     <!-- Script imports -->
     <script type="text/javascript" src="js/jquery.js"></script>

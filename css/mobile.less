@@ -1,20 +1,23 @@
 @import "base.less";
 
-html {
-	background-image: url(../imgs/small.jpg);
+html {	
+	// background-image: url(../imgs/small.jpg);
+	background-image: url(../imgs/small3.jpg);
+	// max-height: 125%;
+	background-position: 90% -20px;
 }
 
 body {
+
 	overflow: hidden;
 }
 
 h1{
 	font-size: 2em;
-
 }
 
 h2{
-	font-size: 1.6em;
+	font-size: 1.5em;
 }
 
 h3{
@@ -23,11 +26,11 @@ h3{
 
 
 nav{
-	position: absolute;
+	z-index: 1;
+	position: fixed;
 	margin: 0 auto;
 	bottom: 0;
 	clear: both;
-	display: none;
 	ul {
 		a {
 			font-size: 1.5em;
@@ -36,8 +39,13 @@ nav{
 	}
 }
 
-.bottom{
-	display: block;
+.bottom {
+    height: 2em;
+    width: 100%;
+    bottom: 0;
+    clear: both;
+    text-align: center;
+    position: fixed;
 }
 
 #quiz {
@@ -53,10 +61,12 @@ button {
 }
 
 #headline-box {
-	position: relative;
 	width: 100%;
-	border-radius: 0 0 5px 5px;
-	padding: 1%;
+	border-radius: 0 0 15px 15px;
+}
+
+#above, #headline {
+	padding: .25em 0;
 }
 
 #white{
@@ -65,13 +75,72 @@ button {
 	width: 93%;
 }
 
+#about{
+
+	padding: .5em 1em;
+
+	#opener {
+		font-size: 1.2em;
+	}
+
+	#profile {
+    	padding: 0;
+
+		li{
+		min-height: inherit;
+		width: inherit;
+		margin: 1em auto 0 auto;
+
+
+		}
+	}
+
+ 	h3 {
+		display: none;
+		width: 100%;
+		margin-bottom: .4em
+	}
+
+	p {
+		font-size: 1em;
+	}
+
+	#info{
+			padding: .25em;
+			width: 6em;
+			height: 5em;
+			margin-right: .5em;
+			border-bottom: 1px dashed;
+			border-right: 1px dashed;
+			border-radius: 15px;
+		div{
+			width: 2em;
+			height: 4.4em;
+			position: relative;
+			.linked{
+				margin-bottom: .4em;
+			}
+		}
+		img {
+			width: 3em;
+			height: 4.4em;
+		}
+
+	}
+
+}
+
+.desktop_only {
+	display: none;
+}
+
 .data {
 	margin: .5em 0;
 	li {
 		display: inline-block;
 		height: 4.8em;
 		width: 95%;
-		margin: .3em;
+		margin-top: .5em;
 		text-align: center;
 		h3 {
 			border-bottom: 1px dashed fadeout(@White, 10%);
@@ -87,21 +156,25 @@ button {
 	padding-top: .6em;
 }
 
-#next {
+#next, #back {
 	width: 95%;
 	padding: .5em 0;
-	margin: 0;
+	margin-top: 1em;
 	font-size: 1.5em;
 }
 
+
 .social-buttons {
-	opacity: .75;
-	padding-top: .5em;
+	opacity: .8;
+	// margin-right: .1em;
 	> a {
 		display: inline-block;
 		height: 2em;
 		width: 2em;
-		margin-right: 2em;
+
+	}
+	
+	.facebook-like{
 		background: url(../imgs/fb.png);
 		background-size: cover;
 	}
@@ -109,10 +182,26 @@ button {
 	.twitter-share{
 		background: url(../imgs/twitter.png);
 		background-size: cover;
-		margin: 0;
+		margin-top: .5em;
+		margin-left: 3em;
 	}
 
-	img {
-		height: 2em;
-	}
+	// img {
+	// 	height: 4em;
+	// 	margin: 0 .25em;
+	// }
 }
+
+
+
+// #feedback {
+// 	opacity: 1;
+// }
+
+// #answer {
+// 	opacity: 1;
+// }
+
+// #about {
+// 	opacity: 1;
+// }

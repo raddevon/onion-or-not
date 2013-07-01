@@ -1,12 +1,21 @@
-var currentHeadline, headlines;
-var answerHeight = $('#answer').outerHeight();
-var feedbackHeight, whiteHeight;
+var currentHeadline, headlines, nextHeight, currentHeight, mobile, fix;
+var answerHeight;
+var aboutHeight;
+var feedbackHeight;
+var aboutH;
+var headlineLoaded;
+var allowAbout;
+
+
+// grab objects... values of a and b are switched later
+current = $('#headline');
+next = $('#above');
 
 function Headline(title, url, onion) {
     this.title = title;
     this.url = url;
     // Grabs the portion of the URL between the second and third slashes
-    this.domain = this.url.split('/')[2];
+    this.domain = this.url.split('/')[2].split('www.')[1] || this.url.split('/')[2];
     this.onion = onion;
 
     this.isOnion = function(){
@@ -107,47 +116,117 @@ function quoted(text) {
     return '&#8220;' + text + '&#8221;';
 }
 
-function newHeadline() {
+function firstLoad() {
     headlines.getRandom(true).done(function(randomHeadline) {
         currentHeadline = randomHeadline;
-        fillHeadline(randomHeadline);
-    });
-}
-
-function fillHeadline() {
 
     if (currentHeadline) {
-        $("#headline").html(quoted(currentHeadline.title));
-
-
-        setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
-
+        current.html(quoted(currentHeadline.title));
+        //cache heights for calucluating how much to move white div
         feedbackHeight  = $('#feedback').outerHeight();
-        whiteHeight = feedbackHeight + answerHeight;
+        answerHeight = $('#answer').outerHeight();
+        aboutHeight = $('#about').outerHeight();
+        aboutH = $("#aboutH").outerHeight();
 
-        // Initial sizing of the #white div
+        fix = $("body").outerHeight() - $(".no-js").outerHeight();
+        console.log($("body").outerHeight());
+        console.log($(".no-js").outerHeight());
+
+        console.log(fix);
+
+
         $("#white").css({
-            'overflow': 'hidden',
-            'height': whiteHeight + 'px',
-            'transform':'translate(0,'+ (0-feedbackHeight) + 'px)'
+            'transform':'translate(0,'+ (0-feedbackHeight-aboutHeight) + 'px)'
         });
 
         // Initial positioning of #feedback div
-        $("#feedback").css({
-            'transform':'translate(0,' + 0 + 'px)',
-            'opacity': '0'
+        $("#about").css({
+            'transform':'translate(0,' + feedbackHeight + 'px)'
         });
 
-        $("#answer").css({
-            'transform':'translate(0,' + 0 + 'px)',
-            'opacity': '1',
-            'visibility' : 'visible'
-        });
+        document.ontouchmove = function(event){
+            event.preventDefault();
+        };
+        // $(".no-js").css({
+        //     'max-height': $("body").outerHeight()
+        // });
+
+        // $("#answer").css({
+        //     'transform':'translate(0,' + 0 + 'px)',
+        //     'visibility' : 'visible'
+        // });
     }
+    });
+
+    mobile = screen.width < 580;
+    headlineLoaded = false;
+    allowAbout = true;
+}
+function animateHeadline(y){
+        // Initial sizing of the divs
+        if(mobile){
+            $("#headline-box").css({
+            'height': y + 4 + 'px'
+            // 'width': x + 'px'  //headline-box set to height of next hidden headline
+        });
+        }
+        //give enhanced version if not a mobile device
+        else {
+            $("#headline-box").animate({
+            'height': y + 4 + 'px'
+            // 'width': x + 'px'  //headline-box set to height of next hidden headline
+        },300);
+        }
+}
+function fillHeadline() {
+
+    if (currentHeadline) {
+
+        animateHeadline(nextHeight);
+
+        //slide current headline up and out of the headline-box
+        current.css({
+            'transform':'translate(0,' + (0-nextHeight) + 'px)'
+        }).toggleClass("opacity");
+        //slide the next headline up and into the headline-box
+        next.css({
+            'transform':'translate(0,' + (0) + 'px)'
+        }).toggleClass("opacity");
+
+        $("#white").css({
+            'transform':'translate(0,'+ (0-feedbackHeight-aboutHeight) + 'px)'
+        }).toggleClass('overflow');
+
+        // Initial positioning of #feedback div
+        $("#feedback, #answer").css({
+            'transform':'translate(0,' + 0 + 'px)',
+            'visibility' : 'visible'
+        }).toggleClass("opacity");
+
+        $("body").animate({ scrollTop: 0 }, 400 );
+        }
+
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
-    setTimeout(function(){$('#white, #quiz').css('overflow', '');},400);
+    // setTimeout(function(){$('#feedback').removeClass('correct wrong');}, 400);
 
+    //switch the selectors of current and next so to allow the headlines to cycle
+    trickPlay = current; //save js object of current to give to next later
+    current = next;    // make current equal to next in the js
+    next = trickPlay; // make next equal to old current
+
+    // In the background move the current headline down below the headline-box to prep
+    setTimeout(function(){
+        next.css('transform','translate(0,'+ (nextHeight) + 'px)');
+        $('#feedback').removeClass('correct wrong');
+        }, 400);
+
+    document.ontouchmove = function(event){
+        event.preventDefault();
+    };
+
+
+    headlineLoaded = false;
 }
 
 function showResponse(response) {
@@ -156,24 +235,36 @@ function showResponse(response) {
 
     // Animate the response
     $("#white").css({
-        'transform':'translate(0,' + (0-answerHeight) + 'px)',
-        'overflow': 'hidden'
+        'transform':'translate(0,' + (0-answerHeight-aboutHeight-4) + 'px)'
     });
-    $("#answer").css({
-        'transform':'translate(0,' + answerHeight + 'px)',
-        'opacity': 0
-    });
-    $("#feedback").css({
-        'opacity': 1,
-        'transform':'translate(0,' +  answerHeight + 'px)',
-        'visibility': 'visible'
+    $("#feedback, #answer").css({
+        'transform':'translate(0,' +  (answerHeight) + 'px)'
+    }).toggleClass("opacity");
+    $("#about").css({
+        'transform':'translate(0,' +  (answerHeight) + 'px)'
     });
 
     // Remove overflow: hidden after animations complete to allow the Facebook like content to display fully
     setTimeout(function(){
-        $('#white').css('overflow', '');
+        $('#white').toggleClass('overflow');
         $('#answer').css('visibility', 'hidden');
+
         },400);
+
+    //Grab the next random headline
+
+    headlines.getRandom(true).done(function(randomHeadline){
+    currentHeadline = randomHeadline;
+    });
+
+    //Fill the other hidden h1 and measure it
+    next.html(quoted(currentHeadline.title));
+    nextHeight = next.outerHeight();
+
+    headlineLoaded = true;
+   
+    document.ontouchmove = null;
+
 
 }
 
@@ -184,23 +275,111 @@ function answerResponse(trigger) {
     var response;
     // Compare button clicked with headline's onion value. Starts building a response based on whether the response was correct or not.
     if ( (trigger.id === "not" && !currentHeadline.onion) || (trigger.id === "onion" && currentHeadline.onion) ) {
-        response = "Yup. ";
+        response = "Good job! ";
         $("#feedback").addClass("correct");
     } else {
-        response = "Nope. ";
+        response = "Nope! ";
         $("#feedback").addClass("wrong");
     }
     // Appends to reflect the fakeness or realness of the story.
     if (currentHeadline.onion) {
-        response += "Just a joke";
+        response += "It's The Onion";
     } else {
-        response += "This happened.";
+        response += "Not Onion";
     }
     showResponse(response);
 }
 
+function showAbout(){
+        total = feedbackHeight + answerHeight;
+
+            // Initial sizing of the #white div
+    if(allowAbout) {
+        $("#about").css({
+            'transform':'translate(0,' + total + 'px)'
+        }).toggleClass("opacity");
+
+        $("#white").css({
+            'transform':'translate(0,'+ (0-total-4) + 'px)'
+        });
+
+        // positioning of divs
+        $("#feedback, #headline, #above, #answer").css({
+            'transform':'translate(0,' + total + 'px)',
+            'opacity': '0'
+        });
+
+        $("#aboutH").css({
+            'transform':'translate(0,' + 0 + 'px)'
+        }).toggleClass("opacity");
+
+    }
+
+        document.ontouchmove = null;
+        animateHeadline(aboutH);
+
+        allowAbout = false;
+
+}
+
+function hideAbout(){
+    // $("#back").click(function(){
+        total = feedbackHeight + aboutHeight;
+        currentHeight = current.outerHeight();
+            // Initial sizing of the #white div
+        $("#about").css({
+            'transform':'translate(0,' + feedbackHeight + 'px)'
+            // 'display': 'inline-block'
+        }).toggleClass("opacity");
+
+        $("#aboutH").css({
+            'transform':'translate(0,' + (0 - aboutH) + 'px)'
+        }).toggleClass("opacity");
+
+        $("#feedback, #headline, #above, #answer").css({
+            'opacity': ''
+        });
+        $("html, body").animate({ scrollTop: 0 }, 400 ).css ({
+        // return false;
+            'overflow': ''
+            // 'transform':'translate(0,' + fix + 'px)'
+        });
+
+        document.ontouchmove = function(event){
+            event.preventDefault();
+        };
+
+        if (headlineLoaded) {
+            fillHeadline();
+        }
+
+        else{
+            $("#white").css({
+                'transform':'translate(0,'+ (0 - feedbackHeight - aboutHeight) + 'px)'
+            });
+
+            $("#answer, #feedback").css({
+                'transform':'translate(0,' + 0 + 'px)'
+            });
+            current.css({
+                'transform':'translate(0,' + 0 + 'px)'
+            });
+            //slide the next headline up and into the headline-box
+            next.css({
+                'transform':'translate(0,' + nextHeight + 'px)'
+            });
+            animateHeadline(currentHeight);
+        }
+
+        allowAbout = true;
+}
+
 function touchClick(sel, fnc) {
-  $(sel).on('touchend click', function(event) {
+    var targetEvent = 'touchend';
+    if (!mobile) {
+        targetEvent = 'click';
+    }
+    $(sel).on(targetEvent, function(event) {
         event.stopPropagation();
         event.preventDefault();
         if(event.handled !== true) {
@@ -209,20 +388,34 @@ function touchClick(sel, fnc) {
         } else {
             return false;
         }
-  });
+    });
 }
+
+// Initial load of headlines and first random headline
+headlines = new HeadlineList('js/headlines.json');
+firstLoad();
 
 // Click binding for answer buttons
 touchClick('#onion, #not', function(e) {
     answerResponse(e.delegateTarget);
 });
 
-// Click binding for next headline button
-touchClick('#next', newHeadline);
+touchClick('.about', function() {
+    showAbout();
+});
 
-// Initial load of headlines and first random headline
-headlines = new HeadlineList('js/headlines.json');
-newHeadline();
+touchClick('#back', function() {
+    hideAbout();
+});
+
+// Click binding for next headline button
+touchClick('#next', function(e) {
+    fillHeadline(currentHeadline);
+});
+
+touchClick('#mobile_link', function(e) {
+    window.open("http://www.onionornot.com","","width=340, height=670");
+});
 
 // Fills the next headline after a successful AJAX call
 $(headlines).on('ajaxSuccess', function() {
