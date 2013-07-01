@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"tex",
+				"text-decoration"
+			],
+			[
 				"max",
 				"max-height"
 			],
@@ -58,10 +62,6 @@
 			[
 				"font-s",
 				"font-style"
-			],
-			[
-				"tex",
-				"text-align"
 			],
 			[
 				"font-",
@@ -171,7 +171,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 6511,
+				"buffer_size": 6964,
 				"line_ending": "Unix"
 			}
 		},
@@ -179,7 +179,7 @@
 			"file": "js/js.js",
 			"settings":
 			{
-				"buffer_size": 13141,
+				"buffer_size": 12728,
 				"line_ending": "Unix"
 			}
 		},
@@ -187,7 +187,7 @@
 			"file": "css/base.less",
 			"settings":
 			{
-				"buffer_size": 12729,
+				"buffer_size": 12668,
 				"line_ending": "Unix"
 			}
 		},
@@ -195,7 +195,7 @@
 			"file": "css/desktop.less",
 			"settings":
 			{
-				"buffer_size": 1735,
+				"buffer_size": 1974,
 				"line_ending": "Unix"
 			}
 		},
@@ -203,7 +203,7 @@
 			"file": "css/mobile.less",
 			"settings":
 			{
-				"buffer_size": 2381,
+				"buffer_size": 2417,
 				"line_ending": "Unix"
 			}
 		}
@@ -354,6 +354,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"mobile",
+			"flip",
+			"table",
+			"about",
+			"extra",
 			"active",
 			"first",
 			"active",
@@ -478,15 +483,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 6511,
+						"buffer_size": 6964,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2549,
-								2549
+								928,
+								928
 							]
 						],
 						"settings":
@@ -586,7 +591,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 950.0,
+						"translation.y": 243.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -594,7 +599,7 @@
 			]
 		},
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -602,15 +607,15 @@
 					"file": "js/js.js",
 					"settings":
 					{
-						"buffer_size": 13141,
+						"buffer_size": 12728,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1018,
-								1018
+								8666,
+								8666
 							]
 						],
 						"settings":
@@ -710,7 +715,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 306.0,
+						"translation.y": 4242.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -720,15 +725,15 @@
 					"file": "css/base.less",
 					"settings":
 					{
-						"buffer_size": 12729,
+						"buffer_size": 12668,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4226,
-								4226
+								7587,
+								7587
 							]
 						],
 						"settings":
@@ -828,7 +833,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3438.0,
+						"translation.y": 4966.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -838,15 +843,15 @@
 					"file": "css/desktop.less",
 					"settings":
 					{
-						"buffer_size": 1735,
+						"buffer_size": 1974,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1630,
-								1630
+								1238,
+								1238
 							]
 						],
 						"settings":
@@ -944,8 +949,8 @@
 							"syntax": "Packages/LESS/LESS.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 142.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 1067.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -955,15 +960,15 @@
 					"file": "css/mobile.less",
 					"settings":
 					{
-						"buffer_size": 2381,
+						"buffer_size": 2417,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								211,
-								211
+								1895,
+								1895
 							]
 						],
 						"settings":
@@ -1098,7 +1103,7 @@
 		"cols":
 		[
 			0.0,
-			0.531032152298,
+			0.346007765986,
 			1.0
 		],
 		"rows":

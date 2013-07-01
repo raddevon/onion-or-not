@@ -3,21 +3,8 @@ var answerHeight;
 var aboutHeight;
 var feedbackHeight;
 var aboutH;
-var flip;
+var headlineLoaded;
 var allowAbout;
-
-// WebFontConfig = {
-//     google: { families: [ 'Roboto+Condensed:400,300:latin' ] }
-//   };
-//   (function() {
-//     var wf = document.createElement('script');
-//     wf.src = ('https:' === document.location.protocol ? 'https' : 'http') +
-//       '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-//     wf.type = 'text/javascript';
-//     wf.async = 'true';
-//     var s = document.getElementsByTagName('script')[0];
-//     s.parentNode.insertBefore(wf, s);
-//   })();
 
 
 // grab objects... values of a and b are switched later
@@ -171,8 +158,8 @@ function firstLoad() {
     }
     });
 
-    mobile = screen.width < 780;
-    flip = false;
+    mobile = screen.width < 580;
+    headlineLoaded = false;
     allowAbout = true;
 }
 function animateHeadline(y){
@@ -239,7 +226,7 @@ function fillHeadline() {
     };
 
 
-    flip = false;
+    headlineLoaded = false;
 }
 
 function showResponse(response) {
@@ -261,18 +248,21 @@ function showResponse(response) {
     setTimeout(function(){
         $('#white').toggleClass('overflow');
         $('#answer').css('visibility', 'hidden');
+
         },400);
 
     //Grab the next random headline
+
     headlines.getRandom(true).done(function(randomHeadline){
-        currentHeadline = randomHeadline;
+    currentHeadline = randomHeadline;
     });
+
     //Fill the other hidden h1 and measure it
     next.html(quoted(currentHeadline.title));
-        nextHeight = next.outerHeight();
+    nextHeight = next.outerHeight();
 
-    flip = true;
-    
+    headlineLoaded = true;
+   
     document.ontouchmove = null;
 
 
@@ -323,9 +313,6 @@ function showAbout(){
             'transform':'translate(0,' + 0 + 'px)'
         }).toggleClass("opacity");
 
-        // $(".no-js").css({
-        //     'overflow': 'scroll'
-        // });
     }
 
         document.ontouchmove = null;
@@ -362,7 +349,7 @@ function hideAbout(){
             event.preventDefault();
         };
 
-        if (flip) {
+        if (headlineLoaded) {
             fillHeadline();
         }
 
@@ -427,7 +414,7 @@ touchClick('#next', function(e) {
 });
 
 touchClick('#mobile_link', function(e) {
-    window.open("http://localhost/onion/onion-or-not/","","width=330, height=670");
+    window.open("http://www.onionornot.com","","width=340, height=670");
 });
 
 // Fills the next headline after a successful AJAX call
@@ -448,6 +435,6 @@ $(headlines).on('ajaxError', function() {
 });
 
 
-if ($(window).width() > 580) {
+if (!mobile) {
     Socialite.load('.social-buttons');
 }

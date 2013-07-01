@@ -42,7 +42,7 @@
         },
         {
             "title": "Bush: ‘Some people are surprised I can even read’",
-            "url": "http://www.tv.msnbc.com/2013/04/15/bush-some-people-are-surprised-i-can-even-read/",
+            "url": "tv.msnbc.com/2013/04/15/bush-some-people-are-surprised-i-can-even-read/",
             "onion": false
         },
         {
@@ -51,52 +51,153 @@
             "onion": false
         },
         {
-            "title": "Can Loving a Robot Lead to Divorce?",
-            "url": "http://www.huffingtonpost.com/vicki-larson/robots_1_b_1150679.html",
-            "onion": false
-        },{
             "title": "How to Find Porn on the Internet",
             "url": "http://www.businessweek.com/articles/2012-09-27/how-to-find-porn-on-the-internet",
             "onion": false
-        },{
+        },
+        {
             "title": "Giant Ice Penis – Is Climate Change To Blame?",
             "url": "http://metro.co.uk/2008/09/11/giant-ice-penis-is-climate-change-to-blame-484779/",
             "onion": false
-        },{
-            "title": "Is it OK to Tattoo Your Dog?",
-            "url": "http://shine.yahoo.com/pets/ok-tattoo-dog-155200287.html",
-            "onion": false
-        },{
+        },
+        {
             "title": "Cross-dressing meth priest liked sex in rectory",
             "url": "http://www.sfgate.com/local/article/Sources-Cross-dressing-meth-priest-liked-sex-in-4203841.php",
             "onion": false
-        },{
+        },
+        {
             "title": "Quebec Man, Mangled By Boat Propeller, Pieces His Life Back Together",
             "url": "http://www.sunnewsnetwork.ca/sunnews/canada/archives/2013/03/20130325-122940.html",
             "onion": false
-        },{
+        },
+        {
             "title": "New Zealand Bans Naming Babies ‘Christ,’ ‘Lucifer’",
             "url": "http://www.theonion.com/articles/new-zealand-bans-naming-babies-christ-lucifer,32290/",
             "onion": true
-        },{
-            "title": "Obama Sarcastically Asks How Israel Afforded Such A Great Missile Defense System",
-            "url": "http://www.theonion.com/articles/obama-sarcastically-asks-how-israel-afforded-such,31750/",
-            "onion": true
-        },{
-            "title": "'Depot Buys Max,' Nation's Office-Supply-Loving Teens Text Frantically To One Another",
-            "url": "http://www.theonion.com/articles/depot-buys-max-nations-officesupplyloving-teens-te,31374/",
-            "onion": true
-        },{
-            "title": "Study: Wolf Attacks Still Leading Cause Of Death In U.S.",
-            "url": "http://www.theonion.com/articles/study-wolf-attacks-still-leading-cause-of-death-in,32170/",
-            "onion": true
-        },{
+        },
+        {
             "title": "Embarrassed Sony CEO Announces New Video Game System",
             "url": "http://www.theonion.com/articles/embarrassed-sony-ceo-announces-new-video-game-syst,31380/",
             "onion": true
-        },{
+        },
+        {
             "title": "Apple Announces Plans For New iPad With Extra Storage Drawer",
             "url": "http://www.theonion.com/articles/apple-announces-plans-for-new-ipad-with-extra-stor,31067/",
+            "onion": true
+        },
+        {
+            "title": "Eminem Terrified As Daughter Begins Dating Man Raised On His Music",
+            "url": "http://www.theonion.com/articles/eminem-terrified-as-daughter-begins-dating-man-rai,32989/",
+            "onion": true
+        },
+        {
+            "title": "Dollar Tree CEO Officially Unveils Long-Rumored Foil Baking Pan",
+            "url": "http://www.theonion.com/articles/dollar-tree-ceo-officially-unveils-longrumored-foi,32684/",
+            "onion": true
+        },
+        {
+            "title": "Tim Tebow’s Former Teammate Charged With Murder",
+            "url": "http://www.theonion.com/articles/tim-tebows-former-teammate-charged-with-murder,32976/",
+            "onion": true
+        },
+        {
+            "title": "Michele Bachmann: ‘God Wants Me To Earn 7 Figures For A Lobbying Firm’",
+            "url": "http://www.theonion.com/articles/michele-bachmann-god-wants-me-to-earn-7-figures-fo,32618/",
+            "onion": true
+        },
+        {
+            "title": "GOP: ‘We Support Our Nation’s 11 Million Latino Criminals’",
+            "url": "http://www.theonion.com/section/politics/",
+            "onion": true
+        },
+        {
+            "title": "Mexican Amusement Park Offers Fake Border Crossing Attraction",
+            "url": "http://www.pbs.org/newshour/rundown/2013/06/fake-border-crossing-is-amusement-park-attraction.html",
+            "onion": false
+        },
+        {
+            "title": "Marijuana Legalization Gains Support From NAACP",
+            "url": "http://www.inquisitr.com/821311/marijuana-legalization-gains-support-from-naacp/",
+            "onion": false
+        },
+        {
+            "title": "Jealous boyfriend releases girl's hamster after she admits preferring the pet to him",
+            "url": "http://www.telegraph.co.uk/news/uknews/crime/10148036/Jealous-boyfriend-releases-girls-hamster-after-she-admits-preferring-the-pet-to-him.html",
+            "onion": false
+        },
+        {
+            "title": "Not much brain needed to be a rock star, says Jagger",
+            "url": "http://www.globalpost.com/dispatch/news/afp/130628/not-much-brain-needed-be-rock-star-says-jagger",
+            "onion": false
+        },
+        {
+            "title": "GOP plan to appeal to millennials: “Make abortion funny”",
+            "url": "http://www.salon.com/2013/06/17/gop_plan_to_appeal_to_millennials_make_abortion_funny/",
+            "onion": false
+        },
+        {
+            "title": "Cop gets stuck in tree trying to rescue cat stuck in tree",
+            "url": "http://news.msn.com/us/cop-gets-stuck-in-tree-trying-to-rescue-cat-stuck-in-tree",
+            "onion": false
+        },
+        {
+            "title": "Rich Manhattan moms hire handicapped tour guides so kids can cut lines at Disney World",
+            "url": "http://www.nypost.com/p/news/local/manhattan/disney_world_srich_kid_outrage_zTBA0xrvZRkIVc1zItXGDP",
+            "onion": false
+        },
+        {
+            "title": "Last Two Speakers of Dying Language Refuse to Talk to Each Other",
+            "url": "http://newsfeed.time.com/2011/04/18/last-two-speakers-of-dying-language-refuse-to-talk-to-each-other/",
+            "onion": false
+        },
+        {
+            "title": "Vladimir Putin hires Boyz II Men to boost the Russian birth rate",
+            "url": "http://www.dailymail.co.uk/news/article-2272031/Vladimir-Putin-hires-Boyz-II-Men-boost-Russian-birth-rate.html#axzz2Jg3bIuQ6",
+            "onion": false
+        },
+        {
+            "title": "All San Diego man wants for Christmas is a Latina girlfriend",
+            "url": "http://nbclatino.com/2012/12/06/all-san-diego-man-wants-for-christmas-is-a-latina-girlfriend/",
+            "onion": false
+        },
+        {
+            "title": "No one reported shot, stabbed or slashed in New York City on Monday",
+            "url": "http://www.nydailynews.com/new-york/reported-shot-stabbed-slashed-nyc-monday-article-1.1209204",
+            "onion": false
+        },
+        {
+            "title": "Report: Mankind's Knowledge Of TV Trivia Doubling Every Three Years",
+            "url": "http://www.theonion.com/articles/report-mankinds-knowledge-of-tv-trivia-doubling-ev,1520/",
+            "onion": true
+        },
+        {
+            "title": "LeBron James Says Complicated Enrollment Form Prevented Him From Signing Up For Slam Dunk Contest",
+            "url": "http://www.theonion.com/articles/lebron-james-says-complicated-enrollment-form-prev,7055/",
+            "onion": true
+        },
+        {
+            "title": "Tea Party Plans To Recruit More Coloreds This Fall",
+            "url": "http://www.theonion.com/articles/tea-party-plans-to-recruit-more-coloreds-this-fall,18296/",
+            "onion": true
+        },
+        {
+            "title": "Census Finds Enough Homeless People Living In Public Library To Warrant Congressional District",
+            "url": "http://www.theonion.com/articles/census-finds-enough-homeless-people-living-in-publ,18701/",
+            "onion": true
+        },
+        {
+            "title": "Archaeologists Discover Remnants Of Legendary Party Out By Train Tracks",
+            "url": "http://www.theonion.com/articles/archaeologists-discover-remnants-of-legendary-part,2921/",
+            "onion": true
+        },
+        {
+            "title": "Pediatricians Announce 2011 Newborns Are Ugliest Babies In 30 Years",
+            "url": "http://www.theonion.com/articles/pediatricians-announce-2011-newborns-are-ugliest-b,26177/",
+            "onion": true
+        },
+        {
+            "title": "Report: More Recent College Graduates Making Extra Money By Tutoring High School Teachers",
+            "url": "http://www.theonion.com/articles/report-more-recent-college-graduates-making-extra,26515/",
             "onion": true
         }
     ]

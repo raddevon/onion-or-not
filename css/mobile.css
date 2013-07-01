@@ -481,9 +481,7 @@ button:active {
 }
 #about li {
   background-color: rgba(61, 110, 90, 0.6);
-  display: inline-block;
   border-radius: 15px;
-  margin: .5em;
   text-align: left;
   padding: 1em;
   min-height: 13.5em;
@@ -731,6 +729,7 @@ button {
 #about #profile li {
   min-height: inherit;
   width: inherit;
+  margin-top: 1em;
 }
 #about h3 {
   display: none;
@@ -771,7 +770,7 @@ button {
   display: inline-block;
   height: 4.8em;
   width: 95%;
-  margin: .3em;
+  margin-top: .5em;
   text-align: center;
 }
 .data li h3 {
@@ -788,7 +787,7 @@ button {
 #back {
   width: 95%;
   padding: .5em 0;
-  margin: 0;
+  margin-top: 1em;
   font-size: 1.5em;
 }
 .social-buttons {

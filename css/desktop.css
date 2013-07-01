@@ -481,9 +481,7 @@ button:active {
 }
 #about li {
   background-color: rgba(61, 110, 90, 0.6);
-  display: inline-block;
   border-radius: 15px;
-  margin: .5em;
   text-align: left;
   padding: 1em;
   min-height: 13.5em;
@@ -739,11 +737,12 @@ button:hover {
   padding: 0 0 .25em 0;
 }
 div li {
-  display: inline-table;
+  display: inline-block;
+  vertical-align: top;
   line-height: 1.1em;
   padding: 1em .5em .5em .5em;
   min-width: 35%;
-  margin: .5em;
+  margin: 0 .5em;
   height: 180px;
 }
 #source {
