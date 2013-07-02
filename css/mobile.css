@@ -718,18 +718,19 @@ button {
   width: 93%;
 }
 #about {
-  padding: .5em 1em;
+  padding: 1em;
 }
 #about #opener {
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 #about #profile {
   padding: 0;
+  max-width: 95%;
 }
 #about #profile li {
   min-height: inherit;
   width: inherit;
-  margin: 1em auto 0 auto;
+  margin: 1em auto;
 }
 #about h3 {
   display: none;
@@ -763,14 +764,10 @@ button {
 .desktop_only {
   display: none;
 }
-.data {
-  margin: .5em 0;
-}
 .data li {
-  display: inline-block;
   height: 4.8em;
   width: 95%;
-  margin-top: .5em;
+  margin: 1em auto;
   text-align: center;
 }
 .data li h3 {
@@ -787,7 +784,7 @@ button {
 #back {
   width: 95%;
   padding: .5em 0;
-  margin-top: 1em;
+  margin: 0;
   font-size: 1.5em;
 }
 .social-buttons {
