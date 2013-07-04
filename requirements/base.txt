@@ -1,7 +1,0 @@
-Django==1.5.1
-django-braces==0.2.1
-django-model-utils==1.1.0
-logutils==0.3.3
-South==0.7.6
-gunicorn==0.17.0
-psycopg2==2.4.5

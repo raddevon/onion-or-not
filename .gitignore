@@ -67,3 +67,4 @@ tmp
 # Local Secrets
 secrets.txtcodekit-config.json
 codekit-config.json
+onionornot.sublime-*
